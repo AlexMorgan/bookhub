@@ -3,7 +3,11 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <div><%= f.label :username %><br />
+  <%= f.text_field :username, autofocus: true %></div>
+
   <div><%= f.label :email %><br />
+    <!-- email_field will do validation to make sure that whatever you entered is in email format -->
   <%= f.email_field :email, autofocus: true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
