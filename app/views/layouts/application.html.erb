@@ -3,6 +3,7 @@
 <head>
   <title>DeviseTutorial</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -28,6 +29,7 @@
           Logged in as <strong><%= current_user.username %></strong>.
           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <%= image_tag current_user.avatar.url(:tiny) %>
         <% else %>
           <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
           <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
@@ -37,8 +39,9 @@
   </nav>
 
 <div class="container">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% flash.each do |name, msg| %>
+    <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+  <% end %>
   <%= yield %>
 </div>
 
