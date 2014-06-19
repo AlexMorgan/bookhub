@@ -30,6 +30,8 @@ gem 'devise'
 # Will install any version above 3.0, but below 4.0
 gem 'paperclip', '~> 3.0'
 
+gem 'geocoder'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
