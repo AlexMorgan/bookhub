@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <%= image_tag current_user.avatar.url(:small) %>
+  <%= image_tag current_user.avatar.url(:medium) %>
   <% if current_user.avatar.instance.avatar_file_size == nil  %>
     <div><%= f.label "Create an Avatar" %><br />
   <% else %>
