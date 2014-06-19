@@ -21,6 +21,12 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  protected
+
+  def after_sign_up_path_for(resource)
+    edit_user_registration_path
+  end
+
   private
 
   # check if we need password to update user data
