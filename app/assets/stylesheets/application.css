@@ -16,3 +16,7 @@
 .avatar {
   border-radius: 150px;
 }
+
+.address-input {
+  width: 50%;
+}
