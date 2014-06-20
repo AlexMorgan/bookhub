@@ -27,3 +27,7 @@
 #map label {
   width: auto; display:inline;
 }
+
+.site-content {
+  padding-top: 50px;
+}
