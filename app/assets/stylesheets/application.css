@@ -21,10 +21,13 @@
   width: 50%;
 }
 
-/*For use with GMaps4Rails*/
-/*#map img {
+#map img {
   max-width: none;
 }
 #map label {
   width: auto; display:inline;
-} */
+}
+
+.site-content {
+  padding-top: 50px;
+}
