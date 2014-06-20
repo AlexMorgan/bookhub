@@ -1,7 +1,10 @@
 <h1>Users</h1>
 
-<ul>
+<div class="row">
   <% @users.each do |u| %>
-    <li><%= u.username %></li>
+    <div class="col-md-3">
+      <%=image_tag u.avatar.url(:thumb) %>
+      <h3><%= u.username %></h3>
+    </div>
   <% end %>
-</ul>
+</div>

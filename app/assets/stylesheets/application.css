@@ -12,22 +12,6 @@
  *
  *= require_tree .
  *= require_self
+ *= require my-styles
+ *= require bootstrap
  */
-.avatar {
-  border-radius: 150px;
-}
-
-.address-input {
-  width: 50%;
-}
-
-#map img {
-  max-width: none;
-}
-#map label {
-  width: auto; display:inline;
-}
-
-.site-content {
-  padding-top: 50px;
-}
