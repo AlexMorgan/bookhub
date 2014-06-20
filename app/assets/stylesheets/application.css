@@ -21,10 +21,21 @@
   width: 50%;
 }
 
-/*For use with GMaps4Rails*/
-/*#map img {
+.avatar {
+  border-radius: 150px;
+}
+
+.address-input {
+  width: 50%;
+}
+
+#map img {
   max-width: none;
 }
 #map label {
   width: auto; display:inline;
-} */
+}
+
+.site-content {
+  padding-top: 50px;
+}
