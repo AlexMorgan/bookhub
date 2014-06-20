@@ -20,3 +20,7 @@ body {
 .site-content {
   padding-top: 50px;
 }
+
+.center {
+  text-align: center;
+}
