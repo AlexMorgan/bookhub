@@ -11,6 +11,18 @@
   <% end %>
   <%= f.file_field :avatar %></div>
 
+  <div><%= f.label "First Name" %><br />
+  <%= f.text_field :firstname %></div>
+
+  <div><%= f.label "Last Name" %><br />
+  <%= f.text_field :lastname %></div>
+
+  <div><%= f.label :year %><br />
+  <%= f.select :year, User.years, prompt: "Choose your year" %></div>
+
+  <div><%= f.label :phone %><br />
+  <%= f.text_field :phone %></div>
+
   <div><%= f.label :address %><br />
   <%= f.text_field :address, autofocus: true, class: "address-input" %></div>
 

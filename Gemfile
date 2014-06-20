@@ -34,6 +34,8 @@ gem 'geocoder'
 
 gem 'gmaps4rails'
 
+gem 'validates_formatting_of'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

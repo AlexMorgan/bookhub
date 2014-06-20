@@ -13,4 +13,11 @@ class User < ActiveRecord::Base
   # validates :avatar, :attachment_presence => true
 
   validates :username, presence: true, uniqueness: true
+  validates_formatting_of :firstname, :using => :alpha
+  validates_formatting_of :lastname, :using => :alpha
+  validates_formatting_of :phone, :using => :us_phone, allow_nil: true
+
+  def self.years
+    %w(Freshman Sophomore Junior Senior)
+  end
 end
