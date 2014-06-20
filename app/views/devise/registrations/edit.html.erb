@@ -10,41 +10,50 @@
     <div><%= f.label "Change Avatar" %><br />
   <% end %>
   <%= f.file_field :avatar %></div>
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Personal Information</h1>
 
-  <div><%= f.label "First Name" %><br />
-  <%= f.text_field :firstname %></div>
+      <div><%= f.label "First Name" %><br />
+      <%= f.text_field :firstname %></div>
 
-  <div><%= f.label "Last Name" %><br />
-  <%= f.text_field :lastname %></div>
+      <div><%= f.label "Last Name" %><br />
+      <%= f.text_field :lastname %></div>
 
-  <div><%= f.label :year %><br />
-  <%= f.select :year, User.years, prompt: "Choose your year" %></div>
+      <div><%= f.label :year %><br />
+      <%= f.select :year, User.years, prompt: "Choose your year" %></div>
 
-  <div><%= f.label :phone %><br />
-  <%= f.text_field :phone %></div>
+      <div><%= f.label :phone %><br />
+      <%= f.text_field :phone %></div>
 
-  <div><%= f.label :address %><br />
-  <%= f.text_field :address, autofocus: true, class: "address-input" %></div>
+      <div><%= f.label :address %><br />
+      <%= f.text_field :address, autofocus: true, class: "address-input" %></div>
 
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username, autofocus: true %></div>
+    </div>
 
-  <div><%= f.label :email %><br />
-    <!-- email_field will do validation to make sure that whatever you entered is in email format -->
-  <%= f.email_field :email, autofocus: true %></div>
+    <div class="col-md-6">
+      <h1>Account Settings</h1>
+      <div><%= f.label :username %><br />
+      <%= f.text_field :username, autofocus: true %></div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <div><%= f.label :email %><br />
+        <!-- email_field will do validation to make sure that whatever you entered is in email format -->
+      <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+      <div><%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+      <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "off" %></div>
+    </div>
+  </div><br>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
