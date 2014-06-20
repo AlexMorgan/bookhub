@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
-    if resource.sign_in_count == 0
+    if resource.sign_in_count == 1
       edit_user_registration_path
     else
       super
