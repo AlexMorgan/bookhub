@@ -27,6 +27,13 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def search
+    query = "%#{params[:query]}%"
+    @books = Book
+      .where('title like ? or course_title like ?',
+             query, query)
+  end
+
   private
 
   def book_params

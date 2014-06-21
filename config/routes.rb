@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :books, only: [:new, :create, :show]
   end
 
-  resources :books, only: [:index, :show, :new, :create, :update]
+  resources :books, only: [:index, :show, :new, :create, :update] do
+    get 'search', on: :collection
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

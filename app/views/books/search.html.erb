@@ -1,0 +1,20 @@
+<h1>Search Results</h1>
+
+<br />
+
+<% if @books.empty? %>
+
+<p>No results found.</p>
+
+<% else %>
+
+<p><%= "#{@books.count} result(s) found." %></p>
+
+<ul class="unstyled">
+  <% @books.each do |book| %>
+  <li>
+    <%= link_to book.title, book %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
