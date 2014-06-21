@@ -9,4 +9,8 @@ class Book < ActiveRecord::Base
   def self.qualities
     %w(New Good Decent )
   end
+
+  def title
+    super.split.map! {|word| word.capitalize }.join(' ')
+  end
 end
