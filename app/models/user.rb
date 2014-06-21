@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
   def self.years
     %w(Freshman Sophomore Junior Senior)
   end
+
+  def fullname
+    "#{firstname} #{lastname}"
+  end
 end

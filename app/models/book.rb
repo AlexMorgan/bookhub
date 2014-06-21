@@ -3,9 +3,10 @@ class Book < ActiveRecord::Base
 
   validates :title, presence: true
   validates :quality, presence: true
-  validates_formatting_of :course_title, :using => :alphanum
+  validates_formatting_of :course_title, using: :alphanum
+  validates_formatting_of :price, using: :dollars, allow_nil: true
 
-  def self.quality
+  def self.qualities
     %w(New Good Decent )
   end
 end

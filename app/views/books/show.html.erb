@@ -1,0 +1,17 @@
+<h1 class="book-title"><%= @book.title %></h1>
+
+<h3>Course</h3>
+<h5><%= @book.course_title %></h5>
+
+<h3>Price</h3>
+<h5>$<%= @book.price %></h5>
+
+<h3>Quality</h3>
+<h5><%= @book.quality %></h5>
+
+<h3>Seller</h3>
+<h5><%= @owner.fullname %></h5>
+
+
+
+<%= link_to "Back", books_path %>
