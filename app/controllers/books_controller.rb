@@ -23,6 +23,10 @@ class BooksController < ApplicationController
     end
   end
 
+  def update
+    @book = Book.find(params[:id])
+  end
+
   private
 
   def book_params
