@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   validates_formatting_of :lastname, :using => :alpha
   validates_formatting_of :phone, :using => :us_phone, allow_nil: true
 
+  has_many :books
+
   def self.years
     %w(Freshman Sophomore Junior Senior)
   end

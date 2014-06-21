@@ -17,3 +17,5 @@
 //= require underscore
 //= require gmaps/google
 //= require bootstrap
+//= require jquery
+//= require app
