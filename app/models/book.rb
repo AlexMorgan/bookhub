@@ -13,4 +13,12 @@ class Book < ActiveRecord::Base
   def title
     super.split.map! {|word| word.capitalize }.join(' ')
   end
+
+  def course_title
+    super.split.map! {|word| word.upcase }.join(' ')
+  end
+
+  def price
+    super.to_f.round(0)
+  end
 end
