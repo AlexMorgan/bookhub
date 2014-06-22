@@ -7,11 +7,9 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root "pages#home"
 
-  resources :users, only: [:index, :show] do
-    resources :books, only: [:new, :create, :show, :destroy]
-  end
+  resources :users, only: [:index, :show]
 
-  resources :books, only: [:index, :show, :new, :create, :update] do
+  resources :books do
     get 'search', on: :collection
   end
   # Example of regular route:

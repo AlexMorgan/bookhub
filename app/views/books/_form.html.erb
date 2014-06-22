@@ -1,0 +1,26 @@
+<% if @book.errors.any? %>
+  <p> There were errors in your submission </p>
+  <ul>
+    <% @book.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@user, @book] do |f| %>
+  <div><%= f.label "Book Title" %></div>
+  <%= f.text_field :title %><br><br>
+
+  <div><%= f.label "Course Title" %></div>
+  <%= f.text_field :course_title %><br><br>
+
+  <div><%= f.label :quality %></div>
+  <%= f.select :quality, Book.qualities, prompt: "Select book quality" %><br><br>
+
+  <div><%= f.label :price %></div>
+  <%= f.text_field :price %><br><br>
+
+  <div><%= f.submit "Submit" %></div><br><br>
+<% end %>
+
+<%= link_to 'Back', :back %>

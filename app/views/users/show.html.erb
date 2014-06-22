@@ -7,7 +7,7 @@
     <h3>Books Added</h3>
     <ul>
       <% @user.books.each do |book| %>
-      <li><%= link_to book.title, book_path(book) %></li>
+      <li><%= link_to book.title, book_path(book) %> - <%= link_to "Edit", edit_book_path(book.id) %> | <%= link_to "Delete", book, method: :delete, data: {confirm: "Are you sure?"} %></li>
       <% end %>
     </ul>
     <%= link_to "Add Book", new_book_path %>

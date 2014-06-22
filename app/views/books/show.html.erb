@@ -11,7 +11,7 @@
 
 <h3>Seller</h3>
 <% if @book.user_id != current_user.id %>
-  <h5><%= @owner.fullname %></h5>
+  <h5><%= @book.user.fullname %></h5>
 <% else %>
   <h5>You</h5>
 <% end %>
