@@ -1,0 +1,16 @@
+<h1>Good news <%= @seller.firstname %>!</h1>
+<p>
+  You have successfully sold <i><%= @book.title %></i>,
+  <%= @buyer.fullname %> has offered to buy your book.<br>
+</p><br>
+<p>Here's their contact information, make sure to reach out to them!</p>
+<ul>
+  <li>Email: <%= @buyer.email %></li>
+  <% if @buyer.phone != nil %>
+    <li>Phone: <%= @buyer.phone %></li>
+  <% end %>
+</ul>
+<p>
+  To login to the site, just follow this link: <%= @url %>.
+</p>
+<p>Thanks for joining and have a great day!</p>

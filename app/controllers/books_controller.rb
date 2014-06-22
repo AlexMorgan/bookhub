@@ -48,6 +48,9 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.sold = true
     @book.save
+
+    UserMailer.purchase_email(current_user, @book.user, @book).deliver
+
     flash[:notice] = "#{@book.title} has been marked as purchased."
     redirect_to books_path
   end
