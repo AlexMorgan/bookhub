@@ -8,13 +8,15 @@
 
 <% else %>
 
-<p><%= "#{@books.count} result(s) found." %></p>
+<!-- <p><%= "#{@books.count} result(s) found." %></p> -->
 
 <ul class="unstyled">
   <% @books.each do |book| %>
-  <li>
-    <%= link_to book.title, book %>
-  </li>
+    <% if book.sold == false %>
+      <li>
+        <%= link_to book.title, book %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 <% end %>

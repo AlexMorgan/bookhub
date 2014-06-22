@@ -39,8 +39,8 @@ class BooksController < ApplicationController
 
   def search
     query = "%#{params[:query]}%"
-    @books = Book
-      .where('title like ? or course_title like ?',
+    query.downcase
+    @books = Book.where('title ilike ? or course_title ilike ?',
              query, query)
   end
 
