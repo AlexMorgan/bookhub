@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   resources :books do
     get 'search', on: :collection
+    member do
+       get 'buy'
+     end
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

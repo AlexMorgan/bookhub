@@ -19,7 +19,6 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.build(book_params)
-    @book.user_id = current_user.id
 
     if @book.save
       redirect_to books_path, notice: "#{@book.title} has been put up for sale"
@@ -31,7 +30,6 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update_attributes(book_params)
-      # Same as redirect_to action: 'show', id: => @question
       redirect_to book_path
     else
       flash[:notice] = "Something went wrong!"
@@ -44,6 +42,14 @@ class BooksController < ApplicationController
     @books = Book
       .where('title like ? or course_title like ?',
              query, query)
+  end
+
+  def buy
+    @book = Book.find(params[:id])
+    @book.sold = true
+    @book.save
+    flash[:notice] = "#{@book.title} has been marked as purchased."
+    redirect_to books_path
   end
 
   def destroy

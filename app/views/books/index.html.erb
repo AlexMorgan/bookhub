@@ -7,7 +7,9 @@
 
 <ul>
   <% @books.each do |book| %>
-    <li><%= link_to "#{book.title} - $#{book.price}", book_path(book) %></li>
+    <% if book.sold == false %>
+        <li><%= link_to "#{book.title} - $#{book.price}", book_path(book) %></li>
+    <% end %>
   <% end %>
 </ul>
 

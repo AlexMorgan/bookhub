@@ -21,10 +21,12 @@
     <%= link_to "Back", :back, class: "btn btn-primary" %>
   </div>
 
-  <% if @book.user_id != current_user.id %>
+  <% if @book.user_id != current_user.id && @book.sold == false %>
     <div class="col-md-1">
-      <%= button_to "Buy!", @book, method: :put, class: "btn btn-success" %>
+      <%= link_to "Buy!",{controller: :books, action: :buy, id: @book.id} , class: "btn btn-success" %>
     </div>
+  <% elsif @book.sold == true %>
+    <button class="btn btn-danger" disabled>sold</button>
   <% end %>
 </div>
 
