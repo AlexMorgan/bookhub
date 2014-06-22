@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :search]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   def index
     @books = Book.all.order(created_at: :desc)
   end
@@ -53,6 +54,14 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def correct_user
+    @book = current_user.books.find_by(id: params[:id])
+    if @book.nil?
+      flash[:notice] = "You are not authorized to commit this crime!"
+      redirect_to books_path
+    end
+  end
 
   def book_params
     params.require(:book).permit(:title, :quality, :course_title, :price)
