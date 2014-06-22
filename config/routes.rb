@@ -7,10 +7,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root "pages#home"
 
-  resources :users, only: [:index, :show]
-
-  resources :users do
-    resources :books, only: [:new, :create, :show]
+  resources :users, only: [:index, :show] do
+    resources :books, only: [:new, :create, :show, :destroy]
   end
 
   resources :books, only: [:index, :show, :new, :create, :update] do
