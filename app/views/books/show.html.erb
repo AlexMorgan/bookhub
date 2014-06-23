@@ -1,5 +1,7 @@
 <h1 class="book-title"><%= @book.title %></h1>
-<h5>by <%= @book.author %></h5>
+<% if @book.author != nil %>
+  <h5>by <%= @book.author %></h5>
+<% end %>
 
 <h3>Course</h3>
 <h5><%= @book.course_title %></h5>
