@@ -9,10 +9,10 @@
 
 <%= form_for [@user, @book] do |f| %>
   <div><%= f.label "Book Title" %></div>
-  <%= f.text_field :title %><br><br>
+  <%= f.text_field :title, placeholder: "ex: Book (9th Edition)" %><br><br>
 
   <div><%= f.label "Course Title" %></div>
-  <%= f.text_field :course_title %><br><br>
+  <%= f.text_field :course_title, placeholder: "GCOM 101" %><br><br>
 
   <div><%= f.label :quality %></div>
   <%= f.select :quality, Book.qualities, prompt: "Select book quality" %><br><br>
