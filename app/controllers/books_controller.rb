@@ -24,7 +24,6 @@ class BooksController < ApplicationController
     @book.isbn = @query.first.isbn
     @book.isbn13 = @query.first.isbn13
     author = @query.first.authors_text
-
     @book.set_author(author)
 
     if @book.save
