@@ -51,7 +51,7 @@ class BooksController < ApplicationController
 
     UserMailer.purchase_email(current_user, @book.user, @book).deliver
 
-    flash[:notice] = "#{@book.title} has been marked as purchased."
+    flash[:notice] = "#{@book.title} has been marked as purchased. The Seller has been notified"
     redirect_to books_path
   end
 

@@ -37,3 +37,7 @@ body {
 .search-form {
   width: 50%;
 }
+
+.message-input {
+  height: 100px;
+}
