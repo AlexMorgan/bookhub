@@ -8,7 +8,7 @@
 
 <% else %>
 
-<!-- <p><%= "#{@books.count} result(s) found." %></p> -->
+<p><%= "#{@books.where(sold: "false").count} result(s) found." %></p>
 
 <ul class="unstyled">
   <% @books.each do |book| %>

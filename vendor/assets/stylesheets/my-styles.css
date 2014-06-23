@@ -28,3 +28,7 @@ body {
 .sold {
   color: #e74c3c;
 }
+
+.search {
+  width: 200px;
+}
