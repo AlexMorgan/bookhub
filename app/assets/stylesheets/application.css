@@ -12,6 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= require my-styles
  *= require bootstrap
+ *= require my-styles
  */

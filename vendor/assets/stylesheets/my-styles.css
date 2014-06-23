@@ -1,4 +1,5 @@
 body {
+  font-family: 'Roboto', sans-serif;
   padding-bottom: 50px;
 }
 
@@ -31,4 +32,8 @@ body {
 
 .search {
   width: 200px;
+}
+
+.search-form {
+  width: 50%;
 }

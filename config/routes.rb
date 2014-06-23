@@ -15,6 +15,9 @@ Rails.application.routes.draw do
        get 'buy'
      end
   end
+
+  resources :contact_forms, only: [:new, :create]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
