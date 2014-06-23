@@ -1,7 +1,7 @@
 <h1>Books:</h1>
 
 <%= form_tag(search_books_path, method: :get) do %>
-<%= text_field_tag 'query', nil, class: 'span4 search-query', placeholder: "Search by book or course title", class: "search" %>
+<%= text_field_tag 'query', nil, class: 'span4 search-query', placeholder: "Search by book, course, author, or isbn", class: "search" %>
 <%= submit_tag 'Search', class: 'btn btn-primary' %>
 <% end %>
 

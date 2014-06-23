@@ -19,13 +19,21 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.build(book_params)
-    binding.pry
-    # @query = ISBNdb::Query.find_book_by_title(@book.title)
-    # @query.first.isbn = @book.isbn
-    # @query.first.isbn13 = @book.isbn13
-     author = @query.first.authors_text
-     if author =~
 
+    @query = ISBNdb::Query.find_book_by_title(@book.title)
+    @book.isbn = @query.first.isbn
+    @book.isbn13 = @query.first.isbn13
+    author = @query.first.authors_text
+    if author[0..2] == "by "
+      author = author[3..-1]
+      if author[-2..-1] == ", "
+        author = author[0..-3]
+      end
+      @book.author = author
+    elsif author[-2..-1] == ", "
+      author = author[0..-3]
+      @book.author = author
+    end
 
     if @book.save
       redirect_to books_path, notice: "#{@book.title} has been put up for sale"
@@ -47,8 +55,8 @@ class BooksController < ApplicationController
   def search
     query = "%#{params[:query]}%"
     query.downcase
-    @books = Book.where('title ilike ? or course_title ilike ?',
-             query, query)
+    @books = Book.where('title ilike ? or course_title ilike ? or isbn ilike ? or isbn13 ilike ? or author ilike ?',
+             query, query, query, query, query)
   end
 
   def buy
@@ -80,6 +88,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :quality, :course_title, :price)
+    params.require(:book).permit(:title, :quality, :course_title, :price, :isbn, :isbn13, :author)
   end
 end
