@@ -46,8 +46,7 @@ class Book < ActiveRecord::Base
       end
       self.author = arg
     else
-      author = arg[0..-3]
-      self.author = arg
+      self.author = arg[0..-3]
     end
   end
 
