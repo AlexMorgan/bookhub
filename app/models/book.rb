@@ -35,4 +35,20 @@ class Book < ActiveRecord::Base
   def price
     super.to_f.round(0)
   end
+
+  def set_author(arg)
+    if arg.nil?
+      self.author = nil
+    elsif arg[0..2] == "by "
+      author = arg[3..-1]
+      if arg[-2..-1] == ", "
+        author = arg[0..-3]
+      end
+      self.author = arg
+    else
+      author = arg[0..-3]
+      self.author = arg
+    end
+  end
+
 end

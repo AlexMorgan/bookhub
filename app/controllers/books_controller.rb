@@ -24,16 +24,8 @@ class BooksController < ApplicationController
     @book.isbn = @query.first.isbn
     @book.isbn13 = @query.first.isbn13
     author = @query.first.authors_text
-    if author[0..2] == "by "
-      author = author[3..-1]
-      if author[-2..-1] == ", "
-        author = author[0..-3]
-      end
-      @book.author = author
-    elsif author[-2..-1] == ", "
-      author = author[0..-3]
-      @book.author = author
-    end
+
+    @book.set_author(author)
 
     if @book.save
       redirect_to books_path, notice: "#{@book.title} has been put up for sale"
