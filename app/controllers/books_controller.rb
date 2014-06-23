@@ -19,6 +19,13 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.build(book_params)
+    binding.pry
+    # @query = ISBNdb::Query.find_book_by_title(@book.title)
+    # @query.first.isbn = @book.isbn
+    # @query.first.isbn13 = @book.isbn13
+     author = @query.first.authors_text
+     if author =~
+
 
     if @book.save
       redirect_to books_path, notice: "#{@book.title} has been put up for sale"

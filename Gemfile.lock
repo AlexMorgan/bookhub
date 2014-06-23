@@ -61,7 +61,13 @@ GEM
     geocoder (1.2.2)
     gmaps4rails (2.1.2)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
+    isbndb (2.0.2)
+      httparty (~> 0.12)
+      rake
     jbuilder (2.1.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -79,6 +85,7 @@ GEM
     mini_portile (0.6.0)
     minitest (5.3.5)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
@@ -181,6 +188,7 @@ DEPENDENCIES
   devise
   geocoder
   gmaps4rails
+  isbndb (~> 2.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   launchy

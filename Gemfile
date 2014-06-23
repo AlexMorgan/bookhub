@@ -36,6 +36,8 @@ gem 'gmaps4rails'
 
 gem 'validates_formatting_of'
 
+gem 'isbndb', '~> 2.0.0'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
