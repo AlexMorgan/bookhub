@@ -5,6 +5,8 @@ class Book < ActiveRecord::Base
   validates :quality, presence: true
   validates_formatting_of :course_title, using: :alphanum
   validates_formatting_of :price, using: :dollars, allow_nil: true
+  validates :isbn13, :isbn_format => { with: :isbn13 }
+  validates :isbn, uniqueness: { scope: :user_id, message: "You have already added this book" }, isbn_format: { with: :isbn10 }
 
   def self.qualities
     %w(New Good Decent )

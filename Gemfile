@@ -38,6 +38,8 @@ gem 'validates_formatting_of'
 
 gem 'isbndb', '~> 2.0.0'
 
+gem 'isbn_validation'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

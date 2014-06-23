@@ -21,10 +21,12 @@ class BooksController < ApplicationController
     @book = current_user.books.build(book_params)
 
     @query = ISBNdb::Query.find_book_by_title(@book.title)
-    @book.isbn = @query.first.isbn
-    @book.isbn13 = @query.first.isbn13
-    author = @query.first.authors_text
-    @book.set_author(author)
+    if @query.first != nil
+      @book.isbn = @query.first.isbn
+      @book.isbn13 = @query.first.isbn13
+      author = @query.first.authors_text
+      @book.set_author(author)
+    end
 
     if @book.save
       redirect_to books_path, notice: "#{@book.title} has been put up for sale"

@@ -65,6 +65,8 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.6.9)
+    isbn_validation (1.2.1)
+      activerecord (>= 3)
     isbndb (2.0.2)
       httparty (~> 0.12)
       rake
@@ -188,6 +190,7 @@ DEPENDENCIES
   devise
   geocoder
   gmaps4rails
+  isbn_validation
   isbndb (~> 2.0.0)
   jbuilder (~> 2.0)
   jquery-rails
