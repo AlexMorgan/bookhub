@@ -14,11 +14,12 @@
   <% @books.each do |book| %>
     <% if book.sold == false %>
       <li>
-        <%= link_to book.title, book %>
+        <%= link_to "#{book.title} - $#{book.price}", book %>
       </li>
     <% end %>
   <% end %>
 </ul>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= render "pagination" %>
+

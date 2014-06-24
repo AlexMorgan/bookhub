@@ -1,0 +1,16 @@
+<% if @for_sale.count > 10  %>
+  <% if params[:page] == nil || params[:page].to_i == 0 %>
+    <div class="col-md-1">
+        <a class="btn btn-primary" href="/books?page=<%= @page + 1%>">Next</a>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-md-1">
+          <a class="btn btn-primary" href="/books?page=<%= @page - 1%>">Prev</a>
+      </div>
+      <div class="col-md-1">
+          <a class="btn btn-primary" href="/books?page=<%= @page + 1%>">Next</a>
+      </div>
+    </div>
+  <% end %>
+<% end %>
