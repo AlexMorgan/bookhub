@@ -40,6 +40,9 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
+      <div><%= f.label :email %><br>
+      <%= f.text_field :email, placeholder: "Cannot be changed..." %></div><br>
+
       <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
         <%= f.password_field :password, autocomplete: "off" %></div>
 
@@ -50,7 +53,7 @@
         <%= f.password_field :current_password, autocomplete: "off" %></div>
     </div>
   </div><br>
-  <%= f.text_field :email, hidden: true, value: current_user.email %></div>
+
   <div><%= f.submit "Update" %></div>
 <% end %>
 
