@@ -13,24 +13,6 @@ class Book < ActiveRecord::Base
     %w(New Good Decent )
   end
 
-  def title
-    # super.split.map! {|word| word.capitalize }.join(' ')
-    lowercase = %w(a an the for and nor but or yet so at by after along from of on to with is)
-    t = super.split
-    arr = []
-    t.each do |word|
-      if lowercase.include?(word)
-        arr << word.downcase
-      else
-        arr << word.capitalize
-      end
-    end
-
-    arr.first.capitalize!
-    arr.last.capitalize!
-    arr.join(' ')
-  end
-
   def course_title
     super.split.map! {|word| word.upcase }.join(' ')
   end

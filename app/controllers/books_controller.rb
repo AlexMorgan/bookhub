@@ -19,14 +19,10 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.build(book_params)
-
-    @query = ISBNdb::Query.find_book_by_title(@book.title)
-    if @query.first != nil
-      @book.isbn = @query.first.isbn
-      @book.isbn13 = @query.first.isbn13
-      author = @query.first.authors_text
-      @book.set_author(author)
-    end
+    # Overwrite book title with the formatted title
+    @book.title = format_title(params[:book][:title])
+    # Query book from API
+    find_book_in_db(@book.title)
 
     if @book.save
       redirect_to books_path, notice: "#{@book.title} has been put up for sale"
@@ -71,6 +67,34 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def format_title(title)
+    lowercase = %w(a an the for and nor but or yet so at by after along from of on to with is)
+    title = title.split
+    arr = []
+    title.each do |word|
+      if lowercase.include?(word)
+        arr << word.downcase
+      else
+        arr << word.capitalize
+      end
+    end
+
+    arr.first.capitalize!
+    arr.last.capitalize!
+    arr.join(' ')
+  end
+
+  def find_book_in_db(title)
+    @query = ISBNdb::Query.find_book_by_title(title)
+    if @query.first != nil
+      @book.isbn = @query.first.isbn
+      @book.isbn13 = @query.first.isbn13
+      author = @query.first.authors_text
+      @book.set_author(author)
+    end
+
+  end
 
   def correct_user
     @book = current_user.books.find_by(id: params[:id])
