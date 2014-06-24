@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   validates_formatting_of :firstname, :using => :alpha
   validates_formatting_of :lastname, :using => :alpha
   validates_formatting_of :phone, :using => :us_phone, allow_nil: true
-  validates :email, presence: true, format: { with: /(@dukes.jmu.edu)/,
-    message: "%{value} is not a valid JMU email" }
+  # validates :email, presence: true, format: { with: /(@dukes.jmu.edu)/,
+  #   message: "%{value} is not a valid JMU email" }
 
   has_many :books
 
