@@ -2,9 +2,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :search]
   before_action :correct_user, only: [:edit, :update, :destroy]
   def index
-    @page = params[:page].to_i
-    @for_sale = Book.all.where(sold: 'false')
-    @books = Book.all.order(created_at: :desc).limit(10).offset(10 * @page)
+    @books = Book.all.order(created_at: :desc)
   end
 
   def show
@@ -21,7 +19,7 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.build(book_params)
-    # Override book title with the formatted title
+    # Overwrite book title with the formatted title
     @book.title = format_title(params[:book][:title])
     # Query book from API
     find_book_in_db(@book.title)
@@ -46,10 +44,8 @@ class BooksController < ApplicationController
   def search
     query = "%#{params[:query]}%"
     query.downcase
-    @page = params[:page].to_i
-    @for_sale = Book.where('title ilike ? or course_title ilike ? or isbn ilike ? or isbn13 ilike ? or author ilike ?',
+    @books = Book.where('title ilike ? or course_title ilike ? or isbn ilike ? or isbn13 ilike ? or author ilike ?',
              query, query, query, query, query)
-    @books = @for_sale.order(created_at: :desc).limit(10).offset(10 * @page)
   end
 
   def buy
