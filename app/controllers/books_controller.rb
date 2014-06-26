@@ -101,9 +101,9 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    Book.find(params[:id]).destroy
+    @book = Book.find(params[:id]).destroy
 
-    flash[:notice] = "Book has been deleted"
+    flash[:notice] = "#{@book.title} has been deleted"
     redirect_to user_path(current_user)
   end
 
@@ -161,7 +161,6 @@ class BooksController < ApplicationController
     if @query.first != nil
       @book.isbn = @query.first.isbn
       @book.isbn13 = convert_isbn(@book.isbn)
-      binding.pry
       author = @query.first.authors_text
       @book.set_author(author)
     end
