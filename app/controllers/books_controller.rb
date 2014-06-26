@@ -22,10 +22,13 @@ class BooksController < ApplicationController
     # Overwrite book title with the formatted title
     @book.title = format_title(params[:book][:title])
 
+    ## Query book from API
+    # find_book_in_db(@book.title)
+
     client = Openlibrary::Client.new
 
-    results = client.search({author: "Rowling", title: "Harry Potter"})
-    match = "Harry Potter and the prisoner of Azkaban".downcase.split
+    results = client.search(title: @book.title)
+    match = @book.title.downcase.split
     runs = results.length
     trials = match.length
 
@@ -56,10 +59,11 @@ class BooksController < ApplicationController
       end
     end
     result_match
-    match_outcome
-
-    ## Query book from API
-    # find_book_in_db(@book.title)
+    binding.pry
+    # Do logic to say if match_outcome is nil say "This is not a valid book,
+    #please make sure the title is spelled correctly"
+    title = match_outcome.join(' ')
+    format_title(title)
 
     if @book.save
       redirect_to books_path, notice: "#{@book.title} has been put up for sale"
@@ -116,11 +120,10 @@ class BooksController < ApplicationController
         arr << word.capitalize
       end
     end
-
     if arr != []
       arr.first.capitalize!
       arr.last.capitalize!
-      arr.join(' ')
+      title = arr.join(' ')
     end
   end
 
