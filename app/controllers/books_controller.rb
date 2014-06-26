@@ -127,7 +127,7 @@ class BooksController < ApplicationController
     end
   end
 
-  def convert_isbn(isbn)
+  def convert_to_isbn13(isbn)
     isbn= "978" + isbn
     isbn_10 = isbn[0..11].split('')
     isbn_13 = nil
@@ -160,7 +160,7 @@ class BooksController < ApplicationController
     @query = ISBNdb::Query.find_book_by_title(title)
     if @query.first != nil
       @book.isbn = @query.first.isbn
-      @book.isbn13 = convert_isbn(@book.isbn)
+      @book.isbn13 = convert_to_isbn13(@book.isbn)
       author = @query.first.authors_text
       @book.set_author(author)
     end
