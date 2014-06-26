@@ -40,6 +40,8 @@ gem 'isbndb', '~> 2.0.0'
 
 gem 'isbn_validation'
 
+gem "jquery-rails"
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

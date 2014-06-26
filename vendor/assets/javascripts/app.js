@@ -1,3 +1,5 @@
-$('#users').click(function() {
-  $('#users').attr('class', 'active');
+$( document ).ready(function() {
+  $('#users').click(function() {
+    $('#users').attr('class', 'active');
+  });
 });
