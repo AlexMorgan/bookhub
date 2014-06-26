@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :search]
   before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
     @books = Book.all.order(created_at: :desc)
   end
@@ -18,12 +19,15 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = current_user.books.build(book_params)
+    # @book = current_user.books.build(book_params)
     # Overwrite book title with the formatted title
-    @book.title = format_title(params[:book][:title])
+    # @book.title = format_title(params[:book][:title])
+
+    book_creation_service = BookCreationService.new(current_user, book_params)
+    @book = book_creation_service.build_book
 
     # Query book from API
-    find_book_in_db(@book.title)
+    # find_book_in_db(@book.title)
 
     # client = Openlibrary::Client.new
 
