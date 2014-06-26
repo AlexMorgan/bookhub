@@ -145,12 +145,11 @@ class BooksController < ApplicationController
     end
 
     remainder = sum%10
-    check_digit = 10 - remainder
 
-    if check_digit == 0
+    if remainder == 0
       check_digit = 0
     else
-      check_digit
+      check_digit = 10 - remainder
     end
 
     isbn_13 = isbn_10.join('') + check_digit.to_s
