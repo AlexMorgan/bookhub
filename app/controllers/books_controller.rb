@@ -103,7 +103,7 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id]).destroy
 
-    flash[:notice] = "#{@book.title} has been deleted"
+    flash[:notice] = "#{@book.title} has been deleted from your library"
     redirect_to user_path(current_user)
   end
 

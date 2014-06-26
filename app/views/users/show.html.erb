@@ -7,7 +7,7 @@
     <h3>Books Added</h3>
     <p><%= "You have #{@user.books.where(sold: "false").count} book(s) for sale" %></p>
     <ul>
-      <% @user.books.each do |book| %>
+      <% @user.books.order(title: :asc).each do |book| %>
       <% if book.sold == false %>
       <li><%= link_to book.title, book_path(book) %>
         - <%= link_to "Edit", edit_book_path(book.id) %> | <%= link_to "Delete", book, method: :delete, data: {confirm: "Are you sure?"} %></li>
