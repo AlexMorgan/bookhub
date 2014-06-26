@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
     message: "%{value} is not a valid JMU email" }
 
   has_many :books, dependent: :destroy
+  has_many :offers, dependent: :destroy
 
   def self.years
     %w(Freshman Sophomore Junior Senior)
