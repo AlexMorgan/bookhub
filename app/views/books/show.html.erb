@@ -1,6 +1,8 @@
 <h1 class="book-title"><%= @book.title %></h1>
 <% if @book.author != nil %>
   <h5>by <%= @book.author %></h5>
+  <p><b>ISBN:</b><i><%= @book.isbn %></i><p>
+  <p><b>ISBN 13:</b><i><%= @book.isbn13 %></i></p>
 <% end %>
 
 <h3>Course</h3>

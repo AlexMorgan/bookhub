@@ -22,48 +22,48 @@ class BooksController < ApplicationController
     # Overwrite book title with the formatted title
     @book.title = format_title(params[:book][:title])
 
-    ## Query book from API
-    # find_book_in_db(@book.title)
+    # Query book from API
+    find_book_in_db(@book.title)
 
-    client = Openlibrary::Client.new
+    # client = Openlibrary::Client.new
 
-    results = client.search(title: @book.title)
-    match = @book.title.downcase.split
-    runs = results.length
-    trials = match.length
+    # ########## Work in progress ###########
+    # results = client.search(title: @book.title)
+    # match = @book.title.downcase.split
+    # runs = results.length
+    # trials = match.length
 
-
-    match_outcome = nil
-    # The index of the result where the title matches
-    result_match = -1
-    catch (:match) do
-      results.each do |result|
-        result_match +=1
-        outcome = []
-        counter = 0
-        while counter < trials do
-          title = result.title.downcase.split
-          title.each do |word|
-            if word == match[counter]
-              outcome << match[counter]
-              counter += 1
-              if outcome.length == trials
-                match_outcome = outcome
-                throw :match
-              end
-            else
-              counter = trials
-            end
-          end
-        end
-      end
-    end
-    result_match
-    binding.pry
-    # Do logic to say if match_outcome is nil say "This is not a valid book,
-    #please make sure the title is spelled correctly"
-    title = match_outcome.join(' ')
-    format_title(title)
+    # match_outcome = nil
+    # # The index of the result where the title matches
+    # result_match = -1
+    # catch (:match) do
+    #   results.each do |result|
+    #     result_match +=1
+    #     outcome = []
+    #     counter = 0
+    #     while counter < trials do
+    #       title = result.title.downcase.split
+    #       title.each do |word|
+    #         if word == match[counter]
+    #           outcome << match[counter]
+    #           counter += 1
+    #           if outcome.length == trials
+    #             match_outcome = outcome
+    #             throw :match
+    #           end
+    #         else
+    #           counter = trials
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
+    # result_match
+    # binding.pry
+    # # Do logic to say if match_outcome is nil say "This is not a valid book,
+    # #please make sure the title is spelled correctly"
+    # title = match_outcome.join(' ')
+    # format_title(title)
 
     if @book.save
       redirect_to books_path, notice: "#{@book.title} has been put up for sale"
@@ -127,15 +127,44 @@ class BooksController < ApplicationController
     end
   end
 
+  def convert_isbn(isbn)
+    isbn= "978" + isbn
+    isbn_10 = isbn[0..11].split('')
+    isbn_13 = nil
+
+    sum = 0
+    counter = 0
+    isbn_10.each do |n|
+      if counter%2 == 1
+          sum += n.to_i * 3
+          counter += 1
+      else
+        sum += n.to_i
+        counter += 1
+      end
+    end
+
+    remainder = sum%10
+    check_digit = 10 - remainder
+
+    if check_digit == 0
+      check_digit = 0
+    else
+      check_digit
+    end
+
+    isbn_13 = isbn_10.join('') + check_digit.to_s
+  end
+
   def find_book_in_db(title)
     @query = ISBNdb::Query.find_book_by_title(title)
     if @query.first != nil
       @book.isbn = @query.first.isbn
-      @book.isbn13 = @query.first.isbn13
+      @book.isbn13 = convert_isbn(@book.isbn)
+      binding.pry
       author = @query.first.authors_text
       @book.set_author(author)
     end
-
   end
 
   def correct_user
