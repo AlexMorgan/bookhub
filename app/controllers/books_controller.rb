@@ -21,8 +21,45 @@ class BooksController < ApplicationController
     @book = current_user.books.build(book_params)
     # Overwrite book title with the formatted title
     @book.title = format_title(params[:book][:title])
-    # Query book from API
-    find_book_in_db(@book.title)
+
+    client = Openlibrary::Client.new
+
+    results = client.search({author: "Rowling", title: "Harry Potter"})
+    match = "Harry Potter and the prisoner of Azkaban".downcase.split
+    runs = results.length
+    trials = match.length
+
+
+    match_outcome = nil
+    # The index of the result where the title matches
+    result_match = -1
+    catch (:match) do
+      results.each do |result|
+        result_match +=1
+        outcome = []
+        counter = 0
+        while counter < trials do
+          title = result.title.downcase.split
+          title.each do |word|
+            if word == match[counter]
+              outcome << match[counter]
+              counter += 1
+              if outcome.length == trials
+                match_outcome = outcome
+                throw :match
+              end
+            else
+              counter = trials
+            end
+          end
+        end
+      end
+    end
+    result_match
+    match_outcome
+
+    ## Query book from API
+    # find_book_in_db(@book.title)
 
     if @book.save
       redirect_to books_path, notice: "#{@book.title} has been put up for sale"
@@ -80,9 +117,11 @@ class BooksController < ApplicationController
       end
     end
 
-    arr.first.capitalize!
-    arr.last.capitalize!
-    arr.join(' ')
+    if arr != []
+      arr.first.capitalize!
+      arr.last.capitalize!
+      arr.join(' ')
+    end
   end
 
   def find_book_in_db(title)

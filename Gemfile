@@ -36,7 +36,9 @@ gem 'gmaps4rails'
 
 gem 'validates_formatting_of'
 
-gem 'isbndb', '~> 2.0.0'
+# gem 'isbndb', '~> 2.0.0'
+
+gem 'openlibrary'
 
 gem 'isbn_validation'
 
