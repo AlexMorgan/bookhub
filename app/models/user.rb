@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: /(@dukes.jmu.edu)/,
     message: "%{value} is not a valid JMU email" }
 
-  has_many :books
+  has_many :books, dependent: :destroy
 
   def self.years
     %w(Freshman Sophomore Junior Senior)
