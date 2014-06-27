@@ -21,7 +21,7 @@
     <h3>Offers</h3>
     <ul>
       <% @user.books.each do |book| %>
-        <% book.offers.each do |offer| %>
+        <% book.offers.order(created_at: :desc).each do |offer| %>
         <li>
           <%= book.title %> - $<%= offer.amount %>.00
           <%= link_to "Accept!", book_path(book), class: "btn-sm btn-success" %><br>

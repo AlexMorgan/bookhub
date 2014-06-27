@@ -24,10 +24,19 @@
   <% end %>
 </div>
 
+<% if @offer.errors.any? %>
+  <p> There were errors in your submission </p>
+  <ul>
+    <% @offer.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <% if current_user != @book.user %>
-  <div class="well col-md-3">
-  <h3>Make an Offer</h3>
-    <% if @book.price == 0 %>
+  <% if @book.price == 0 %>
+    <div class="well col-md-3">
+      <h3>Make an Offer</h3>
       <%= form_for [@book, @offer] do |f| %>
         <div>
           <%= f.label :amount %><br>
@@ -35,8 +44,8 @@
         </div><br>
         <div><%= f.submit "Make Offer", class: "btn btn-success" %></div>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>
 
 

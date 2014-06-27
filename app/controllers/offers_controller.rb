@@ -7,7 +7,7 @@ class OffersController < ApplicationController
       redirect_to book_path(@book)
       flash[:notice] = "The seller has been notified of your offer! Thank You!"
     else
-      render :new
+      redirect_to book_path(@book)
     end
   end
 
