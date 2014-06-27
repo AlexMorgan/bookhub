@@ -5,7 +5,7 @@ class Book < ActiveRecord::Base
   validates :title, presence: true
   validates :quality, presence: true
   validates_formatting_of :course_title, using: :alphanum
-  validates_formatting_of :price, using: :dollars, allow_nil: true
+  validates_formatting_of :price, using: :dollars, allow_nil: true, default: nil
   validates :isbn, isbn_format: { with: :isbn10 },  uniqueness: { scope: :user_id, message: "You have already added this book" }
   validates :isbn13, :isbn_format => { with: :isbn13 }
 

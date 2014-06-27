@@ -4,5 +4,5 @@ class Offer < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :book_id, presence: true
-  validates :amount, presence: true
+  validates_formatting_of :amount, using: :dollars, allow_nil: false
 end

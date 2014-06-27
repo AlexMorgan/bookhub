@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :books do
+    resources :offers, only: [:new, :create]
     get 'search', on: :collection
     member do
        get 'buy'

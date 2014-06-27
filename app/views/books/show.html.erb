@@ -1,32 +1,53 @@
-<h1 class="book-title"><%= @book.title %></h1>
-<% if @book.author != nil %>
-  <h5>by <%= @book.author %></h5>
-  <p><b>ISBN:</b><i><%= @book.isbn %></i><p>
-  <p><b>ISBN 13:</b><i><%= @book.isbn13 %></i></p>
+<div class= "col-md-6">
+  <h1 class="book-title"><%= @book.title %></h1>
+  <% if @book.author != nil %>
+    <h5>by <%= @book.author %></h5>
+    <p><b>ISBN:</b><i><%= @book.isbn %></i><p>
+    <p><b>ISBN 13:</b><i><%= @book.isbn13 %></i></p>
+  <% end %>
+
+  <h3>Course</h3>
+  <h5><%= @book.course_title %></h5>
+
+  <h3>Price</h3>
+  <h5>$<%= @book.price %></h5>
+
+  <h3>Quality</h3>
+  <h5><%= @book.quality %></h5>
+
+  <h3>Seller</h3>
+  <% if @book.user_id != current_user.id %>
+    <h5><%= @book.user.fullname %></h5>
+  <% else %>
+    <h5>You</h5>
+  <% end %>
+</div>
+
+<% if current_user != @book.user %>
+  <div class="well col-md-3">
+  <h3>Make an Offer</h3>
+    <% if @book.price == 0 %>
+      <%= form_for [@book, @offer] do |f| %>
+        <div>
+          <%= f.label :amount %><br>
+          $ <%= f.text_field :amount, placeholder: "20", class: "amount-input" %>.00
+        </div><br>
+        <div><%= f.submit "Make Offer", class: "btn btn-success" %></div>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
 
-<h3>Course</h3>
-<h5><%= @book.course_title %></h5>
 
-<h3>Price</h3>
-<h5>$<%= @book.price %></h5>
 
-<h3>Quality</h3>
-<h5><%= @book.quality %></h5>
 
-<h3>Seller</h3>
-<% if @book.user_id != current_user.id %>
-  <h5><%= @book.user.fullname %></h5>
-<% else %>
-  <h5>You</h5>
-<% end %>
 
-<div class="row">
+<div class="row col-md-10">
   <div class="col-md-1">
     <%= link_to "Back", :back, class: "btn btn-primary" %>
   </div>
 
-  <% if @book.user_id != current_user.id && @book.sold == false %>
+  <% if @book.user_id != current_user.id && @book.sold == false && @book.price != 0%>
     <div class="col-md-1">
       <%= link_to "Buy!",{controller: :books, action: :buy, id: @book.id} , class: "btn btn-success" %>
     </div>
