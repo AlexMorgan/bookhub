@@ -17,7 +17,7 @@ Rails.application.routes.draw do
      end
   end
 
-  resources :offers, only: [:destroy]
+  resources :offers, only: [:destroy, :edit]
 
   resources :contact_forms, only: [:new, :create]
 

@@ -10,10 +10,12 @@
     <% if book.sold == false %>
         <li>
           <%= link_to "#{book.title}", book_path(book) %>
-          <% if book.price == 0 %>
-            - Make Offer
-          <% else %>
-            - $<%= book.price %>
+          <% if current_user != book.user %>
+            <% if book.price == 0 %>
+              - Make Offer
+            <% else %>
+              - $<%= book.price %>
+            <% end %>
           <% end %>
         </li>
     <% end %>
