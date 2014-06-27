@@ -48,9 +48,15 @@
   <% end %>
 <% end %>
 
-
-
-
+<!-- <div class="col-md-10">
+<h3>Leave Comment</h3>
+<%= form_for [@book, @comment] do |f| %>
+  <div>
+    <%= f.text_area :body, placeholder: "Leave a comment for #{@book.user.fullname}" %>
+  </div><br>
+  <%= f.submit "Leave Comment" %>
+<% end %>
+</div> -->
 
 <div class="row col-md-10">
   <div class="col-md-1">

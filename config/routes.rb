@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :offers, only: [:new, :create]
+    resources :comments, only: [:new, :create, :edit, :destroy, :update]
     get 'search', on: :collection
     member do
        get 'buy'
