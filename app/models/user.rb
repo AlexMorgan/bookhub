@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :books, dependent: :destroy
+  has_many :offers, dependent: :destroy
+
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
 
@@ -18,9 +21,6 @@ class User < ActiveRecord::Base
   validates_formatting_of :phone, :using => :us_phone, allow_nil: true
   validates :email, presence: true, format: { with: /(@dukes.jmu.edu)/,
     message: "%{value} is not a valid JMU email" }
-
-  has_many :books, dependent: :destroy
-  has_many :offers, dependent: :destroy
 
   def self.years
     %w(Freshman Sophomore Junior Senior)

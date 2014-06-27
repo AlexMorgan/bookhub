@@ -9,9 +9,10 @@
   <h3>Course</h3>
   <h5><%= @book.course_title %></h5>
 
-  <h3>Price</h3>
-  <h5>$<%= @book.price %></h5>
-
+  <% if @book.price != 0 %>
+    <h3>Price</h3>
+    <h5>$<%= @book.price %></h5>
+  <% end %>
   <h3>Quality</h3>
   <h5><%= @book.quality %></h5>
 

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140626202516) do
     t.string   "title",                        null: false
     t.string   "quality",                      null: false
     t.string   "course_title",                 null: false
-    t.string   "price"
+    t.integer  "price"
     t.string   "isbn"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140626202516) do
   create_table "offers", force: true do |t|
     t.integer  "user_id",    null: false
     t.integer  "book_id",    null: false
-    t.string   "amount",     null: false
+    t.integer  "amount",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

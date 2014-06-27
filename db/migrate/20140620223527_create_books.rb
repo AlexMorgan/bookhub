@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title, null: false
       t.string :quality, null: false
       t.string :course_title, null: false
-      t.string :price
+      t.integer :price
       t.string :isbn
       t.integer :user_id
 

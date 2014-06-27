@@ -3,7 +3,7 @@ class CreateOffers < ActiveRecord::Migration
     create_table :offers do |t|
       t.integer :user_id, null: false
       t.integer :book_id, null: false
-      t.string :amount, null: false
+      t.integer :amount, null: false
 
       t.timestamps
     end
