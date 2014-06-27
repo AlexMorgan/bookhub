@@ -11,6 +11,13 @@ class OffersController < ApplicationController
     end
   end
 
+  def destroy
+    @offer = Offer.find(params[:id]).destroy
+
+    flash[:notice] = " Your offer for #{@offer.book.title} has been deleted."
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def offer_params

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
      end
   end
 
+  resources :offers, only: [:destroy]
+
   resources :contact_forms, only: [:new, :create]
 
   # Example of regular route:

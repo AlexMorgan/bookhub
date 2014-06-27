@@ -18,14 +18,14 @@
   </div>
 
   <div class="col-md-6">
-    <h3>Offers</h3>
+    <h3>My Offers</h3>
     <ul>
       <% @user.books.each do |book| %>
         <% book.offers.order(created_at: :desc).each do |offer| %>
         <li>
-          <%= book.title %> - $<%= offer.amount %>.00
-          <%= link_to "Accept!", book_path(book), class: "btn-sm btn-success" %><br>
-          From: <%= offer.user.fullname %>
+          <%= book.title %> <%= link_to "Accept!", book_path(book), class: "btn-sm btn-success" %><br>
+          Offer: $<%= offer.amount %><br>
+          Bidder: <%= offer.user.fullname %>
         </li>
         <% end %>
       <% end %>
@@ -43,6 +43,20 @@
           <li><%= book.title %></li>
         <% end %>
       <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <h3>My Bids</h3>
+    <p><%= "You have #{@user.offers.where(accepted: "false").count} pending offer(s)" %></p>
+    <ul>
+      <% @user.offers.each do |offer| %>
+      <li>
+        <%= offer.book.title %> <%= link_to "Delete", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure?"} %><br>
+        Offer: $<%= offer.amount %><br>
+        Seller: <%= offer.book.user.fullname %>
+      </li>
+    <% end %>
     </ul>
   </div>
 </div>
