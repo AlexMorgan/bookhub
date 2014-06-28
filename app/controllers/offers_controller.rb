@@ -1,9 +1,9 @@
 class OffersController < ApplicationController
   def create
-    @offer = Offer.new(offer_params)
     @book = Book.find(params[:book_id])
-    @offer.book = @book
+    @offer = Offer.new(offer_params)
     if @offer.save
+      UserMailer.offer_email(@book.user, current_user, @book, @offer)
       redirect_to book_path(@book)
       flash[:notice] = "The seller has been notified of your offer! Thank You!"
     else
@@ -21,6 +21,6 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:amount).merge(user: current_user)
+    params.require(:offer).permit(:amount).merge({ user: current_user, book: @book })
   end
 end
