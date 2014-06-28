@@ -26,6 +26,6 @@ class UserMailer < ActionMailer::Base
     @book = book
     @offer = offer
 
-    mail(to: @seller.email, subject: "#{@bidder.fullname} has made an offer on #{@book.title}")
+    mail(to: @seller.email, subject: "New offer on '#{@book.title}!'")
   end
 end

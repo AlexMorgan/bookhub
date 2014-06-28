@@ -3,7 +3,7 @@ class OffersController < ApplicationController
     @book = Book.find(params[:book_id])
     @offer = Offer.new(offer_params)
     if @offer.save
-      UserMailer.offer_email(@book.user, current_user, @book, @offer)
+      UserMailer.offer_email(@book.user, current_user, @book, @offer).deliver
       redirect_to book_path(@book)
       flash[:notice] = "The seller has been notified of your offer! Thank You!"
     else
