@@ -2,17 +2,13 @@
   <h1 class="book-title"><%= @book.title %></h1>
   <% if @book.author != nil %>
     <h5>by <%= @book.author %></h5>
+  <% end %>
     <p><b>ISBN:</b><i><%= @book.isbn %></i><p>
     <p><b>ISBN 13:</b><i><%= @book.isbn13 %></i></p>
-  <% end %>
 
   <h3>Course</h3>
   <h5><%= @book.course_title %></h5>
 
-  <% if @book.price != 0 %>
-    <h3>Price</h3>
-    <h5>$<%= @book.price %></h5>
-  <% end %>
   <h3>Quality</h3>
   <h5><%= @book.quality %></h5>
 
@@ -34,18 +30,26 @@
 <% end %>
 
 <% if current_user != @book.user %>
-  <% if @book.price == 0 %>
     <div class="well col-md-3">
       <h3>Make an Offer</h3>
-      <%= form_for [@book, @offer] do |f| %>
+      <% if @book.price == 0 %>
+        <%= form_for [@book, @offer] do |f| %>
+          <div>
+            <%= f.label :amount %><br>
+            $ <%= f.text_field :amount, placeholder: "20", class: "amount-input" %>.00
+          </div><br>
+          <div><%= f.submit "Make Offer", class: "btn btn-success" %></div>
+        <% end %>
+      <% else %>
+        <p>Price</p>
+        <div>$<%= @book.price %>.00</div><br>
         <div>
-          <%= f.label :amount %><br>
-          $ <%= f.text_field :amount, placeholder: "20", class: "amount-input" %>.00
-        </div><br>
-        <div><%= f.submit "Make Offer", class: "btn btn-success" %></div>
+          <% if @book.user != current_user && @book.sold == false %>
+            <%= link_to "Buy!",{controller: :books, action: :buy, id: @book.id} , class: "btn btn-success" %>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
 <% end %>
 
 <!-- <div class="col-md-10">
@@ -62,12 +66,9 @@
   <div class="col-md-1">
     <%= link_to "Back", :back, class: "btn btn-primary" %>
   </div>
-
-  <% if @book.user_id != current_user.id && @book.sold == false && @book.price != 0%>
-    <div class="col-md-1">
-      <%= link_to "Buy!",{controller: :books, action: :buy, id: @book.id} , class: "btn btn-success" %>
-    </div>
-  <% elsif @book.sold == true %>
-    <button class="btn btn-danger" disabled>sold</button>
-  <% end %>
+  <div class="col-md-1">
+    <% if @book.sold == true %>
+      <button class="btn btn-danger" disabled>sold</button>
+    <% end %>
+  </div>
 </div>
