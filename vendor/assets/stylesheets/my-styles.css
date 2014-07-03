@@ -106,6 +106,14 @@ footer {
   padding-left: 2.5%;
 }
 
+.foot-link {
+  color: white;
+}
+
+.foot-link:hover {
+  text-decoration: none;
+  color: #1abc9c;
+}
 /*********************** Text Format **************************/
 .large {
   font-size: 3.5em;
@@ -115,4 +123,10 @@ footer {
 .foot-heading {
   font-size: 2em;
   font-weight: 100;
+}
+
+.page-text {
+  font-size: 2em;
+  font-weight: 100;
+  text-align: justify;
 }
