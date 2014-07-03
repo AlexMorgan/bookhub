@@ -1,3 +1,32 @@
 <h1>Edit Book</h1>
 
-<%= render "form" %>
+<% if @book.errors.any? %>
+  <p> There were errors in your submission </p>
+  <ul>
+    <% @book.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@user, @book] do |f| %>
+  <div><%= f.label :title, "Book Title" %></div>
+  <%= f.text_field :title, placeholder: "ex: Book (9th Edition)", disabled: true %><br><br>
+
+  <div><%= f.label "Author" %></div>
+  <%= f.text_field :author, placeholder: "Alex Morgan" %><br><br>
+
+  <div><%= f.label :isbn, "ISBN" %></div>
+  <%= f.text_field :isbn, placeholder: "0123456789" %><br><br>
+
+  <div><%= f.label :course_title, "Course Title" %></div>
+  <%= f.text_field :course_title, placeholder: "GCOM 101" %><br><br>
+
+  <div><%= f.label :quality %></div>
+  <%= f.select :quality, Book.qualities, prompt: "Select book quality" %><br><br>
+
+  <div><%= f.label :price %></div>
+  $ <%= f.text_field :price, placeholder: "20", class: "amount-input" %>.00<br><br>
+
+  <div><%= f.submit "Confirm", class: "btn btn-success"%></div><br><br>
+<% end %>

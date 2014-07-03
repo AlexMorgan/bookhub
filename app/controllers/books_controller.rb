@@ -77,10 +77,13 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update_attributes(book_params)
-      redirect_to book_path
+      @book.isbn13 = convert_to_isbn13(@book.isbn)
+      redirect_to user_path(current_user)
     else
       flash[:notice] = "Something went wrong!"
-      render :new
+      # redirect_to edit_book_path(@book)
+
+      render :edit
     end
   end
 
