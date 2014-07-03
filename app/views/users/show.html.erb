@@ -19,6 +19,7 @@
 
   <div class="col-md-6">
     <h3>My Offers</h3>
+    <p><%= "You have #{@offer_count} offer(s) from other peers" %></p>
     <ul>
       <% @user.books.each do |book| %>
         <% book.offers.order(created_at: :desc).each do |offer| %>
