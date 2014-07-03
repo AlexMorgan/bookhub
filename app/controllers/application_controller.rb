@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "Welcome to BookHub. Please complete your profile!"
       edit_user_registration_path
     else
-      super
+      user_path(current_user)
     end
   end
 
