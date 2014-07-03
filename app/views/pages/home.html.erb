@@ -20,4 +20,54 @@
 
 <div>
   <div class="col-md-12 center"><h1>Welcome to BookHub</h1></div>
+  <div class="About center">
+    <h1>About:</h1>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur ore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
 </div>
+
+<%= content_for :footer do %>
+  <footer>
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="large">CONTACT US</h1>
+            <p>Would you like to leave us any feedback, or report a bug?</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 white thin">
+            <h3 class="foot-heading">My Office</h3><hr>
+            <p>(703) 853-3860</p>
+            <p>alexmorgan.am@gmail.com</p>
+            <div class="address">
+              <p>5th Floor</p>
+              <p>33 Harrison Avenue</p>
+              <p>Boston</p>
+              <p>02111</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h3 class="foot-heading">Say Hello</h3><hr>
+            <%= form_for @contact do |f| %>
+              <div><%= f.text_field :name, placeholder: "Name", class: "trans" %></div>
+              <div><%= f.text_field :email, placeholder: "Email", class: "trans" %></div>
+              <div><%= f.text_field :subject, placeholder: "Subject", class: "trans" %></div>
+              <div><%= f.text_area :message, placeholder: "Comment", class: "trans area" %></div>
+              <div><%= f.submit "Submit", class: "trans contact-submit" %></div>
+            <% end %>
+          </div>
+          <div class="col-md-4">
+            <h3 class="foot-heading">Get Connected</h3><hr>
+            <div>
+              <p><%= image_tag("github3.png", class: "contact-icon") %><a href="https://github.com/AlexMorgan">Github</a></p>
+              <p><%= image_tag("linkedin.png", class: "contact-icon") %><a href="https://www.linkedin.com/in/alexrmorgan">LinkedIn</a></p>
+              <p><%= image_tag("facebook3.png", class: "contact-icon") %><a href="https://www.facebook.com/TheDJAMO">Facebook</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+<% end %>
