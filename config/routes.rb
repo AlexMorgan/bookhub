@@ -18,7 +18,11 @@ Rails.application.routes.draw do
      end
   end
 
-  resources :offers, only: [:destroy, :edit]
+  resources :offers, only: [:destroy, :edit] do
+    member do
+      get 'accept'
+    end
+  end
 
   resources :contact_forms, only: [:new, :create]
 

@@ -1,0 +1,13 @@
+<h1>Good news <%= @bidder.firstname %>!</h1>
+<p>
+  <%= @seller.fullname %> has accepted your offer for <i><%= @book.title %></i> for $<%= @offer.amount %>.00.
+</p>
+
+<p>Here's their contact information, make sure to reach out to them!</p>
+<ul>
+  <li>Email: <%= @seller.email %></li>
+  <% if @seller.phone != nil %>
+    <li>Phone: <%= @seller.phone %></li>
+  <% end %>
+</ul>
+<p>

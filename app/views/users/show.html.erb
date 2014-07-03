@@ -22,11 +22,16 @@
     <ul>
       <% @user.books.each do |book| %>
         <% book.offers.order(created_at: :desc).each do |offer| %>
-        <li>
-          <%= book.title %> <%= link_to "Accept!", book_path(book), class: "btn-sm btn-success" %><br>
-          Offer: $<%= offer.amount %><br>
-          Bidder: <%= offer.user.fullname %>
-        </li>
+        <% if offer.accepted == false %>
+          <li>
+            <%= book.title %> <%= link_to "Accept!",{controller: :offers, action: :accept, id: offer.id} , class: "btn btn-success" %><br>
+            <% if false%>
+            <%= link_to "Accept!", book_path(book), class: "btn-sm btn-success" %>
+            <% end %>
+            Offer: $<%= offer.amount %><br>
+            Bidder: <%= offer.user.fullname %>
+          </li>
+        <% end %>
         <% end %>
       <% end %>
     </ul>

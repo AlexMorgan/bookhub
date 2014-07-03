@@ -7,7 +7,7 @@ class OffersController < ApplicationController
       redirect_to book_path(@book)
       flash[:notice] = "The seller has been notified of your offer! Thank You!"
     else
-      redirect_to book_path(@book)
+      render "books/show"
     end
   end
 
@@ -15,6 +15,21 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id]).destroy
 
     flash[:notice] = " Your offer for #{@offer.book.title} has been deleted."
+    redirect_to user_path(current_user)
+  end
+
+  def accept
+    @offer = Offer.find(params[:id])
+    @offer.accepted = true
+    @offer.save
+
+    @book = @offer.book
+    @book.sold = true
+    @book.save
+
+    UserMailer.accept_offer_email(current_user, @offer).deliver
+
+    flash[:notice] = "#{@book.title} has been marked as purchased. The buyer has been notified"
     redirect_to user_path(current_user)
   end
 

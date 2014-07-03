@@ -1,8 +1,8 @@
 <% if @book.errors.any? %>
   <p> There were errors in your submission </p>
   <ul>
-    <% @book.errors.full_messages.each do |m| %>
-      <li><%= m %></li>
+    <% @book.errors.each do |key, val| %>
+      <li><%= val %></li>
     <% end %>
   </ul>
 <% end %>

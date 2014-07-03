@@ -23,8 +23,8 @@
 <% if @offer.errors.any? %>
   <p> There were errors in your submission </p>
   <ul>
-    <% @offer.errors.full_messages.each do |m| %>
-      <li><%= m %></li>
+    <% @offer.errors.each do |key, val| %>
+      <li><%= val %></li>
     <% end %>
   </ul>
 <% end %>
@@ -52,6 +52,7 @@
     </div>
 <% end %>
 
+<% if false %>
 <!-- <div class="col-md-10">
 <h3>Leave Comment</h3>
 <%= form_for [@book, @comment] do |f| %>
@@ -61,6 +62,7 @@
   <%= f.submit "Leave Comment" %>
 <% end %>
 </div> -->
+<% end %>
 
 <div class="row col-md-10">
   <div class="col-md-1">

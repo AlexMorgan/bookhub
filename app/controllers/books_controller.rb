@@ -68,7 +68,7 @@ class BooksController < ApplicationController
     # format_title(title)
 
     if @book.save
-      redirect_to books_path, notice: "#{@book.title} has been put up for sale"
+      redirect_to edit_book_path(@book), notice: "Make sure this information is correct!"
     else
       render action: 'new'
     end

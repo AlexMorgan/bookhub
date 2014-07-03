@@ -28,4 +28,13 @@ class UserMailer < ActionMailer::Base
 
     mail(to: @seller.email, subject: "New offer on '#{@book.title}!'")
   end
+
+  def accept_offer_email(seller, offer)
+    @seller = seller
+    @offer = offer
+    @book = offer.book
+    @bidder = offer.user
+
+    mail(to: @bidder.email, subject: "Your offer for'#{@book.title} has been accepted!'")
+  end
 end
