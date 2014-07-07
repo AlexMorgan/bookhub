@@ -32,10 +32,9 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to user_path(current_user)
+      redirect_to book_path(@book)
     else
       flash[:notice] = "Something went wrong!"
-      # redirect_to edit_book_path(@book)
 
       render :edit
     end
