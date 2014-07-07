@@ -1,6 +1,6 @@
 <div class= "col-md-6">
   <h1 class="book-title"><%= @book.title %></h1>
-  <% if @book.author != nil %>
+  <% if @book.author != "" && @book.author != nil %>
     <h5>by <%= @book.author %></h5>
   <% end %>
     <p><b>ISBN:</b><i><%= @book.isbn %></i><p>
