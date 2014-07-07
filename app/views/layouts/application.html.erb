@@ -41,13 +41,16 @@
     <%= yield :map %>
   </div>
 
+  <% flash.each do |name, msg| %>
+    <div class="flash center">
+        <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+    </div>
+  <% end %>
+
+
+
   <div class="container">
     <div class="site-content">
-      <% flash.each do |name, msg| %>
-        <div class="alert alert-info center">
-          <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-        </div>
-      <% end %>
       <%= yield %>
     </div>
   </div>

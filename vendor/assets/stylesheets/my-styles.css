@@ -3,6 +3,16 @@ body {
   padding-bottom: 50px;
 }
 
+.flash-notice {
+  /*margin-top:80px;*/
+}
+.flash {
+  background-color: #1abc9c;
+  color: white;
+  font-weight: 100;
+}
+
+
 .avatar {
   border-radius: 150px;
 }
@@ -53,7 +63,8 @@ footer {
   margin-bottom: -50px;
   bottom:0;
   height:100%;   /* Height of the footer */
-  background: #222222;
+  background: #34495e;
+  border-bottom: 5px solid #2c3e50;
   color: white;
   font-weight: 100;
 }
@@ -70,13 +81,29 @@ footer {
 
 .trans {
   background-color: rgba(168,168,168,0.2);
-  color: white;
   border: none;
   margin-bottom: 15px;
   height: 35px;
   width: 100%;
   padding-left: 10px;
+  color: white;
   font-weight: 100;
+}
+
+.trans::-webkit-input-placeholder {
+  color: white;
+}
+
+.trans:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
+
+.trans::-moz-placeholder {  /* Firefox 19+ */
+  color: white;
+}
+
+.trans:-ms-input-placeholder {
+  color: white;
 }
 
 .area {
