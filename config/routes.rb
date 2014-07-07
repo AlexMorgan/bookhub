@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :needs, only: [:new, :create]
+
   resources :contact_forms, only: [:new, :create]
 
   # Example of regular route:

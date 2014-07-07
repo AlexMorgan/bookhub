@@ -1,0 +1,27 @@
+<% if @need.errors.any? %>
+  <p> There were errors in your submission </p>
+  <ul>
+    <% @need.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @need do |f| %>
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, placeholder: "The Wolf of Wall Street" %>
+  </div><br>
+
+  <div>
+    <%= f.label :author %><br>
+    <%= f.text_field :author, placeholder: "Jordan Belfort" %>
+  </div><br>
+
+  <div>
+    <%= f.label :isbn, "ISBN" %><br>
+    <%= f.text_field :isbn, placeholder: "0123456789" %>
+  </div><br>
+
+  <%= f.submit "Add to Wishlist", class: "btn btn-primary" %>
+<% end %>
