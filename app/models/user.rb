@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :books, dependent: :destroy
   has_many :offers, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :needs, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
