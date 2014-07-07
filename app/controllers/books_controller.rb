@@ -21,9 +21,8 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.build(book_params)
-    # Overwrite book title with the formatted title
-    @book.title = format_title(params[:book][:title])
 
+    # @book.format_title(@book.title)
     # Query book from API
     find_book_in_db(@book.title)
 
@@ -98,7 +97,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.sold = true
     @book.save
-
+    @book.purchase(@current_user, @book)
     UserMailer.purchase_email(current_user, @book.user, @book).deliver
 
     flash[:notice] = "#{@book.title} has been marked as purchased. The Seller has been notified"
@@ -114,26 +113,8 @@ class BooksController < ApplicationController
 
   private
 
-  def format_title(title)
-    lowercase = %w(a an the for and nor but or yet so at by after along from of on to with is)
-    title = title.split
-    arr = []
-    title.each do |word|
-      if lowercase.include?(word)
-        arr << word.downcase
-      else
-        arr << word.capitalize
-      end
-    end
-    if arr != []
-      arr.first.capitalize!
-      arr.last.capitalize!
-      title = arr.join(' ')
-    end
-  end
-
   def convert_to_isbn13(isbn)
-    isbn= "978" + isbn
+    isbn = "978" + isbn
     isbn_10 = isbn[0..11].split('')
     isbn_13 = nil
 
@@ -170,6 +151,7 @@ class BooksController < ApplicationController
     end
   end
 
+protected
   def correct_user
     @book = current_user.books.find_by(id: params[:id])
     if @book.nil?
