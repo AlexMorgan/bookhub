@@ -35,6 +35,6 @@ class UserMailer < ActionMailer::Base
     @book = offer.book
     @bidder = offer.user
 
-    mail(to: @bidder.email, subject: "Your offer for'#{@book.title} has been accepted!'")
+    mail(to: @bidder.email, subject: "Your offer for '#{@book.title}' has been accepted!")
   end
 end

@@ -19,19 +19,20 @@
 
   <div class="col-md-6">
     <h3>My Offers</h3>
+    <p><%= "You have #{@offer_count} offer(s) from other peers" %></p>
     <ul>
       <% @user.books.each do |book| %>
         <% book.offers.order(created_at: :desc).each do |offer| %>
-        <% if offer.accepted == false %>
-          <li>
-            <%= book.title %> <%= link_to "Accept!",{controller: :offers, action: :accept, id: offer.id} , class: "btn btn-success" %><br>
-            <% if false%>
-            <%= link_to "Accept!", book_path(book), class: "btn-sm btn-success" %>
-            <% end %>
-            Offer: $<%= offer.amount %><br>
-            Bidder: <%= offer.user.fullname %>
-          </li>
-        <% end %>
+          <% if book.sold == false %>
+            <li>
+              <%= book.title %> <%= link_to "Accept!",{controller: :offers, action: :accept, id: offer.id} , class: "btn btn-success" %><br>
+              <% if false%>
+              <%= link_to "Accept!", book_path(book), class: "btn-sm btn-success" %>
+              <% end %>
+              Offer: $<%= offer.amount %><br>
+              Bidder: <%= offer.user.fullname %>
+            </li>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
@@ -53,13 +54,17 @@
 
   <div class="col-md-6">
     <h3>My Bids</h3>
-    <p><%= "You have #{@user.offers.where(accepted: "false").count} pending offer(s)" %></p>
+    <p><%= "You have #{@user.offers.where(accepted: "false").count} pending bid(s)" %></p>
     <ul>
       <% @user.offers.each do |offer| %>
       <li>
-        <%= offer.book.title %> <%= link_to "Revoke", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
+        <%= offer.book.title %>
+        <%= link_to "Revoke", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
         You offered: $<%= offer.amount %><br>
-        Seller: <%= offer.book.user.fullname %>
+        Seller: <%= offer.book.user.fullname %><br>
+        <% if offer.book.sold == true %>
+          <div class="sold">Sold</div>
+        <% end %>
       </li>
     <% end %>
     </ul>

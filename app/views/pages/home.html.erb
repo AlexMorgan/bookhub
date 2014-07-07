@@ -51,10 +51,10 @@
           <div class="col-md-4">
             <h3 class="foot-heading">Say Hello</h3><hr>
             <%= form_for @contact do |f| %>
-              <div><%= f.text_field :name, placeholder: "Name", class: "trans" %></div>
-              <div><%= f.text_field :email, placeholder: "Email", class: "trans" %></div>
+              <div><%= f.text_field :name, placeholder: "Name *", class: "trans" %></div>
+              <div><%= f.text_field :email, placeholder: "Email *", class: "trans" %></div>
               <div><%= f.text_field :subject, placeholder: "Subject", class: "trans" %></div>
-              <div><%= f.text_area :message, placeholder: "Comment", class: "trans area" %></div>
+              <div><%= f.text_area :message, placeholder: "Comment *", class: "trans area" %></div>
               <div><%= f.submit "Submit", class: "trans contact-submit" %></div>
             <% end %>
           </div>

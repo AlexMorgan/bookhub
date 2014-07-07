@@ -24,7 +24,6 @@
         <ul class="nav navbar-nav">
           <li id="users"><a href="<%= books_path %>">Books</a></li>
           <li><a href="<%= new_book_path %>">Add Book</a></li>
-          <li><a href="<%= new_contact_form_path %>">Contact</a></li>
         </ul>
         <p class="navbar-text pull-right">
         <% if user_signed_in? %>
@@ -42,13 +41,16 @@
     <%= yield :map %>
   </div>
 
+  <% flash.each do |name, msg| %>
+    <div class="flash center">
+        <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+    </div>
+  <% end %>
+
+
+
   <div class="container">
     <div class="site-content">
-      <% flash.each do |name, msg| %>
-        <div class="alert alert-info center">
-          <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-        </div>
-      <% end %>
       <%= yield %>
     </div>
   </div>
