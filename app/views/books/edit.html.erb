@@ -40,27 +40,23 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    var fields = 6,
-        filled = fields;
 
-    $('#edit-book-form :input').each(function() {
-      if ($(this).val() == '') {
-        filled --;
-      };
-    });
+    var updateProgressBar = function() {
+      var fields = 6,
+      filled = fields;
 
-    var percentComplete = (filled / fields)*100;
-        $('.progress-bar').attr('style', "width:" + percentComplete + '%');
-    $(":input").change(function(){
-      if ($(this).val() != '') {
-        filled++;
-        percentComplete = (filled / fields)*100;
-        $('.progress-bar').attr('style', "width:" + percentComplete + '%')
-      } else {
-        filled--;
-        percentComplete = (filled / fields)*100;
-        $('.progress-bar').attr('style', "width:" + percentComplete + '%')
-      }
-    });
+      $('#edit-book-form :input').each(function() {
+        if ($(this).val() == '') {
+          filled --;
+        };
+      });
+
+      var percentComplete = (filled / fields)*100;
+      $('.progress-bar').attr('style', "width:" + percentComplete + '%');
+    };
+
+    updateProgressBar();
+
+    $(":input").change(updateProgressBar);
   });
 </script>
