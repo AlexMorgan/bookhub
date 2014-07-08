@@ -6,11 +6,15 @@
   <button class="btn btn-sm btn-primary" id="details">Wishlist</button>
 </div>
 <div id="wishlist" hidden>
-  <ul>
-    <% current_user.needs.each do |need| %>
-      <li><%= need.title %> - <%= need.author %></li>
-    <% end %>
-  </ul>
+  <% if current_user.needs == [] %>
+    <p>No books in wishlist... Add the first now!</p>
+  <% else %>
+    <ul>
+      <% current_user.needs.each do |need| %>
+        <li><%= need.title %> - <%= need.author %> | <%= link_to "Delete", need, method: :delete, data: {confirm: "Are you sure you want to delete this book from your wishlist?"} %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <%= link_to "Add Book to Wishlist", new_need_path %>
 </div>
 <div class="row">

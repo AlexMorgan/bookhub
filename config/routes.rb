@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :needs, only: [:new, :create]
+  resources :needs, only: [:new, :create, :destroy]
 
   resources :contact_forms, only: [:new, :create]
 

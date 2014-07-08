@@ -14,6 +14,13 @@ class NeedsController < ApplicationController
     end
   end
 
+  def destroy
+    @need = Need.find(params[:id]).destroy
+
+    flash[:notice] = "#{@need.title} has been removed from your wishlist"
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def need_params
