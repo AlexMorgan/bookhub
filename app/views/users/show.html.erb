@@ -3,7 +3,7 @@
 <%= image_tag @user.avatar.url(:medium) %>
 <h2><%= @user.fullname %></h2><cite><%= link_to "Edit Profile", edit_user_registration_path %></cite><br>
 <div>
-  <p><%= link_to "Build Wishlist", new_need_path %> | <button class="btn btn-sm btn-primary" id="details">Show</button></p>
+  <button class="btn btn-sm btn-primary" id="details">Wishlist</button>
 </div>
 <div id="wishlist" hidden>
   <ul>
@@ -11,6 +11,7 @@
       <li><%= need.title %> - <%= need.author %></li>
     <% end %>
   </ul>
+  <%= link_to "Add Book to Wishlist", new_need_path %>
 </div>
 <div class="row">
   <div class="col-md-6">
