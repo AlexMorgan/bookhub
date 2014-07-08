@@ -48,6 +48,7 @@ body {
   font-weight: 100;
   outline: 0;
   margin-bottom: 10px;
+  color: #1abc9c;
 }
 
 .search-form {
@@ -186,4 +187,5 @@ footer {
 .page-title {
   font-weight: 100;
   font-size: 5em;
+  color: #1abc9c;
 }

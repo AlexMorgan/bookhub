@@ -14,7 +14,7 @@
 <div id="edit-book-form">
   <%= form_for [@user, @book] do |f| %>
     <div><%= f.label :title, "Book Title" %></div>
-    <%= f.text_field :title, placeholder: "ex: Book (9th Edition)", disabled: true %><br><br>
+    <%= f.text_field :title, placeholder: "ex: Book (9th Edition)" %><br><br>
 
     <div><%= f.label "Author" %></div>
     <%= f.text_field :author, autofocus: true, placeholder: "Alex Morgan" %><br><br>
