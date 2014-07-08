@@ -88,14 +88,41 @@ class Book < ActiveRecord::Base
     self.isbn13 = isbn_10.join('') + check_digit.to_s
   end
 
+  # def find_book_in_db
+  #   query = ISBNdb::Query.find_book_by_title(self.title)
+  #   if query.first != nil
+  #     self.isbn = query.first.isbn
+  #     convert_to_isbn13
+  #     author = query.first.authors_text
+  #     self.set_author(author)
+  #   end
+  # end
+
   def find_book_in_db
-    query = ISBNdb::Query.find_book_by_title(self.title)
-    if query.first != nil
-      self.isbn = query.first.isbn
-      convert_to_isbn13
-      author = query.first.authors_text
-      self.set_author(author)
+    client = ASIN::Client.instance
+    query = client.search_keywords(self.title).first
+    if query != nil
+      attributes = query.item_attributes
+      if attributes.isbn.length == 10
+        self.isbn = attributes.isbn
+        convert_to_isbn13
+      else
+        self.isbn13 = attributes.isbn
+      end
+      self.author = attributes.author
+      # Test for type of data structure
+      if query.image_sets.image_set.kind_of?(Array)
+        self.image_url = query.image_sets.image_set.first.large_image.url
+      else
+        self.image_url = query.image_sets.image_set.large_image.url
+      end
+
+      self.suggested_price = format_suggested_price(query.offer_summary.lowest_used_price.amount)
     end
+  end
+
+  def format_suggested_price(price)
+    (price.to_f / 100).round
   end
 
 end

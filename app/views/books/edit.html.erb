@@ -9,6 +9,8 @@
   </ul>
 <% end %>
 
+
+<img src="<%= @book.image_url %>" class="book-image">
 <div id="edit-book-form">
   <%= form_for [@user, @book] do |f| %>
     <div><%= f.label :title, "Book Title" %></div>
@@ -28,6 +30,7 @@
 
     <div><%= f.label :price %></div>
     $ <%= f.text_field :price, placeholder: "20", class: "amount-input" %>.00<br><br>
+    <i>Suggested Price: </i>$<%= @book.suggested_price %>.00
 
     <div><%= f.submit "Confirm", class: "btn btn-success"%></div><br><br>
   <% end %>

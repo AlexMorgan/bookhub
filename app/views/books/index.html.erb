@@ -9,6 +9,9 @@
   <% @books.each do |book| %>
     <% if book.sold == false %>
         <li>
+          <% if book.image_url != nil %>
+            <img src="<%= book.image_url %>" class="tiny-book-image">
+          <% end %>
           <%= link_to "#{book.title}", book_path(book) %>
           <% if current_user != book.user %>
             <% if book.price == 0 %>

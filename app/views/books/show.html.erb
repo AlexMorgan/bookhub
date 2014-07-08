@@ -3,8 +3,8 @@
   <% if @book.author != "" && @book.author != nil %>
     <h5>by <%= @book.author %></h5>
   <% end %>
-    <p><b>ISBN:</b><i><%= @book.isbn %></i><p>
-    <p><b>ISBN 13:</b><i><%= @book.isbn13 %></i></p>
+    <p><b>ISBN: </b><i><%= @book.isbn %></i><p>
+    <p><b>ISBN 13: </b><i><%= @book.isbn13 %></i></p>
 
   <h3>Course</h3>
   <h5><%= @book.course_title %></h5>

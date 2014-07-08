@@ -15,5 +15,5 @@
 /log/*.log
 /tmp
 /public/system
-
+/config/initializers/asin.rb
 /config/isbndb.yml

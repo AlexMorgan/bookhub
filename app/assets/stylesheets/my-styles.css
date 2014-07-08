@@ -90,6 +90,10 @@ footer {
   font-weight: 100;
 }
 
+.trans:focus {
+  outline: 1;
+}
+
 .trans::-webkit-input-placeholder {
   color: white;
 }
@@ -163,5 +167,14 @@ footer {
 /*********************** Dashboard **************************/
 .details {
   list-style: none;
+  margin-bottom: 10px;
+}
+
+.book-image {
+  height: 200px;
+}
+
+.tiny-book-image {
+  height: 100px;
   margin-bottom: 10px;
 }

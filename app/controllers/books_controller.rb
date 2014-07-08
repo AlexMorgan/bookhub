@@ -49,7 +49,6 @@ class BooksController < ApplicationController
 
   def buy
     @book = Book.find(params[:id])
-    binding.pry
     @book.buyer = current_user
     @book.sold = true
     @book.save
@@ -76,6 +75,6 @@ protected
   end
 
   def book_params
-    params.require(:book).permit(:title, :quality, :course_title, :price, :isbn, :isbn13, :author)
+    params.require(:book).permit(:title, :quality, :course_title, :price, :isbn, :isbn13, :author, :image_url, :suggested_price)
   end
 end
