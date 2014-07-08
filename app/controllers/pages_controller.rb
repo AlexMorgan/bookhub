@@ -1,19 +1,18 @@
 class PagesController < ApplicationController
 
   def home
+    @contact = ContactForm.new
     @users = User.all
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
       marker.infowindow user.username
-            ## Show user image as marker
+      ## Show user image as marker
       # marker.picture({
       #   url: user.avatar.url(:tiny),
       #   width: 25,
       #   height: 25
       #   })
-
-    @contact = ContactForm.new
     end
   end
 end

@@ -49,6 +49,8 @@ class BooksController < ApplicationController
 
   def buy
     @book = Book.find(params[:id])
+    binding.pry
+    @book.buyer = current_user
     @book.sold = true
     @book.save
     UserMailer.purchase_email(current_user, @book.user, @book).deliver

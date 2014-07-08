@@ -58,7 +58,14 @@
     <ul>
       <% @user.books.each do |book| %>
         <% if book.sold == true %>
-          <li><%= book.title %></li>
+          <li class="details">
+            <div class="btn btn-sm btn-primary" id="book-details">
+              <%= book.title %> <span class="caret"></span>
+              <div id='buyer-info' hidden>
+                <%= book.buyer.fullname %><br> <%= book.buyer.email %><br> <%= book.buyer.phone %> | Offer: $<%= book.price %>.00
+              </div>
+            </div>
+          </li>
         <% end %>
       <% end %>
     </ul>
@@ -91,5 +98,18 @@
       $('#wishlist').toggle("medium", function(){
       })
     });
+
+    // $('#book-details').click(function(){
+    //   $('#buyer-info').toggle('slow', function(){
+    //   });
+    // });
+
+    $('#book-details').each(function(){
+      $(this).click(function(){
+        $('#buyer-info').toggle('slow', function(){
+        });
+      })
+    });
+
   });
 </script>

@@ -159,3 +159,9 @@ footer {
   font-weight: 100;
   text-align: justify;
 }
+
+/*********************** Dashboard **************************/
+.details {
+  list-style: none;
+  margin-bottom: 10px;
+}

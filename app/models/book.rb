@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :user
+  belongs_to :buyer, class_name: "User"
   has_many :offers, dependent: :destroy
 
   validates :title, presence: true

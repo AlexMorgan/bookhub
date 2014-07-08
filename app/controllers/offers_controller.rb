@@ -22,8 +22,11 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
     @offer.accepted = true
     @offer.save
+    binding.pry
 
     @book = @offer.book
+    @book.price = @offer.amount
+    @book.buyer = @offer.user
     @book.sold = true
     @book.save
 
