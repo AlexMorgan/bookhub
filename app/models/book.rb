@@ -112,6 +112,8 @@ class Book < ActiveRecord::Base
     query = client.search_keywords(self.title).first
     if query != nil
       attributes = query.item_attributes
+
+      # Test for ISBN-10 or ISBN-13
       if attributes.isbn.length == 10
         self.isbn = attributes.isbn
         convert_to_isbn13
@@ -119,6 +121,7 @@ class Book < ActiveRecord::Base
         self.isbn13 = attributes.isbn
       end
 
+      # Test for whether there are multiple authors
       if attributes.author.kind_of?(Array)
         authors = ""
         attributes.author.each_with_index { |author, index|
@@ -128,7 +131,6 @@ class Book < ActiveRecord::Base
           authors << ", #{author}"
           end
         }
-
         self.author = authors
       else
         self.author = attributes.author

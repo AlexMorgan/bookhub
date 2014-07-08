@@ -17,6 +17,7 @@
   <% end %>
   <%= link_to "Add Book to Wishlist", new_need_path %>
 </div>
+
 <div class="row">
   <div class="col-md-6">
     <h3>Books Added</h3>
@@ -72,19 +73,23 @@
   <div class="col-md-6">
     <h3>My Bids</h3>
     <p><%= "You have #{@user.offers.where(accepted: "false").count} pending bid(s)" %></p>
-    <ul>
-      <% @user.offers.each do |offer| %>
-      <li>
+    <% @user.offers.each do |offer| %>
+      <div class="book-details btn btn-sm btn-primary">
         <%= offer.book.title %>
-        <%= link_to "Revoke", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
-        You offered: $<%= offer.amount %><br>
-        Seller: <%= offer.book.user.fullname %><br>
-        <% if offer.book.sold == true %>
-          <div class="sold">Sold</div>
-        <% end %>
-      </li>
+        <div hidden>
+          You offered: $<%= offer.amount %><br>
+          Seller: <%= offer.book.user.fullname %><br>
+          <% if offer.book.sold == true %>
+            <div class="sold">Sold</div>
+          <% end %>
+          <% if offer.book.sold == true %>
+            <%= link_to "Delete", offer, method: :delete, class: "sold", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
+          <% else %>
+          <%= link_to "Revoke", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-    </ul>
   </div>
 </div>
 
@@ -95,10 +100,6 @@
     $('#details').click(function(){
       $('#wishlist').toggle("medium");
     });
-
-    // $('#book-details').click(function(){
-    //   $('#buyer-info').toggle('slow');
-    // });
 
     $('.book-details').click(function(){
       $(this).children('div').toggle('slow');
