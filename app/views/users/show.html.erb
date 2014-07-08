@@ -74,16 +74,17 @@
     <h3>My Bids</h3>
     <p><%= "You have #{@user.offers.where(accepted: "false").count} pending bid(s)" %></p>
     <% @user.offers.each do |offer| %>
-      <div class="book-details btn btn-sm btn-primary">
-        <%= offer.book.title %>
+      <div class="book-details">
+        <% if offer.book.sold == true %>
+          <span class="sold"><%= offer.book.title %> | Sold <span class="caret"></span></span>
+        <% else %>
+          <%= offer.book.title %> <span class="caret"></span>
+        <% end %>
         <div hidden>
           You offered: $<%= offer.amount %><br>
           Seller: <%= offer.book.user.fullname %><br>
           <% if offer.book.sold == true %>
-            <div class="sold">Sold</div>
-          <% end %>
-          <% if offer.book.sold == true %>
-            <%= link_to "Delete", offer, method: :delete, class: "sold", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
+            <%= link_to "Delete", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
           <% else %>
           <%= link_to "Revoke", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
           <% end %>
