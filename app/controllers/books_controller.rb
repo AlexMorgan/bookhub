@@ -21,7 +21,6 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.build(book_params)
-
     if @book.save
       redirect_to edit_book_path(@book), notice: "Make sure this information is correct!"
     else

@@ -1,4 +1,4 @@
-<h1>Edit Book</h1>
+<h1 class="page-title">Edit Book</h1>
 
 <% if @book.errors.any? %>
   <p> There were errors in your submission </p>
@@ -30,7 +30,10 @@
 
     <div><%= f.label :price %></div>
     $ <%= f.text_field :price, placeholder: "20", class: "amount-input" %>.00<br><br>
-    <i>Suggested Price: </i>$<%= @book.suggested_price %>.00
+
+    <% if @book.suggested_price > 0 %>
+      <i>Suggested Price: </i>$<%= @book.suggested_price %>.00
+    <% end %>
 
     <div><%= f.submit "Confirm", class: "btn btn-success"%></div><br><br>
   <% end %>

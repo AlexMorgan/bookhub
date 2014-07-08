@@ -41,7 +41,13 @@ body {
 }
 
 .search {
-  width: 250px;
+  padding-left: 10px;
+  height: 20%;
+  width: 100%;
+  font-size: 2.5em;
+  font-weight: 100;
+  outline: 0;
+  margin-bottom: 10px;
 }
 
 .search-form {
@@ -172,9 +178,12 @@ footer {
 
 .book-image {
   height: 200px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-.tiny-book-image {
-  height: 100px;
-  margin-bottom: 10px;
+/*********************** Books **************************/
+.page-title {
+  font-weight: 100;
+  font-size: 5em;
 }

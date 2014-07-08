@@ -39,6 +39,15 @@ class Book < ActiveRecord::Base
     end
   end
 
+
+  def short_title(title)
+    if title.length > 20
+      "#{title[0..20]}.."
+    else
+      title
+    end
+  end
+
   protected
 
   def format_title
@@ -109,7 +118,22 @@ class Book < ActiveRecord::Base
       else
         self.isbn13 = attributes.isbn
       end
-      self.author = attributes.author
+
+      if attributes.author.kind_of?(Array)
+        authors = ""
+        attributes.author.each_with_index { |author, index|
+          if index == 0
+            authors << author
+          else
+          authors << ", #{author}"
+          end
+        }
+
+        self.author = authors
+      else
+        self.author = attributes.author
+      end
+
       # Test for type of data structure
       if query.image_sets.image_set.kind_of?(Array)
         self.image_url = query.image_sets.image_set.first.large_image.url

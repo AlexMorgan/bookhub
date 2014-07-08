@@ -1,5 +1,8 @@
 <div class= "col-md-6">
   <h1 class="book-title"><%= @book.title %></h1>
+  <% if @book.image_url != nil %>
+    <img src="<%= @book.image_url %>" class="book-image">
+  <% end %>
   <% if @book.author != "" && @book.author != nil %>
     <h5>by <%= @book.author %></h5>
   <% end %>
