@@ -40,10 +40,7 @@
         <% book.offers.order(created_at: :desc).each do |offer| %>
           <% if book.sold == false %>
             <li>
-              <%= book.title %> <%= link_to "Accept!",{controller: :offers, action: :accept, id: offer.id} , class: "btn btn-success" %><br>
-              <% if false%>
-              <%= link_to "Accept!", book_path(book), class: "btn-sm btn-success" %>
-              <% end %>
+              <%= book.title %> <%= link_to "Accept",{controller: :offers, action: :accept, id: offer.id} , class: "btn btn-sm btn-success" %><br>
               Offer: $<%= offer.amount %><br>
               Bidder: <%= offer.user.fullname %>
             </li>
