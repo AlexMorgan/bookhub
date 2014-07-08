@@ -1,4 +1,4 @@
-<h1>Dashboard</h1>
+<h1 class="page-title">Dashboard:</h1>
 
 <%= image_tag @user.avatar.url(:medium) %>
 <h2><%= @user.fullname %></h2><cite><%= link_to "Edit Profile", edit_user_registration_path %></cite><br>
@@ -105,6 +105,5 @@
     $('.book-details').click(function(){
       $(this).children('div').toggle('slow');
     })
-
   });
 </script>

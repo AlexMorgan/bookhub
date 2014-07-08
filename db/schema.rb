@@ -17,20 +17,22 @@ ActiveRecord::Schema.define(version: 20140708173543) do
   enable_extension "plpgsql"
 
   create_table "books", force: true do |t|
-    t.string   "title",                           null: false
-    t.string   "quality",                         null: false
-    t.string   "course_title",                    null: false
+    t.string   "title",                        null: false
+    t.string   "quality",                      null: false
+    t.string   "course_title",                 null: false
     t.integer  "price"
     t.string   "isbn"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "sold",            default: false
+    t.boolean  "sold",         default: false
     t.string   "isbn13"
     t.string   "author"
     t.integer  "buyer_id"
     t.string   "image_url"
-    t.integer  "suggested_price"
+    t.integer  "used_price"
+    t.integer  "new_price"
+    t.string   "amazon_url"
   end
 
   create_table "comments", force: true do |t|

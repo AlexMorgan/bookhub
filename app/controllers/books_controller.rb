@@ -74,6 +74,6 @@ protected
   end
 
   def book_params
-    params.require(:book).permit(:title, :quality, :course_title, :price, :isbn, :isbn13, :author, :image_url, :suggested_price)
+    params.require(:book).permit(:title, :quality, :course_title, :price, :isbn, :isbn13, :author, :image_url, :used_price, :new_price, :amazon_url)
   end
 end

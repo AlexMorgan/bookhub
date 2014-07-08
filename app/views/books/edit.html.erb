@@ -31,9 +31,16 @@
     <div><%= f.label :price %></div>
     $ <%= f.text_field :price, placeholder: "20", class: "amount-input" %>.00<br><br>
 
-    <% if @book.suggested_price > 0 %>
-      <i>Suggested Price: </i>$<%= @book.suggested_price %>.00
-    <% end %>
+    <div>
+      <% if @book.used_price > 0 %>
+        <i>Used Price: </i>$<%= @book.used_price %>.00
+      <% end %>
+    </div>
+    <div>
+      <% if @book.new_price > 0  %>
+        <i>New Price: </i>$<%= @book.new_price %>.00
+      <% end %>
+    </div>
 
     <div><%= f.submit "Confirm", class: "btn btn-success"%></div><br><br>
   <% end %>

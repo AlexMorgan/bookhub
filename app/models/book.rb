@@ -143,7 +143,9 @@ class Book < ActiveRecord::Base
         self.image_url = query.image_sets.image_set.large_image.url
       end
 
-      self.suggested_price = format_suggested_price(query.offer_summary.lowest_used_price.amount)
+      self.amazon_url = query.detail_page_url
+      self.used_price = format_suggested_price(query.offer_summary.lowest_used_price.amount)
+      self.new_price = format_suggested_price(query.offer_summary.lowest_new_price.amount)
     end
   end
 
