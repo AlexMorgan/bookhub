@@ -95,21 +95,16 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('#details').click(function(){
-      $('#wishlist').toggle("medium", function(){
-      })
+      $('#wishlist').toggle("medium");
     });
 
     // $('#book-details').click(function(){
-    //   $('#buyer-info').toggle('slow', function(){
-    //   });
+    //   $('#buyer-info').toggle('slow');
     // });
 
-    $('#book-details').each(function(){
-      $(this).click(function(){
-        $('#buyer-info').toggle('slow', function(){
-        });
-      })
-    });
+    $('#book-details').click(function(){
+      $(this).children('div').toggle('slow');
+    })
 
   });
 </script>
