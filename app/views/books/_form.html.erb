@@ -2,7 +2,7 @@
   <p> There were errors in your submission </p>
   <ul>
     <% @book.errors.each do |key, val| %>
-      <li><%= val %></li>
+      <li><%= key.capitalize %> <%= val %></li>
     <% end %>
   </ul>
 <% end %>
@@ -17,9 +17,6 @@
     <div><%= f.label :isbn13, "ISBN" %></div>
     <%= f.text_field :isbn13, placeholder: "9870123456789", class: "book-info" %><br><br>
   </div>
-
-  <div><%= f.label "Course Title" %></div>
-  <%= f.text_field :course_title, placeholder: "GCOM 101" %><br><br>
 
   <div><%= f.label :quality %></div>
   <%= f.select :quality, Book.qualities, prompt: "Select book quality" %><br><br>
@@ -52,5 +49,19 @@
         $bookTitle.parent().show('medium');
       }
     });
+
+    //--------- Validation
+    // $bookISBN.change(function() {
+    //   if ($(this).val().length != 13) {
+    //     alert('foo');
+    //   };
+    // });
+
+    // $('form').submit(function() {
+    //   if (($bookISBN).val().length != 13) {
+    //     preventDefault();
+    //   };
+    // });
+
   });
 </script>

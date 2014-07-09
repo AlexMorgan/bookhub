@@ -9,8 +9,10 @@
     <p><b>ISBN: </b><i><%= @book.isbn %></i><p>
     <p><b>ISBN 13: </b><i><%= @book.isbn13 %></i></p>
 
-  <h3>Course</h3>
-  <h5><%= @book.course_title %></h5>
+  <% if @book.course_title.present? %>
+    <h3>Course</h3>
+    <h5><%= @book.course_title %></h5>
+  <% end %>
 
   <h3>Quality</h3>
   <h5><%= @book.quality %></h5>

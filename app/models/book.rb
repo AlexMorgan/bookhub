@@ -6,8 +6,8 @@ class Book < ActiveRecord::Base
   validates :quality, presence: true
   validates_formatting_of :course_title, using: :alphanum, allow_blank: true
   validates :price, numericality: { only_integer: true }, length: { maximum: 3 }
-  validates :isbn, isbn_format: { with: :isbn10 },  uniqueness: { scope: :user_id, message: "You have already added this book" }, allow_nil: true
-  validates :isbn13, :isbn_format => { with: :isbn13 }, allow_nil: true
+  validates :isbn, :isbn_format => { with: :isbn }, uniqueness: { scope: :user_id, message: "You have already added this book" }, allow_blank: true
+  validates :isbn13, :isbn_format => { with: :isbn13 }, allow_blank: true
 
   before_create :format_title, :find_book_in_db, :convert_to_isbn13
   before_update :convert_to_isbn13
@@ -17,7 +17,7 @@ class Book < ActiveRecord::Base
   end
 
   def course_title
-    super.split.map! {|word| word.upcase }.join(' ') unless title.blank?
+    super.split.map! {|word| word.upcase }.join(' ') unless super.blank?
   end
 
   def price
@@ -100,7 +100,7 @@ class Book < ActiveRecord::Base
     client = ASIN::Client.instance
 
     # If user doesn't add by title they can add by isbn13
-    if self.title = ""
+    if self.title.length == 0
       query = client.search_keywords(self.isbn13).first
     else
       query = client.search_keywords(self.title).first
