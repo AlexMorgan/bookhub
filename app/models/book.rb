@@ -136,12 +136,13 @@ class Book < ActiveRecord::Base
         self.author = attributes.author
       end
 
-      # Test for type of data structure
-      if query.image_sets.image_set.kind_of?(Array)
-        self.image_url = query.image_sets.image_set.first.large_image.url
-      else
-        self.image_url = query.image_sets.image_set.large_image.url
-      end
+      self.image_url = query.large_image.url
+      ## Test for type of data structure
+      # if query.image_sets.image_set.kind_of?(Array)
+      #   self.image_url = query.image_sets.image_set.first.large_image.url
+      # else
+      #   self.image_url = query.image_sets.image_set.large_image.url
+      # end
 
       self.amazon_url = query.detail_page_url
       self.used_price = format_suggested_price(query.offer_summary.lowest_used_price.amount)
