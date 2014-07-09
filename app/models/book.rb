@@ -3,9 +3,8 @@ class Book < ActiveRecord::Base
   belongs_to :buyer, class_name: "User"
   has_many :offers, dependent: :destroy
 
-  validates :title, presence: true
   validates :quality, presence: true
-  validates_formatting_of :course_title, using: :alphanum
+  validates_formatting_of :course_title, using: :alphanum, allow_blank: true
   validates :price, numericality: { only_integer: true }, length: { maximum: 3 }
   validates :isbn, isbn_format: { with: :isbn10 },  uniqueness: { scope: :user_id, message: "You have already added this book" }, allow_nil: true
   validates :isbn13, :isbn_format => { with: :isbn13 }, allow_nil: true
@@ -18,7 +17,7 @@ class Book < ActiveRecord::Base
   end
 
   def course_title
-    super.split.map! {|word| word.upcase }.join(' ')
+    super.split.map! {|word| word.upcase }.join(' ') unless title.blank?
   end
 
   def price
@@ -97,28 +96,30 @@ class Book < ActiveRecord::Base
     self.isbn13 = isbn_10.join('') + check_digit.to_s
   end
 
-  # def find_book_in_db
-  #   query = ISBNdb::Query.find_book_by_title(self.title)
-  #   if query.first != nil
-  #     self.isbn = query.first.isbn
-  #     convert_to_isbn13
-  #     author = query.first.authors_text
-  #     self.set_author(author)
-  #   end
-  # end
-
   def find_book_in_db
     client = ASIN::Client.instance
-    query = client.search_keywords(self.title).first
+
+    # If user doesn't add by title they can add by isbn13
+    if self.title = ""
+      query = client.search_keywords(self.isbn13).first
+    else
+      query = client.search_keywords(self.title).first
+    end
+
+    # Test to make sure we get a result form Amazon
     if query != nil
       attributes = query.item_attributes
-
+      self.title = attributes.title
       # Test for ISBN-10 or ISBN-13
       if attributes.isbn.length == 10
         self.isbn = attributes.isbn
-        convert_to_isbn13
+        if self.isbn13.nil?
+          convert_to_isbn13
+        end
       else
-        self.isbn13 = attributes.isbn
+        if self.isbn13.nil?
+          self.isbn13 = attributes.isbn
+        end
       end
 
       # Test for whether there are multiple authors
@@ -137,13 +138,6 @@ class Book < ActiveRecord::Base
       end
 
       self.image_url = query.large_image.url
-      ## Test for type of data structure
-      # if query.image_sets.image_set.kind_of?(Array)
-      #   self.image_url = query.image_sets.image_set.first.large_image.url
-      # else
-      #   self.image_url = query.image_sets.image_set.large_image.url
-      # end
-
       self.amazon_url = query.detail_page_url
       self.used_price = format_suggested_price(query.offer_summary.lowest_used_price.amount)
       self.new_price = format_suggested_price(query.offer_summary.lowest_new_price.amount)
