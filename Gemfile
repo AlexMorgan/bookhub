@@ -42,12 +42,14 @@ gem 'isbn_validation'
 
 gem "jquery-rails"
 
-group :development, :test do
-  gem 'rspec-rails'
+group :test, :development do
   gem 'capybara'
-  gem 'launchy'
   gem 'pry-rails'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'dotenv-rails'
+  gem 'launchy'
+  gem 'email_spec'
 end
 
 # Use ActiveModel has_secure_password
