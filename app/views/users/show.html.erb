@@ -11,7 +11,7 @@
   <% else %>
     <ul>
       <% current_user.needs.each do |need| %>
-        <li><%= need.title %> - <%= need.author %> | <%= link_to "Delete", need, method: :delete, data: {confirm: "Are you sure you want to delete this book from your wishlist?"} %></li>
+        <li><%= need.title %> - <%= need.author %> | <%= link_to "Delete", need, method: :delete, data: {confirm: "Are you sure you want to delete this book from your wishlist?"}, class: "red"%></li>
       <% end %>
     </ul>
   <% end %>
@@ -26,7 +26,7 @@
       <% @user.books.order(title: :asc).each do |book| %>
       <% if book.sold == false %>
       <li><%= link_to book.title, book_path(book) %>
-        - <%= link_to "Edit", edit_book_path(book.id) %> | <%= link_to "Delete", book, method: :delete, data: {confirm: "Are you sure you want to delete this book from your library?"} %></li>
+        - <%= link_to "Edit", edit_book_path(book.id) %> | <%= link_to "Delete", book, method: :delete, data: {confirm: "Are you sure you want to delete this book from your library?"}, class: "red" %></li>
       <% end %>
       <% end %>
     </ul>
@@ -76,7 +76,7 @@
     <% @user.offers.each do |offer| %>
       <div class="book-details">
         <% if offer.book.sold == true %>
-          <span class="sold"><%= offer.book.title %> | Sold <span class="caret"></span></span>
+          <span class="red"><%= offer.book.title %> | Sold <span class="caret"></span></span>
         <% else %>
           <%= offer.book.title %> <span class="caret"></span>
         <% end %>
