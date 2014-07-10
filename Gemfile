@@ -36,10 +36,6 @@ gem 'gmaps4rails'
 
 gem 'validates_formatting_of'
 
-# gem 'isbndb', '~> 2.0.0'
-
-# gem 'openlibrary'
-
 gem 'asin'
 
 gem 'isbn_validation'
@@ -51,6 +47,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'pry-rails'
+  gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password
