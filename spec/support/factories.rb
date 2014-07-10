@@ -6,7 +6,7 @@ FactoryGirl.define do
     sequence(:username) { |n| "AlexMorgan#{n}" }
     password "password"
     address "James Madison University"
-    sequence(:phone) { |n| "703853386#{n}"}
+    phone "7038538600"
     year "Sophomore"
     confirmed_at Time.now
   end
