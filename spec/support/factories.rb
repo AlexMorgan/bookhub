@@ -1,11 +1,14 @@
 FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@dukes.jmu.edu" }
-    sequence(:firstname) { |n| "Alex#{n}" }
-    sequence(:username) { |n| "AlexMorgan#{n}" }
+    firstname "Alex"
     lastname "Morgan"
+    sequence(:username) { |n| "AlexMorgan#{n}" }
+    password "password"
     address "James Madison University"
     sequence(:phone) { |n| "703853386#{n}"}
+    year "Sophomore"
+    confirmed_at Time.now
   end
 
   factory :book do

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  default_url_options :host => "localhost:3000"
   root "pages#home"
 
   resources :users, only: [:index, :show]
