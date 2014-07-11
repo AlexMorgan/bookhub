@@ -4,19 +4,32 @@
 <% end %>
 
 <%= content_for :map do %>
-<div style='width: 100%;'>
-  <div id="map" style='width: 100%; height: 400px;'></div>
-</div>
+  <script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script>
+  <!--Video Section-->
+  <div class="beep">
+    <section class="content-section video-section">
+      <div class="pattern-overlay">
+      <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=iuFV5196dYQ',containment:'.video-section', quality:'large', autoPlay:true, mute:true, opacity:1}">bg</a>
+      </div>
+    </section>
+  </div>
 
-<script type="text/javascript">
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {disableDefaultUI: true}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
-</script>
+  <!-- <div style='width: 100%;'>
+    <div id="map" style='width: 100%; height: 400px;'></div>
+  </div>
+
+  <script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {disableDefaultUI: true}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+  </script>
+   -->
 <% end %>
+
+
 
 <div>
   <div class="col-md-12 center"><h1 class="large">Welcome to BookHub</h1></div>
