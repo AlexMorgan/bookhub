@@ -181,6 +181,11 @@ footer {
   margin-top: 10px;
 }
 
+.wish-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 /*********************** Books **************************/
 .page-title {
   font-weight: 100;
