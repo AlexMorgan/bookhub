@@ -11,7 +11,7 @@
   <% else %>
     <ul>
       <% current_user.needs.each do |need| %>
-        <li><%= need.title %> - <%= need.author %> | <%= link_to "Delete", need, method: :delete, data: {confirm: "Are you sure you want to delete this book from your wishlist?"}, class: "red"%></li>
+        <li><img src="<%= need.image_url %>"> <%= link_to need.title, need.amazon_url %> - <%= need.author %> | <%= link_to "Delete", need, method: :delete, data: {confirm: "Are you sure you want to delete this book from your wishlist?"}, class: "red"%></li>
       <% end %>
     </ul>
   <% end %>
