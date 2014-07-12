@@ -3,13 +3,11 @@ body {
   padding-bottom: 50px;
 }
 
-.flash-notice {
-  /*margin-top:80px;*/
-}
 .flash {
-  background-color: #1abc9c;
-  color: white;
-  font-weight: 100;
+  background-color: rgba(22, 160, 133, 0.3);
+  margin-top: 15px;
+  color: black;
+  font-weight: 300;
 }
 
 
@@ -70,7 +68,7 @@ footer {
   margin-bottom: -50px;
   bottom:0;
   height:100%;   /* Height of the footer */
-  background: #34495e;
+  background: #2c3e50;
   border-bottom: 5px solid #2c3e50;
   color: white;
   font-weight: 100;
@@ -221,3 +219,17 @@ margin: 0px auto 15px;
 .beep {
   margin-top: -5px;
 }
+
+/*********************** Navbar **************************/
+.navbar-default {
+  background: #1abc9c !important;
+  height: 70px;
+  padding-top: 10px;
+  border-bottom: 5px solid #16a085 !important;
+}
+.navbar a,
+.navbar-brand,
+.navbar-text {
+  color: white !important;
+}
+
