@@ -112,6 +112,7 @@ class Book < ActiveRecord::Base
       attributes = query.item_attributes
       self.title = attributes.title
       # Test for ISBN-10 or ISBN-13
+      binding.pry
       if attributes.isbn.length == 10
         self.isbn = attributes.isbn
         if self.isbn13 == ""

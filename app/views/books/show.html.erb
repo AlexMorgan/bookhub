@@ -6,7 +6,9 @@
   <% if @book.author != "" && @book.author != nil %>
     <h5>by <%= @book.author %></h5>
   <% end %>
+  <% if @book.isbn.present? %>
     <p><b>ISBN: </b><i><%= @book.isbn %></i><p>
+  <% end %>
     <p><b>ISBN 13: </b><i><%= @book.isbn13 %></i></p>
 
   <% if @book.course_title.present? %>
