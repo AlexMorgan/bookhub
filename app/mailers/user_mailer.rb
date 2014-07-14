@@ -41,7 +41,6 @@ class UserMailer < ActionMailer::Base
   def wishlist_match(matches, need)
     @matches = matches
     @need = need
-    binding.pry
     mail(to: @need.user.email, subject: "Your wishlist item has been matched!")
   end
 end

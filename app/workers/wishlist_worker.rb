@@ -9,7 +9,10 @@ class WishlistWorker
     else
       matches = Book.where(isbn13: need.isbn13)
     end
-    UserMailer.wishlist_match(matches, need).deliver
+
+    if matches.length > 1
+      UserMailer.wishlist_match(matches, need).deliver
+    end
   end
 
 end
