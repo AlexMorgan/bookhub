@@ -273,6 +273,10 @@ footer {
   background: #ecf0f1;
 }
 
+.dashboard-pad {
+  padding: 10px;
+}
+
 .user-head {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -284,6 +288,11 @@ footer {
 
 .wishlist-tab {
   padding-bottom: 15px;
+}
+
+.wishlist-tab > .row {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .tab-space {

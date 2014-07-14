@@ -1,128 +1,130 @@
 <body class="dashboard-view">
-  <div class="row">
-    <div class="profile-tab col-md-4">
-      <div class="row user-head">
-        <div class="col-md-4 center">
-          <%= image_tag @user.avatar.url(:medium), class: "dash-pic" %>
+  <div class="dashboard-pad">
+    <div class="row">
+      <div class="profile-tab col-md-4">
+        <div class="row user-head">
+          <div class="col-xs-4 center">
+            <%= image_tag @user.avatar.url(:medium), class: "dash-pic" %>
+          </div>
+          <div class="col-xs-8 prof-info">
+            <span class="dash-name"><%= @user.fullname %></span><br><p class='thin'><%= @user.address %><br><cite><%= link_to "Edit Profile", edit_user_registration_path %></cite></p>
+          </div>
         </div>
-        <div class="col-md-8 prof-info">
-          <span class="dash-name"><%= @user.fullname %></span><br><p class='thin'><%= @user.address %><br><cite><%= link_to "Edit Profile", edit_user_registration_path %></cite></p>
+        <div>
+          <div class="row preview">
+            <div class="col-xs-3 green center"  data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><%= @user.books.where(sold: "false").count %><br>Added</div>
+            <div class="col-xs-3 center"><%= @user.offers.where(accepted: "false").count %><br>Pending</div>
+            <div class="col-xs-3 blue center"><%= @user.books.where(sold: "true").count %><br>Sold</div>
+            <div class="col-xs-3 purple center"><%= @offer_count %><br>Offers</div>
+          </div>
         </div>
       </div>
-      <div>
-        <div class="row preview">
-          <div class="col-md-3 green center"><%= @user.books.where(sold: "false").count %><br>Added</div>
-          <div class="col-md-3 center"><%= @user.offers.where(accepted: "false").count %><br>Pending</div>
-          <div class="col-md-3 blue center"><%= @user.books.where(sold: "true").count %><br>Sold</div>
-          <div class="col-md-3 purple center"><%= @offer_count %><br>Offers</div>
+
+      <div class="profile-tab col-md-7 col-md-offset-1 wishlist-tab">
+        <div class="row">
+          <div class="col-xs-4 ">
+            <h2 class="thin">Wishlist</h2>
+          </div>
+          <div class="col-xs-3 pull-right explore">
+            <button class="bh-btn" id="details">Explore <span class="caret"></span></button>
+          </div>
+        </div>
+
+        <div id="wishlist" hidden>
+          <% if current_user.needs == [] %>
+            <p>No books in wishlist... Add the first now!</p>
+          <% else %>
+              <div class="row">
+                <% current_user.needs.each do |need| %>
+                <div class="wish-item col-sm-1">
+                  <div><a href="<%= need.amazon_url %>" target="_blank"><img src="<%= need.image_url %>"></a><br> <%= link_to "Delete", need, method: :delete, data: {confirm: "Are you sure you want to delete this book from your wishlist?"}, class: "red"%></div>
+                </div>
+                <% end %>
+              </div>
+          <% end %>
+          <%= link_to "Add Book to Wishlist", new_need_path %>
         </div>
       </div>
     </div>
 
-    <div class="profile-tab col-md-7 col-md-offset-1 wishlist-tab">
-      <div class="row">
-        <div class="col-md-4 col-md-offset-1">
-          <h2 class="thin">Wishlist</h2>
-        </div>
-        <div class="col-md-2 col-md-offset-4 explore">
-          <button class="bh-btn" id="details">Explore <span class="caret"></span></button>
-        </div>
-      </div>
-
-      <div id="wishlist" hidden>
-        <% if current_user.needs == [] %>
-          <p>No books in wishlist... Add the first now!</p>
-        <% else %>
-            <div class="row">
-              <% current_user.needs.each do |need| %>
-              <div class="wish-item col-sm-1">
-                <div><a href="<%= need.amazon_url %>" target="_blank"><img src="<%= need.image_url %>"></a><br> <%= link_to "Delete", need, method: :delete, data: {confirm: "Are you sure you want to delete this book from your wishlist?"}, class: "red"%></div>
+    <div class="row tab-space">
+      <div class="profile-tab center">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Books Added</h3>
+            <p><%= "You have #{@user.books.where(sold: "false").count} book(s) for sale" %></p>
+              <% @user.books.order(title: :asc).each do |book| %>
+              <% if book.sold == false %>
+              <div class="book-details"><%= book.title %><span class="caret"></span>
+                <div hidden>
+                  <%= link_to 'Details', book_path(book) %> |
+                  <%= link_to "Edit", edit_book_path(book.id) %> | <%= link_to "Delete", book, method: :delete, data: {confirm: "Are you sure you want to delete this book from your library?"}, class: "red" %>
+                </div>
               </div>
               <% end %>
-            </div>
-        <% end %>
-        <%= link_to "Add Book to Wishlist", new_need_path %>
-      </div>
-    </div>
-  </div>
+              <% end %>
+            <%= link_to "Add Book", new_book_path %>
+          </div>
 
-  <div class="row tab-space">
-    <div class="profile-tab center">
-      <div class="row">
-        <div class="col-md-6">
-          <h3>Books Added</h3>
-          <p><%= "You have #{@user.books.where(sold: "false").count} book(s) for sale" %></p>
-            <% @user.books.order(title: :asc).each do |book| %>
-            <% if book.sold == false %>
-            <div class="book-details"><%= book.title %><span class="caret"></span>
-              <div hidden>
-                <%= link_to 'Details', book_path(book) %> |
-                <%= link_to "Edit", edit_book_path(book.id) %> | <%= link_to "Delete", book, method: :delete, data: {confirm: "Are you sure you want to delete this book from your library?"}, class: "red" %>
-              </div>
-            </div>
-            <% end %>
-            <% end %>
-          <%= link_to "Add Book", new_book_path %>
-        </div>
-
-        <div class="col-md-6">
-          <h3>My Offers</h3>
-          <p><%= "You have #{@offer_count} offer(s) from other peers" %></p>
-          <ul>
-            <% @user.books.each do |book| %>
-              <% book.offers.order(created_at: :desc).each do |offer| %>
-                <% if book.sold == false %>
-                  <li>
-                    <%= book.title %> <%= link_to "Accept",{controller: :offers, action: :accept, id: offer.id} , class: "btn btn-sm btn-success" %><br>
-                    Offer: $<%= offer.amount %><br>
-                    Bidder: <%= offer.user.fullname %>
-                  </li>
+          <div class="col-md-6">
+            <h3>My Offers</h3>
+            <p><%= "You have #{@offer_count} offer(s) from other peers" %></p>
+            <ul>
+              <% @user.books.each do |book| %>
+                <% book.offers.order(created_at: :desc).each do |offer| %>
+                  <% if book.sold == false %>
+                    <li>
+                      <%= book.title %> <%= link_to "Accept",{controller: :offers, action: :accept, id: offer.id} , class: "btn btn-sm btn-success" %><br>
+                      Offer: $<%= offer.amount %><br>
+                      Bidder: <%= offer.user.fullname %>
+                    </li>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-          </ul>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-6">
-          <h3>Books Sold</h3>
-          <p><%= "You have sold #{@user.books.where(sold: "true").count} book(s)" %></p>
-            <% @user.books.each do |book| %>
-              <% if book.sold == true %>
-                <div class="details">
-                  <div class="btn btn-sm btn-primary book-details">
-                    <%= book.title %> <span class="caret"></span>
-                    <div id='buyer-info' hidden>
-                      <%= book.buyer.fullname %><br> <%= book.buyer.email %><br> <%= book.buyer.phone %> | Offer: $<%= book.price %>.00
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Books Sold</h3>
+            <p><%= "You have sold #{@user.books.where(sold: "true").count} book(s)" %></p>
+              <% @user.books.each do |book| %>
+                <% if book.sold == true %>
+                  <div class="details">
+                    <div class="btn btn-sm btn-primary book-details">
+                      <%= book.title %> <span class="caret"></span>
+                      <div id='buyer-info' hidden>
+                        <%= book.buyer.fullname %><br> <%= book.buyer.email %><br> <%= book.buyer.phone %> | Offer: $<%= book.price %>.00
+                      </div>
                     </div>
                   </div>
-                </div>
-              <% end %>
-            <% end %>
-        </div>
-
-        <div class="col-md-6">
-          <h3>My Bids</h3>
-          <p><%= "You have #{@user.offers.where(accepted: "false").count} pending bid(s)" %></p>
-          <% @user.offers.each do |offer| %>
-            <div class="book-details">
-              <% if offer.book.sold == true %>
-                <span class="red"><%= offer.book.title %> | Sold <span class="caret"></span></span>
-              <% else %>
-                <%= offer.book.title %> <span class="caret"></span>
-              <% end %>
-              <div hidden>
-                You offered: $<%= offer.amount %><br>
-                Seller: <%= offer.book.user.fullname %><br>
-                <% if offer.book.sold == true %>
-                  <%= link_to "Delete", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
-                <% else %>
-                <%= link_to "Revoke", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
                 <% end %>
+              <% end %>
+          </div>
+
+          <div class="col-md-6">
+            <h3>My Bids</h3>
+            <p><%= "You have #{@user.offers.where(accepted: "false").count} pending bid(s)" %></p>
+            <% @user.offers.each do |offer| %>
+              <div class="book-details">
+                <% if offer.book.sold == true %>
+                  <span class="red"><%= offer.book.title %> | Sold <span class="caret"></span></span>
+                <% else %>
+                  <%= offer.book.title %> <span class="caret"></span>
+                <% end %>
+                <div hidden>
+                  You offered: $<%= offer.amount %><br>
+                  Seller: <%= offer.book.user.fullname %><br>
+                  <% if offer.book.sold == true %>
+                    <%= link_to "Delete", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
+                  <% else %>
+                  <%= link_to "Revoke", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
+                  <% end %>
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
