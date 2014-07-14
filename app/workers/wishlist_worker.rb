@@ -2,23 +2,14 @@ class WishlistWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
 
-  def perform(book)
-    library = Book.all
-    matches = []
-    if book.isbn.present?
-      library.each do |lib_book|
-        if book.isbn == lib_book.isbn
-          matches << lib_book
-        end
-      end
+  def perform(need_id)
+    need = Need.find(need_id)
+    if need.isbn.present?
+      matches = Book.where(isbn: need.isbn)
     else
-      library.each do |lib_book|
-        if book.isbn13 == lib_book.isbn13
-          matches << lib_book
-        end
-      end
+      matches = Book.where(isbn13: need.isbn13)
     end
-    UserMailer.wishlist_match(matches, book)
+    UserMailer.wishlist_match(matches, need).deliver
   end
 
 end

@@ -1,2 +1,10 @@
 <h1>Your wish has been granted.</h1>
 
+<p>The following users have added <i><%= @need.title %></i></p>
+
+<ul>
+  <% @matches.each do |match| %>
+    <li><%= match.title %> - <%= match.user.fullname %> | Price: $<%= match.price %>.00</li>
+  <% end %>
+</ul>
+

@@ -42,6 +42,8 @@ gem 'isbn_validation'
 
 gem 'sidekiq'
 
+gem 'sinatra', '>= 1.3.0', :require => nil
+
 group :test, :development do
   gem 'capybara'
   gem 'pry-rails'

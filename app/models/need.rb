@@ -22,4 +22,5 @@ class Need < ActiveRecord::Base
       self.image_url = result.small_image.url
     end
   end
+
 end

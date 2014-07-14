@@ -38,10 +38,10 @@ class UserMailer < ActionMailer::Base
     mail(to: @bidder.email, subject: "Your offer for '#{@book.title}' has been accepted!")
   end
 
-  def wishlist_match(matches, book)
+  def wishlist_match(matches, need)
     @matches = matches
-    @book = book
-    bindind.pry
-    mail(to: @current_user, subject: "Your wishlist item has been matched!")
+    @need = need
+    binding.pry
+    mail(to: @need.user.email, subject: "Your wishlist item has been matched!")
   end
 end
