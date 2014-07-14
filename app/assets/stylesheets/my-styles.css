@@ -229,7 +229,7 @@ footer {
 
 .preview {
   margin-top: 10px;
-  background: #1abc9c;
+  background: #61596e;
   color: white;
   font-weight: 300;
   border-radius: 0 0 5px 5px;
@@ -252,6 +252,10 @@ footer {
 .purple {
   background: #61596e;
   border-radius: 0 0 3px 0;
+}
+
+.seafoam {
+  background: #1abc9c;
 }
 
 .menu-icon {
