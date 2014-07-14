@@ -229,6 +229,8 @@ footer {
   border-radius: 3px;
   margin-top: 10px;
   padding-top: -10px;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
 }
 
 .tab-header {
@@ -238,7 +240,7 @@ footer {
 }
 
 .tab-header h3 {
-    font-size: 2em;
+  font-size: 2em;
   font-weight: 100;
 }
 
@@ -284,7 +286,7 @@ footer {
 }
 
 .purple {
-  background: #61596e;
+  background: #9b59b6;
 }
 
 .seafoam {
@@ -390,4 +392,15 @@ margin: 0px auto 15px;
 ul, li{
     list-style:none;
     list-style-type:none;
+}
+
+/*********************** media-queries **************************/
+@media (min-width: 768px) {
+  .hdr-pad-rt {
+    padding-right: 0px !important;
+  }
+
+  .hdr-pad-lft {
+    padding-left: 0px !important;
+  }
 }

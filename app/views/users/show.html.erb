@@ -58,7 +58,7 @@
     <div class="row tab-space">
       <div class="main-tab center">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-6 hdr-pad-rt">
             <div class="tab-header top-lft salmon"><h3>Books Added</h3></div>
               <% @user.books.order(title: :asc).each do |book| %>
               <% if book.sold == false %>
@@ -73,7 +73,7 @@
             <%= link_to "Add Book", new_book_path %>
           </div>
 
-          <div class="col-sm-6">
+          <div class="col-sm-6 hdr-pad-lft">
             <div class="tab-header top-rt purple"><h3>My Offers</h3></div>
             <p><%= "You have #{@offer_count} offer(s) from other peers" %></p>
             <ul>
@@ -93,7 +93,7 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-6 hdr-pad-rt">
             <div class="tab-header blue"><h3>Books Sold</h3></div>
             <p><%= "You have sold #{@user.books.where(sold: "true").count} book(s)" %></p>
               <% @user.books.each do |book| %>
@@ -110,7 +110,7 @@
               <% end %>
           </div>
 
-          <div class="col-sm-6">
+          <div class="col-sm-6 hdr-pad-lft">
             <div class="tab-header seafoam"><h3>My Bids</h3></div>
             <p><%= "You have #{@user.offers.where(accepted: "false").count} pending bid(s)" %></p>
             <% @user.offers.each do |offer| %>
