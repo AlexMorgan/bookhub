@@ -10,7 +10,6 @@ class Need < ActiveRecord::Base
 
   def find_result_info
     client = ASIN::Client.instance
-
     query = client.search_keywords(self.title)
     if !query.nil?
       result = query.first

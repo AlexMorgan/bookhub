@@ -40,7 +40,7 @@ gem 'asin'
 
 gem 'isbn_validation'
 
-gem "jquery-rails"
+gem 'sidekiq'
 
 group :test, :development do
   gem 'capybara'
