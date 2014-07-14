@@ -12,10 +12,18 @@
         </div>
         <div>
           <div class="row preview">
-            <div class="col-xs-3 green center"  data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><%= @user.books.where(sold: "false").count %><br>Added</div>
-            <div class="col-xs-3 seafoam center"><%= @user.offers.where(accepted: "false").count %><br>Pending</div>
-            <div class="col-xs-3 blue center"><%= @user.books.where(sold: "true").count %><br>Sold</div>
-            <div class="col-xs-3 purple center"><%= @offer_count %><br>Offers</div>
+            <div class="col-xs-3 green center" type="button" data-toggle="tooltip" data-placement="bottom" title="Books added for sale">
+              <%= @user.books.where(sold: "false").count %><br>Added
+            </div>
+            <div class="col-xs-3 seafoam center" type="button" data-toggle="tooltip" data-placement="bottom" title="Your pending bids">
+              <%= @user.offers.where(accepted: "false").count %><br>Pending
+            </div>
+            <div class="col-xs-3 blue center" type="button" data-toggle="tooltip" data-placement="bottom" title="Books you've sold">
+              <%= @user.books.where(sold: "true").count %><br>Sold
+            </div>
+            <div class="col-xs-3 purple center" type="button" data-toggle="tooltip" data-placement="bottom" title="Offers to accept">
+              <%= @offer_count %><br>Offers
+            </div>
           </div>
         </div>
       </div>
@@ -139,6 +147,8 @@
       $('.book-details').click(function(){
         $(this).children('div').toggle('medium');
       })
+
+      $(function () { $("[data-toggle='tooltip']").tooltip(); });
     });
   </script>
 
