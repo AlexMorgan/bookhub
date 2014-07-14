@@ -261,14 +261,6 @@ footer {
   padding-bottom: 5px;
 }
 
-.blue{
-  background: #3498db;
-}
-
-.salmon {
-  background: #da6c8c;
-}
-
 .top-lft {
   border-radius: 3px 0 0 0;
 }
@@ -283,14 +275,6 @@ footer {
 
 .btm-rt {
   border-radius: 0 0 3px 0;
-}
-
-.purple {
-  background: #9b59b6;
-}
-
-.seafoam {
-  background: #1abc9c;
 }
 
 .menu-icon {
@@ -336,6 +320,10 @@ footer {
 
 .tab-space {
   margin-top: 20px;
+}
+
+.data-stat {
+  margin-bottom: 10px;
 }
 /*********************** Books **************************/
 .page-title {
@@ -394,6 +382,23 @@ ul, li{
     list-style-type:none;
 }
 
+/*********************** Colors **************************/
+.blue{
+  background: #3498db;
+}
+
+.salmon {
+  background: #eb614e;
+}
+
+.purple {
+  background: #9b59b6;
+}
+
+.seafoam {
+  background: #53bfa6;
+}
+
 /*********************** media-queries **************************/
 @media (min-width: 768px) {
   .hdr-pad-rt {
@@ -403,4 +408,6 @@ ul, li{
   .hdr-pad-lft {
     padding-left: 0px !important;
   }
+
+
 }

@@ -59,7 +59,8 @@
       <div class="main-tab center">
         <div class="row">
           <div class="col-sm-6 hdr-pad-rt">
-            <div class="tab-header top-lft salmon"><h3>Books Added</h3></div>
+            <div class="tab-header top-lft xs-border salmon"><h3>Books Added</h3></div>
+            <p class="data-stat"><%= "You have #{@user.books.where(sold: "false").count} book(s) in your library" %></p>
               <% @user.books.order(title: :asc).each do |book| %>
               <% if book.sold == false %>
               <div class="book-details"><%= book.title %><span class="caret"></span>
@@ -75,7 +76,7 @@
 
           <div class="col-sm-6 hdr-pad-lft">
             <div class="tab-header top-rt purple"><h3>My Offers</h3></div>
-            <p><%= "You have #{@offer_count} offer(s) from other peers" %></p>
+            <p class="data-stat"><%= "You have #{@offer_count} offer(s) from other peers" %></p>
             <ul>
               <% @user.books.each do |book| %>
                 <% book.offers.order(created_at: :desc).each do |offer| %>
@@ -95,11 +96,11 @@
         <div class="row">
           <div class="col-sm-6 hdr-pad-rt">
             <div class="tab-header blue"><h3>Books Sold</h3></div>
-            <p><%= "You have sold #{@user.books.where(sold: "true").count} book(s)" %></p>
+            <p class="data-stat"><%= "You have sold #{@user.books.where(sold: "true").count} book(s)" %></p>
               <% @user.books.each do |book| %>
                 <% if book.sold == true %>
                   <div class="details">
-                    <div class="btn btn-sm btn-primary book-details">
+                    <div class="btn btn-sm btn-default book-details">
                       <%= book.title %> <span class="caret"></span>
                       <div id='buyer-info' hidden>
                         <%= book.buyer.fullname %><br> <%= book.buyer.email %><br> <%= book.buyer.phone %> | Offer: $<%= book.price %>.00
@@ -112,7 +113,7 @@
 
           <div class="col-sm-6 hdr-pad-lft">
             <div class="tab-header seafoam"><h3>My Bids</h3></div>
-            <p><%= "You have #{@user.offers.where(accepted: "false").count} pending bid(s)" %></p>
+            <p class="data-stat"><%= "You have #{@user.offers.where(accepted: "false").count} pending bid(s)" %></p>
             <% @user.offers.each do |offer| %>
               <div class="book-details">
                 <% if offer.book.sold == true %>

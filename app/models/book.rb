@@ -9,7 +9,7 @@ class Book < ActiveRecord::Base
   validates :isbn, :isbn_format => { with: :isbn }, uniqueness: { scope: :user_id, message: "You have already added this book" }, allow_blank: true
   validates :isbn13, :isbn_format => { with: :isbn13 }, allow_blank: true, uniqueness: { scope: :user_id, message: "You have already added this book" }
 
-  before_create :format_title, :find_book_in_db
+  before_validation :format_title, :find_book_in_db
   before_update :convert_to_isbn13
 
   def self.qualities
@@ -112,7 +112,6 @@ class Book < ActiveRecord::Base
       attributes = query.item_attributes
       self.title = attributes.title
       # Test for ISBN-10 or ISBN-13
-      binding.pry
       if attributes.isbn.length == 10
         self.isbn = attributes.isbn
         if self.isbn13 == ""
