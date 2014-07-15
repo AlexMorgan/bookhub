@@ -4,7 +4,12 @@
 
 <ul>
   <% @matches.each do |match| %>
-    <li><%= match.title %> - <%= match.user.fullname %> | Price: $<%= match.price %>.00</li>
+    <li><%= match.title %> - <%= match.user.fullname %> |
+      <% if match.price == 0 %>
+        Make an offer
+      <% else %>
+        Price: $<%= match.price %>.00</li>
+      <% end %>
   <% end %>
 </ul>
 
