@@ -475,13 +475,8 @@ ul, li{
   .tab-padding {
     padding-right: 0px !important;
   }
-/*
-  .top-lft {
-    border-radius: 3px 0 0 0;
-  }
 
-  .top-rt {
-    border-radius: 0 3px 0 0;
+  .tab-pad-left {
+    padding-left: 30px !important;
   }
-*/
 }
