@@ -17,7 +17,7 @@ class UserMailer < ActionMailer::Base
     @message = message
 
 
-    mail(to: 'dukehub@gmail.com', subject: "#{@name} has contacted you")
+    mail(to: 'morga3ar@dukes.jmu.edu', subject: "#{@name} has contacted you")
   end
 
   def offer_email(seller, bidder, book, offer)
