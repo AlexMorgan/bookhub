@@ -3,11 +3,6 @@ body {
   padding-bottom: 50px;
 }
 
-a,
-a:hover {
-  font-weight: 300;
-}
-
 .flash {
   background-color: rgba(22, 160, 133, 0.3);
   margin-top: 15px;

@@ -4,7 +4,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     if @offer.save
       UserMailer.offer_email(@book.user, current_user, @book, @offer).deliver
-      redirect_to book_path(@book)
+      redirect_to books_path
       flash[:notice] = "The seller has been notified of your offer! Thank You!"
     else
       render "books/show"

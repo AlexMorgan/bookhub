@@ -35,8 +35,12 @@
             <div class="row">
               <div class="col-xs-2"><img src="<%= act.image_url %>" class="activity-img"></div>
               <div class="col-xs-8 user-info">
-                <p><%=link_to act.short_title(act.title), book_path(act) %><br>
-                  <span class="user-name"><%= act.user.fullname %></span></p>
+                <% if act.sold %>
+                  <p><%= act.short_title(act.title) %><br><span class="user-name"><%= act.user.fullname %></span></p>
+                <% else %>
+                  <p><%=link_to act.short_title(act.title), book_path(act) %><br>
+                    <span class="user-name"><%= act.user.fullname %></span></p>
+                <% end %>
               </div>
               <div class="col-xs-2">
                 <% if act.sold == false %>
