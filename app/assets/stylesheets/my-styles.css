@@ -231,6 +231,7 @@ footer {
   padding-top: -10px;
   padding-right: 0px !important;
   padding-left: 0px !important;
+  padding-bottom: 15px;
 }
 
 .mini-tab {
@@ -240,6 +241,7 @@ footer {
   margin-top: 15px;
   padding-top: -10px;
   margin-left: -15px;
+  margin-right: -15px;
   padding-bottom: 10px;
 }
 
@@ -333,7 +335,7 @@ footer {
 }
 
 .tab-padding {
-  padding-right: 0px !important;
+  padding-right: 15px !important;
 }
 /*********************** Books **************************/
 .page-title {
@@ -421,6 +423,14 @@ ul, li{
 
   .hdr-pad-lft {
     padding-left: 0px !important;
+  }
+
+  .mini-tab {
+    margin-right: 0px;
+  }
+
+  .tab-padding {
+    padding-right: 0px !important;
   }
 /*
   .top-lft {
