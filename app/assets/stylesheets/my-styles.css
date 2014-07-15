@@ -3,6 +3,11 @@ body {
   padding-bottom: 50px;
 }
 
+a,
+a:hover {
+  font-weight: 300;
+}
+
 .flash {
   background-color: rgba(22, 160, 133, 0.3);
   margin-top: 15px;
@@ -266,6 +271,7 @@ footer {
   color: white;
   font-weight: 300;
   border-radius: 0 0 5px 5px;
+  margin-bottom: 15px;
 }
 
 .preview > div {
@@ -336,6 +342,37 @@ footer {
 
 .tab-padding {
   padding-right: 15px !important;
+}
+
+.activity-img {
+  margin: 0 5px 0 15px;
+  height: 50px;
+}
+
+.line-break {
+  border: 1px solid #ecf0f1;
+  border-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.buy-badge {
+  margin: 20px 15px 0 0;
+  height: 8px;
+  width: 8px;
+  background: #2ecc71;
+  border-radius: 100px;
+}
+
+.sold-badge {
+  margin: 20px 15px 0 0;
+  height: 8px;
+  width: 8px;
+  background: #e74c3c;
+  border-radius: 100px;
+}
+
+.recent-act {
+  margin-bottom: 10px;
 }
 /*********************** Books **************************/
 .page-title {

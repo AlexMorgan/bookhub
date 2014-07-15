@@ -12,7 +12,7 @@
         </div>
         <div>
           <div class="row preview">
-            <div class="col-xs-3 salmon btm-lft center" type="button" data-toggle="tooltip" data-placement="bottom" title="Books added for sale">
+            <div class="col-xs-3 salmon center" type="button" data-toggle="tooltip" data-placement="bottom" title="Books added for sale">
               <%= @user.books.where(sold: "false").count %><br>Added
             </div>
             <div class="col-xs-3 seafoam center" type="button" data-toggle="tooltip" data-placement="bottom" title="Your pending bids">
@@ -21,10 +21,26 @@
             <div class="col-xs-3 blue center" type="button" data-toggle="tooltip" data-placement="bottom" title="Books you've sold">
               <%= @user.books.where(sold: "true").count %><br>Sold
             </div>
-            <div class="col-xs-3 purple btm-rt center" type="button" data-toggle="tooltip" data-placement="bottom" title="Offers to accept">
+            <div class="col-xs-3 purple center" type="button" data-toggle="tooltip" data-placement="bottom" title="Offers to accept">
               <%= @offer_count %><br>Offers
             </div>
           </div>
+        </div>
+        <div>
+          <div class="recent-act center">
+            <span class="dash-name">Recent Activity</span>
+          </div>
+          <% @recent_activities.each do |act| %>
+            <p><img src="<%= act.image_url %>" class="activity-img"> <%=link_to act.short_title(act.title), book_path(act) %>
+              <% if act.sold == false %>
+                <span class=" buy-badge pull-right"></span>
+              <% else %>
+                <span class=" sold-badge pull-right"></span>
+              <% end %>
+              </p>
+            <div class='line-break'></div>
+          <% end %>
+
         </div>
       </div>
 
@@ -53,10 +69,8 @@
           <%= link_to "Add Book to Wishlist", new_need_path %>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-12 main-tab center">
+      <div class="col-md-7 col-md-offset-1 main-tab center">
         <div class="tab-header xs-border salmon"><h3>Books Added</h3></div>
         <p class="data-stat"><%= "You have #{@user.books.where(sold: "false").count} book(s) in your library" %></p>
           <% @user.books.order(title: :asc).each do |book| %>
@@ -72,6 +86,24 @@
         <%= link_to "Add Book", new_book_path, class: "add-book-link" %>
       </div>
     </div>
+
+<!--     <div class="row">
+      <div class="col-md-12 main-tab center">
+        <div class="tab-header xs-border salmon"><h3>Books Added</h3></div>
+        <p class="data-stat"><%= "You have #{@user.books.where(sold: "false").count} book(s) in your library" %></p>
+          <% @user.books.order(title: :asc).each do |book| %>
+          <% if book.sold == false %>
+          <div class="book-details"><%= book.title %><span class="caret"></span>
+            <div hidden>
+              <%= link_to 'Details', book_path(book) %> |
+              <%= link_to "Edit", edit_book_path(book.id) %> | <%= link_to "Delete", book, method: :delete, data: {confirm: "Are you sure you want to delete this book from your library?"}, class: "red" %>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+        <%= link_to "Add Book", new_book_path, class: "add-book-link" %>
+      </div>
+    </div> -->
 
     <div class="row">
       <div class="col-sm-4 center">
