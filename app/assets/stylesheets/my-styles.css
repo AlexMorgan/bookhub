@@ -315,7 +315,7 @@ footer {
 }
 
 .wishlist-tab {
-  padding-bottom: 15px;
+  padding: 10px 10px 15px 20px;
 }
 
 .wishlist-tab > .row {
@@ -379,6 +379,11 @@ footer {
 .user-name {
   font-size: .95em;
   color: #95a5a6;
+}
+
+.no-col-pad {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 /*********************** Books **************************/
 .page-title {
@@ -478,5 +483,16 @@ ul, li{
 
   .tab-pad-left {
     padding-left: 30px !important;
+  }
+  .no-rt-pad {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .no-col-pad {
+    padding-right: 0px !important;
+    padding-left: 15px !important;
   }
 }

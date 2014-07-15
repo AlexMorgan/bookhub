@@ -56,7 +56,8 @@
         </div>
       </div>
 
-      <div class="profile-tab col-md-7 col-md-offset-1 wishlist-tab">
+      <div class="col-md-8 no-col-pad no-rt-pad">
+        <div class="wishlist-tab profile-tab">
         <div class="row">
           <div class="col-xs-4 ">
             <h2 class="thin">Wishlist</h2>
@@ -80,9 +81,11 @@
           <% end %>
           <%= link_to "Add Book to Wishlist", new_need_path %>
         </div>
+        </div>
       </div>
 
-      <div class="col-md-7 col-md-offset-1 main-tab center">
+      <div class="col-md-8 no-col-pad no-rt-pad center">
+        <div class=" main-tab ">
         <div class="tab-header xs-border salmon"><h3>Books Added</h3></div>
         <p class="data-stat"><%= "You have #{@user.books.where(sold: "false").count} book(s) in your library" %></p>
           <% @user.books.order(title: :asc).each do |book| %>
@@ -96,6 +99,7 @@
           <% end %>
           <% end %>
         <%= link_to "Add Book", new_book_path, class: "add-book-link" %>
+        </div>
       </div>
     </div>
 

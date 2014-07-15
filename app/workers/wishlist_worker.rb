@@ -11,6 +11,7 @@ class WishlistWorker
     end
 
     if matches.length > 1
+      need.update!(notified: true)
       UserMailer.wishlist_match(matches, need).deliver
     end
   end
