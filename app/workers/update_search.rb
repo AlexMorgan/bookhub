@@ -3,11 +3,11 @@ class UpdateSearch
   include Sidetiq::Schedulable
   sidekiq_options retry: false
 
-  recurrence { hourly }
+  recurrence { hourly.minute_of_hour(0, 10, 20, 30, 40, 50) }
 
   def perform
     needs = Need.all
-
+    matches = []
     needs.each do |need|
       if need.notified == false
         if need.isbn.present?
@@ -17,9 +17,9 @@ class UpdateSearch
         end
       end
 
-      if matches.length > 1 && need.notified == false
-        need.update!(notified: true)
-        UserMailer.wishlist_match(matches, need).deliver
+      if matches.length != 0 &&  need.notified == false
+          UserMailer.wishlist_match(matches, need).deliver
+          need.update!(notified: true)
       end
     end
 
