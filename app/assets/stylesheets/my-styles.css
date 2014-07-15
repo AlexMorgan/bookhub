@@ -463,6 +463,13 @@ ul, li{
   background: #bdc3c7;
 }
 
+.navbar-default .navbar-nav .open .dropdown-menu>li>a, .navbar-default .navbar-nav .open .dropdown-menu {
+   background-color: green;
+   color: red !important;
+ }
+.navbar-collapse .in {
+  background: black;
+}
 /*********************** media-queries **************************/
 @media (min-width: 768px) {
   .hdr-pad-rt {
