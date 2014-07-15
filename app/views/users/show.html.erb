@@ -30,14 +30,22 @@
           <div class="recent-act center">
             <span class="dash-name">Recent Activity</span>
           </div>
+
           <% @recent_activities.each do |act| %>
-            <p><img src="<%= act.image_url %>" class="activity-img"> <%=link_to act.short_title(act.title), book_path(act) %>
-              <% if act.sold == false %>
-                <span class=" buy-badge pull-right"></span>
-              <% else %>
-                <span class=" sold-badge pull-right"></span>
-              <% end %>
-              </p>
+            <div class="row">
+              <div class="col-xs-2"><img src="<%= act.image_url %>" class="activity-img"></div>
+              <div class="col-xs-8 user-info">
+                <p><%=link_to act.short_title(act.title), book_path(act) %><br>
+                  <span class="user-name"><%= act.user.fullname %></span></p>
+              </div>
+              <div class="col-xs-2">
+                <% if act.sold == false %>
+                  <span class=" buy-badge pull-right" type="button" data-toggle="tooltip" data-placement="bottom" title="Available"></span>
+                <% else %>
+                  <span class=" sold-badge pull-right" type="button" data-toggle="tooltip" data-placement="bottom" title="Sold"></span>
+                <% end %>
+              </div>
+            </div>
             <div class='line-break'></div>
           <% end %>
 

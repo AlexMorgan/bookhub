@@ -353,6 +353,7 @@ footer {
   border: 1px solid #ecf0f1;
   border-bottom: 10px;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .buy-badge {
@@ -373,6 +374,16 @@ footer {
 
 .recent-act {
   margin-bottom: 10px;
+}
+
+.user-info {
+  line-height: 100%;
+  margin-top: 10px;
+}
+
+.user-name {
+  font-size: .95em;
+  color: #95a5a6;
 }
 /*********************** Books **************************/
 .page-title {
