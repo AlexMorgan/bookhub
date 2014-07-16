@@ -77,7 +77,7 @@
             <p>Click for details</p>
             <div class="row">
               <% current_user.needs.each do |need| %>
-              <div class="wish-item col-sm-1">
+              <div class="wish-item col-sm-1 col-xs-2">
                 <div data-toggle="modal" data-target="#showModal<%= need.id %>">
                   <a href="<%= need.amazon_url %>" target="_blank"><img src="<%= need.image_url %>" class="wish-book"></a>
                   <br>
