@@ -92,4 +92,13 @@ Rails.application.configure do
       :authentication => :plain
   }
   ActionMailer::Base.delivery_method = :smtp
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['ASIN_KEY'],
+      :secret_access_key => ENV['ASIN_SECRET']
+    }
+  }
 end

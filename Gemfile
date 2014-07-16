@@ -42,7 +42,7 @@ gem 'isbn_validation'
 
 gem 'sidekiq'
 
-gem 'sidetiq'
+gem 'aws-sdk', '~> 1.20.0'
 
 gem 'sinatra', '>= 1.3.0', :require => nil
 
