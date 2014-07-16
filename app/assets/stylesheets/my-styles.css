@@ -396,6 +396,12 @@ footer {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
+
+.menu-img {
+  height: 34px;
+  margin-top: 21px;
+}
+
 /*********************** Books **************************/
 .page-title {
   font-weight: 100;
@@ -509,6 +515,10 @@ ul, li{
 
   .search {
     font-size: 2.5em;
+  }
+
+  .no-right-pad {
+    padding-left: 0 !important;
   }
 }
 
