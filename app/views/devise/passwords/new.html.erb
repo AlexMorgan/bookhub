@@ -1,12 +1,20 @@
-<h2>Forgot your password?</h2>
+<div class="col-md-12 center thin">
+  <h1 class="page-title">Forgot your password?</h1>
+
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <div class="col-xs-12">
+    <br />
+    <%= f.email_field :email, autofocus: true, class: "book-info", placeholder: "Enter Email" %>
+  </div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
+  <div class="col-xs-12">
+    <%= f.submit "Send me reset password instructions", class: "book-info submit-btn" %>
+  </div>
 <% end %>
+
+</div>
 
 <%= render "devise/shared/links" %>

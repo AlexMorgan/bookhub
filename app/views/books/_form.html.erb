@@ -7,27 +7,29 @@
   </ul>
 <% end %>
 
-<%= form_for [@user, @book] do |f| %>
-  <div>
-    <div><%= f.label "Book Title" %></div>
-    <%= f.text_field :title, autofocus: true, placeholder: "ex: Book (9th Edition)", class: "book-info" %><br><br>
-  </div>
+<div class="center">
+  <%= form_for [@user, @book] do |f| %>
+    <div class="col-xs-12">
+      <%= f.text_field :title, autofocus: true, placeholder: "Book Title", class: "book-info" %><br><br>
+    </div>
 
-  <div>
-    <div><%= f.label :isbn13, "ISBN" %></div>
-    <%= f.text_field :isbn13, placeholder: "9870123456789", class: "book-info" %><br><br>
-  </div>
+    <div class="col-xs-12">
+      <%= f.text_field :isbn13, autocomplete: "off", placeholder: "ISBN-13", class: "book-info" %><br><br>
+    </div>
 
-  <div><%= f.label :quality %></div>
-  <%= f.select :quality, Book.qualities, prompt: "Select book quality" %><br><br>
+    <div><%= f.label :quality %></div>
+    <div>
+      <%= f.select :quality, Book.qualities, prompt: "Select book quality", class: "quality-input" %>
+    </div><br>
 
-  <div><%= f.label :price %></div>
-  $ <%= f.text_field :price, placeholder: "20", class: "amount-input" %>.00<br><br>
+    <div><%= f.label :price %></div>
+    $ <%= f.text_field :price,autocomplete: "off", placeholder: "20", class: "amount-input" %>.00<br><br>
 
-  <div><%= f.submit "Submit", class: "btn btn-primary"%></div><br><br>
-<% end %>
+    <div><%= f.submit "Submit", class: "btn btn-primary"%></div><br><br>
+  <% end %>
 
-<%= link_to 'Back', :back %>
+  <%= link_to 'Back', :back %>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function(){

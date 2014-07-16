@@ -72,9 +72,9 @@
 
         <div id="wishlist" hidden>
           <% if current_user.needs == [] %>
-            <p>No books in wishlist... Add the first now!</p>
+            <p class="foot-heading">No books in wishlist...</p>
           <% else %>
-            <p>Click for details</p>
+            <p class="foot-heading">Click for details...</p>
             <div class="row">
               <% current_user.needs.each do |need| %>
               <div class="wish-item col-sm-1 col-xs-2">

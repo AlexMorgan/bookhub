@@ -22,8 +22,9 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates_formatting_of :firstname, :using => :alpha
   validates_formatting_of :lastname, :using => :alpha
-  validates_formatting_of :phone, :using => :us_phone
-  validates :phone, uniqueness: { allow_blank: true }
+  validates_formatting_of :phone, :using => :us_phone,
+    if: Proc.new { |user| user.sign_in_count > 0 }
+  validates :phone, uniqueness: { allow_nil: true }
 
   validates :email, presence: true, format: { with: /(@dukes.jmu.edu)/,
     message: "%{value} is not a valid JMU email" }

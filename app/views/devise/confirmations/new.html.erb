@@ -1,12 +1,16 @@
-<h2>Resend confirmation instructions</h2>
+<div class="col-md-12 center thin">
+  <h1 class="page-title">Resend confirmation instructions</h1>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+    <div class="col-xs-12">
+      <br />
+      <%= f.email_field :email, autofocus: true, class: "book-info", placeholder: "Enter Email" %>
+    </div>
 
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
+    <div class="col-xs-12"><%= f.submit "Resend confirmation instructions", class: "book-info submit-btn" %></div>
+  <% end %>
+</div>
 
 <%= render "devise/shared/links" %>

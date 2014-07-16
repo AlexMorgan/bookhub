@@ -7,11 +7,18 @@
   </ul>
 <% end %>
 
-<%= form_for @need do |f| %>
-  <div>
-    <%= f.label :title %><br>
-    <%= f.text_field :title, placeholder: "The Wolf of Wall Street" %>
-  </div><br>
+<div class="col-md-12 center">
+  <h1 class="page-title">New Wish</h1>
+</div>
 
-  <%= f.submit "Add to Wishlist", class: "btn btn-primary" %>
-<% end %>
+<div class='center'>
+  <%= form_for @need do |f| %>
+    <div class="col-xs-12">
+      <%= f.text_field :title, placeholder: "Enter Book Title", class: "book-info" %>
+    </div>
+
+    <div class="col-xs-12">
+      <%= f.submit "Add to Wishlist", class: "btn btn-primary", class: "book-info submit-btn" %>
+    </div>
+  <% end %>
+</div>

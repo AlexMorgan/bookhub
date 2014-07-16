@@ -45,12 +45,16 @@
         <% end %>
       </div>
       <% if @book.price == 0 %>
-        <%= form_for [@book, @offer] do |f| %>
-          <div>
-            <%= f.label :amount %><br>
-            $ <%= f.text_field :amount, placeholder: "20", class: "amount-input" %>.00
-          </div><br>
-          <div><%= f.submit "Make Offer", class: "btn btn-success" %></div>
+        <% if current_user != @book.user %>
+          <%= form_for [@book, @offer] do |f| %>
+            <div>
+              <%= f.label :amount %><br>
+              $ <%= f.text_field :amount, placeholder: "20", class: "amount-input" %>.00
+            </div><br>
+            <div><%= f.submit "Make Offer", class: "btn btn-success" %></div>
+          <% end %>
+        <% else %>
+          <div class="center"><p>Open For Offers</p></div>
         <% end %>
       <% else %>
         <p>Price</p>
