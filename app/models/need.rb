@@ -17,7 +17,7 @@ class Need < ActiveRecord::Base
       self.isbn = result.item_attributes.isbn
       self.isbn13 = result.item_attributes.ean
       self.amazon_url = result.detail_page_url
-      self.image_url = result.small_image.url
+      self.image_url = result.large_image.url
     end
   end
 

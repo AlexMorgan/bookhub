@@ -405,11 +405,24 @@ footer {
 .modal-book {
   height: 200px;
 }
+
+.wish-book {
+  height: 70px;
+}
 /*********************** Books **************************/
 .page-title {
   font-weight: 100;
   font-size: 5em;
   color: #1abc9c;
+}
+
+/*********************** Modals **************************/
+.modal-author {
+  margin-top: -20px;
+}
+
+.modal-book-title {
+  font-size: 2em;
 }
 
 /*********************** Video **************************/
@@ -522,6 +535,10 @@ ul, li{
 
   .no-right-pad {
     padding-left: 0 !important;
+  }
+
+  .modal-book-title {
+    font-size: 2.5em;
   }
 }
 
