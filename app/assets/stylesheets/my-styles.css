@@ -402,6 +402,9 @@ footer {
   margin-top: 21px;
 }
 
+.modal-book {
+  height: 200px;
+}
 /*********************** Books **************************/
 .page-title {
   font-weight: 100;

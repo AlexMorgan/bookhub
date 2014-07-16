@@ -3,11 +3,21 @@ class Book < ActiveRecord::Base
   belongs_to :buyer, class_name: "User"
   has_many :offers, dependent: :destroy
 
+  validates :title, presence: true,
+    if: Proc.new { |book| book.isbn13.blank? }
   validates :quality, presence: true
   validates_formatting_of :course_title, using: :alphanum, allow_blank: true
   validates :price, numericality: { only_integer: true }, length: { maximum: 3 }
-  validates :isbn, :isbn_format => { with: :isbn }, uniqueness: { scope: :user_id, message: "You have already added this book" }, allow_blank: true
-  validates :isbn13, :isbn_format => { with: :isbn13 }, allow_blank: true, uniqueness: { scope: :user_id, message: "You have already added this book" }
+  validates :isbn,
+    isbn_format: { with: :isbn },
+    uniqueness: { scope: :user_id, message: "You have already added this book" },
+    allow_blank: true
+
+  validates :isbn13,
+    isbn_format: { with: :isbn13 },
+    presence: true,
+    if: Proc.new { |book| book.title.blank? },
+    uniqueness: { scope: :user_id, message: "You have already added this book" }
 
   before_validation :format_title, :find_book_in_db
   before_update :convert_to_isbn13
