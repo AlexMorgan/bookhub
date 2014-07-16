@@ -208,6 +208,7 @@ footer {
 .details {
   list-style: none;
   margin-bottom: 10px;
+  cursor:pointer;
 }
 
 .book-image {

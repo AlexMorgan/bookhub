@@ -60,13 +60,13 @@
         <div class="wishlist-tab profile-tab">
         <div class="row">
           <div class="col-xs-1 hidden-xs">
-            <%= image_tag('menu.png', class: "menu-img") %>
+            <%= image_tag('menu.png', class: "menu-img details") %>
           </div>
           <div class="col-xs-4 no-right-pad">
             <h2 class="thin">Wishlist</h2>
           </div>
           <div class="col-md-3 col-sm-3 col-xs-5 pull-right explore">
-            <button class="bh-btn" id="details">Explore <span class="caret"></span></button>
+            <button class="bh-btn details">Explore <span class="caret"></span></button>
           </div>
         </div>
 
@@ -212,7 +212,7 @@
 
   <script type="text/javascript">
     $(document).ready(function(){
-      $('#details').click(function(){
+      $('.details').click(function(){
         $('#wishlist').toggle("medium");
       });
 
