@@ -28,7 +28,7 @@
         </ul>
         <p class="navbar-text pull-right">
         <% if user_signed_in? %>
-          <%= image_tag current_user.avatar.url(:tiny), class: "avatar" %>
+          <%= image_tag current_user.avatar.url(:tiny), class: "tiny-avatar" %>
           <strong><%= link_to current_user.username, user_path(current_user.id), :class => 'navbar-link' %> |</strong>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         <% else %>

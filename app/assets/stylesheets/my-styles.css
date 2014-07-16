@@ -30,6 +30,17 @@ body {
   border-radius: 150px;
 }
 
+.tiny-avatar {
+  border-radius: 150px;
+  height: 25px;
+  width: 25px;
+}
+
+.edit-avatar {
+  height: 200px;
+  width: 200px;
+}
+
 .address-input {
   width: 50%;
 }

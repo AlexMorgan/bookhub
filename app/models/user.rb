@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>",small: "50x50>", :tiny => "25x25>" }, :default_url => "/assets/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>",small: "50x50>", :tiny => "25x25>" }, :default_url => ActionController::Base.helpers.asset_path('missing.png')
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   ## If we wanted to validate that all users had an avatar
   # validates :avatar, :attachment_presence => true
