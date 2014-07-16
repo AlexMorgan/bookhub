@@ -7,7 +7,7 @@ class NeedsController < ApplicationController
     @need = Need.new(need_params)
 
     if @need.save
-      WishlistWorker.perform_async(@need.id)
+      # WishlistWorker.perform_async(@need.id)
       flash[:notice] = "#{@need.title} has been added to your wishlist"
       redirect_to user_path(current_user)
     else
