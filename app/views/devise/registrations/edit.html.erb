@@ -43,7 +43,7 @@
       <div><%= f.label :email %><br>
       <%= f.text_field :email, placeholder: "Cannot be changed..." %></div><br>
 
-      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <div><%= f.label "New Password" %> <i>(leave blank if you don't want to change it)</i><br />
         <%= f.password_field :password, autocomplete: "off" %></div>
 
       <div><%= f.label :password_confirmation %><br />
@@ -62,3 +62,9 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", "/" %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#user_password').val('')
+  });
+</script>
