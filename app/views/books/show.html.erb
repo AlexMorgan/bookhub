@@ -36,9 +36,14 @@
   </ul>
 <% end %>
 
-<% if current_user != @book.user %>
     <div class="well col-md-3">
-      <h3>Make an Offer</h3>
+      <div class="center">
+        <% if current_user == @book.user %>
+          <h3>Your offer</h3>
+        <% else %>
+          <h3>Make an Offer</h3>
+        <% end %>
+      </div>
       <% if @book.price == 0 %>
         <%= form_for [@book, @offer] do |f| %>
           <div>
@@ -57,7 +62,6 @@
         </div>
       <% end %>
     </div>
-<% end %>
 
 <% if false %>
 <!-- <div class="col-md-10">
