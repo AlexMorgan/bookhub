@@ -25,6 +25,12 @@ class Book < ActiveRecord::Base
     %w(New Good Decent )
   end
 
+  def self.book_count(user_id)
+    user_books = Book.all.where(sold: :false, user_id: user_id).count
+    library = Book.all.where(sold: :false).count
+    library - user_books
+  end
+
   def course_title
     super.split.map! {|word| word.upcase }.join(' ') unless super.blank?
   end

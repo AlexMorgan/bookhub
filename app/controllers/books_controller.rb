@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   before_action :correct_user, only: [:edit, :destroy]
   def index
     @books = Book.all.order(created_at: :desc)
+    @book_count = Book.book_count(current_user.id)
 
     ##Location-based books
     # users = User.all.near(current_user, 15)

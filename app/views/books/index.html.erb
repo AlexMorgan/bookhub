@@ -1,5 +1,5 @@
 <h1 class="page-title">Books:</h1>
-<p><%= Book.all.where(sold: :false).count %> Book(s) in Library</p>
+<p><%= @book_count %> Book(s) in Library</p>
 
 <%= form_tag(search_books_path, method: :get) do %>
 <%= text_field_tag 'query', nil, class: 'span4 search-query', placeholder: "Search by book, course, author, or isbn", class: "search" %>
@@ -8,21 +8,28 @@
 </div>
   <% @books.each do |book| %>
     <% if book.sold == false %>
-        <div class="col-sm-3">
+      <% if current_user != book.user %>
+        <div class="col-sm-3 col-xs-12 center">
           <a href="<%= book_path(book) %>">
             <% if book.image_url != nil %>
               <img src="<%= book.image_url %>" class="book-image">
             <% end %><br>
           </a>
-          <%= link_to "#{book.short_title(book.title)}", book_path(book) %>
-          <% if current_user != book.user %>
-            <% if book.price == 0 %>
-              - Make Offer
-            <% else %>
-              - $<%= book.price %>
-            <% end %>
-          <% end %>
+          <div class="col-md-12">
+            <%= link_to "#{book.short_title(book.title)}", book_path(book) %>
+          </div>
+            <div class="col-xs-12">
+              <p>
+                <% if book.price == 0 %>
+                  Make Offer
+                <% else %>
+                  $<%= book.price %>
+                <% end %>
+                | <%= book.quality %>
+              </p>
+            </div>
         </div>
+      <% end %>
     <% end %>
   <% end %>
 
