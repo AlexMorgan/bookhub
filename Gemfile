@@ -57,6 +57,7 @@ group :test, :development do
 end
 
 group :production do
+  gem 'redis'
   gem 'rails_12factor'
 end
 
