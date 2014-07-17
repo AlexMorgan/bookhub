@@ -3,6 +3,15 @@ class BooksController < ApplicationController
   before_action :correct_user, only: [:edit, :destroy]
   def index
     @books = Book.all.order(created_at: :desc)
+
+    ##Location-based books
+    # users = User.all.near(current_user, 15)
+    # @books = []
+    # users.each do |user|
+    #   user.books.each do |book|
+    #     @books << book
+    #   end
+    # end
   end
 
   def show
