@@ -3,7 +3,7 @@
 <div class="row">
   <% @users.each do |u| %>
     <div class="col-md-3">
-      <%=image_tag u.avatar.url(:thumb), class: "modal-book" %>
+      <%=image_tag u.avatar.url(:medium), class: "modal-book" %>
       <h3><%= u.username %></h3>
     </div>
   <% end %>
