@@ -116,7 +116,7 @@
           <div class="tab-header xs-border seafoam"><h3>My Bids</h3></div>
           <p class="data-stat"><%= "You have #{@user.offers.where(accepted: "false").count} pending bid(s)" %></p>
           <% @user.offers.each do |offer| %>
-            <div class="book-details">
+            <div class="btn btn-sm btn-default book-details">
               <% if offer.book.sold == true %>
                 <span class="red"><%= offer.book.title %> | Sold <span class="caret"></span></span>
               <% else %>
@@ -128,7 +128,7 @@
                 <% if offer.book.sold == true %>
                   <%= link_to "Delete", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
                 <% else %>
-                <%= link_to "Revoke", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
+                <%= link_to "Revoke", offer, method: :delete, class: "red", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
                 <% end %>
               </div>
             </div>
@@ -146,7 +146,7 @@
                   <div class="btn btn-sm btn-default book-details">
                     <%= book.short_title(book.title) %> <span class="caret"></span>
                     <div class='buyer-info' hidden>
-                      <%= book.buyer.fullname %><br> <%= book.buyer.email %><br> <%= book.buyer.phone %> | Offer: $<%= book.price %>.00
+                      <%= book.buyer.email %><br> <%= book.buyer.phone %> | Offer: $<%= book.price %>.00
                     </div>
                   </div>
                 </div>
@@ -159,19 +159,19 @@
         <div class="mini-tab">
           <div class="tab-header xs-border purple"><h3>My Offers</h3></div>
           <p class="data-stat"><%= "You have #{@offer_count} offer(s) from other peers" %></p>
-          <ul>
             <% @user.books.each do |book| %>
               <% book.offers.order(created_at: :desc).each do |offer| %>
                 <% if book.sold == false %>
-                  <li>
-                    <%= book.title %> <%= link_to "Accept",{controller: :offers, action: :accept, id: offer.id} , class: "btn btn-sm btn-success" %><br>
-                    Offer: $<%= offer.amount %><br>
-                    Bidder: <%= offer.user.fullname %>
-                  </li>
+                    <div class='btn btn-sm btn-default book-details btn-space'>
+                      <%= book.title %> <span class='caret'></span>
+                      <div hidden>
+                        Offer: $<%= offer.amount %> | Bidder: <%= offer.user.fullname %><br>
+                        <%= link_to "Accept",{controller: :offers, action: :accept, id: offer.id} , class: "green" %>
+                      </div>
+                    </div>
                 <% end %>
               <% end %>
             <% end %>
-          </ul>
         </div>
       </div>
     </div>

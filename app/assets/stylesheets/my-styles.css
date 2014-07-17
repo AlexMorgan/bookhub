@@ -64,8 +64,19 @@ body {
   font-weight: 300 !important;
 }
 
-.red {
+.red,
+.red:hover {
   color: #e74c3c;
+}
+
+.green,
+.green:hover {
+  color: #27ae60;
+}
+
+.med-fnt {
+  font-size: 1.5em;
+  margin-top: 10px;
 }
 
 .search {
@@ -413,6 +424,10 @@ footer {
 .wish-book {
   height: 70px;
 }
+
+.btn-space {
+  margin-bottom: 10px !important;
+}
 /*********************** Books **************************/
 .page-title {
   font-weight: 100;
@@ -512,7 +527,14 @@ ul, li{
 
 .book-info {
   width: 100%;
-  height: 40px;
+  height: 30px;
+  font-size: 1.25em;
+  font-weight: 300;
+  text-align: center;
+}
+
+.author-info {
+  width: 100%;
   font-size: 1.25em;
   font-weight: 300;
   text-align: center;
@@ -530,7 +552,7 @@ ul, li{
   position: relative;
   vertical-align: top;
   width: 100%;
-  height: 40px;
+  height: 30px;
   padding: 0;
   color: white;
   text-align: center;
@@ -544,11 +566,11 @@ ul, li{
 
 form select {
   width: 100%;
-  height: 40px;
+  height: 30px;
   margin-bottom: 10px;
   background: white;
   border: 1px solid #a9a9a9;
-  color: #707070;
+  color: black;
   outline: none;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -556,11 +578,16 @@ form select {
 }
 
 .amount-input {
-  height: 40px;
+  height: 30px;
   width: 90%;
   text-align: right;
   font-size: 1.25em;
   font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.progress {
+  margin-top: 15px;
 }
 
 /*********************** media-queries **************************/
@@ -603,7 +630,7 @@ form select {
 
   .book-info {
     width: 40%;
-    font-weight: 100;
+    font-weight: 300;
   }
 
   .page-title {
@@ -614,12 +641,15 @@ form select {
     font-size: 1.5em;
     font-weight: 100 !important;
     width: 40%;
-    color: #a9a9a9;
+    color: black
   }
 
   .amount-input {
     width: 40%;
-    font-weight: 100;
+  }
+
+  .author-info {
+    width: 60%;
   }
 }
 
@@ -630,6 +660,6 @@ form select {
   }
 
   .book-info {
-    font-size: 2em;
+    font-size: 1.25em;
   }
 }

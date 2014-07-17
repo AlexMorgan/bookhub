@@ -1,13 +1,13 @@
-<% if @book.errors.any? %>
-  <p> There were errors in your submission </p>
-  <ul>
-    <% @book.errors.each do |key, val| %>
-      <li><%= key.capitalize %> <%= val %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <div class="center">
+  <% if @book.errors.any? %>
+    <p> There were errors in your submission </p>
+    <ul>
+      <% @book.errors.each do |key, val| %>
+        <li><%= key.capitalize %> <%= val %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_for [@user, @book] do |f| %>
     <div class="col-xs-12">
       <%= f.text_field :title, autofocus: true, placeholder: "Book Title", class: "book-info" %><br><br>
@@ -54,18 +54,27 @@
       }
     });
 
-    //--------- Validation
+    // --------- Validation
     // $bookISBN.change(function() {
     //   if ($(this).val().length != 13) {
-    //     alert('foo');
+    //     alert('The ISBN must be 13 characters long');
     //   };
     // });
 
-    // $('form').submit(function() {
-    //   if (($bookISBN).val().length != 13) {
-    //     preventDefault();
-    //   };
-    // });
+    // $( "form" ).submit(function( event ) {
+    //   if ($bookISBN.val('')) {
+    //     if ($bookTitle.val('')) {
+    //       event.preventDefault();
+    //       alert("Title can't be blank");
+    //     }
+    //   }
 
+    //   if ($bookTitle.val('')) {
+    //     if ($bookISBN.val('')) {
+    //       event.preventDefault();
+    //       alert("ISBN can't be blank");
+    //     }
+    //   }
+    // });
   });
 </script>
