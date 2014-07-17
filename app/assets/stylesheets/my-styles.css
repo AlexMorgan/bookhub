@@ -208,6 +208,9 @@ footer {
 .details {
   list-style: none;
   margin-bottom: 10px;
+}
+
+#menu-icon {
   cursor:pointer;
 }
 
