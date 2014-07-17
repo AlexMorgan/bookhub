@@ -17,15 +17,17 @@
       <%= f.text_field :isbn13, autocomplete: "off", placeholder: "ISBN-13", class: "book-info" %><br><br>
     </div>
 
-    <div><%= f.label :quality %></div>
-    <div>
-      <%= f.select :quality, Book.qualities, prompt: "Select book quality", class: "quality-input" %>
+    <div class="col-xs-12">
+      <%= f.select :quality, Book.qualities, prompt: "Select Book Quality", class: "quality-input" %>
     </div><br>
 
     <div><%= f.label :price %></div>
-    $ <%= f.text_field :price,autocomplete: "off", placeholder: "20", class: "amount-input" %>.00<br><br>
+    <div class="col-xs-12">
+    $ <%= f.text_field :price,autocomplete: "off", placeholder: "20", class: "amount-input" %>.00
+    </div>
+    <br><br>
 
-    <div><%= f.submit "Submit", class: "btn btn-primary"%></div><br><br>
+    <div class="col-xs-12"><%= f.submit "Submit", class: "book-info submit-btn"%></div><br><br>
   <% end %>
 
   <%= link_to 'Back', :back %>
