@@ -34,7 +34,7 @@
           <% @recent_activities.each do |act| %>
             <div class="row">
               <div class="col-xs-2"><img src="<%= act.image_url %>" class="activity-img"></div>
-              <div class="col-xs-8 user-info">
+              <div class="col-xs-7 user-info">
                 <% if act.sold %>
                   <p><%= act.short_title(act.title) %><br><span class="user-name thin"><%= act.user.fullname %></span></p>
                 <% else %>
@@ -42,7 +42,7 @@
                     <span class="user-name thin"><%= act.user.fullname %></span></p>
                 <% end %>
               </div>
-              <div class="col-xs-2">
+              <div class="col-xs-1 col-md-offset-1">
                 <% if act.sold == false %>
                   <span class=" buy-badge pull-right" type="button" data-toggle="tooltip" data-placement="bottom" title="Available"></span>
                 <% else %>
