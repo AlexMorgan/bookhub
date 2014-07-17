@@ -548,7 +548,7 @@ form select {
   margin-bottom: 10px;
   background: white;
   border: 1px solid #a9a9a9;
-  color: #a9a9a9;
+  color: #707070;
   outline: none;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -614,6 +614,7 @@ form select {
     font-size: 1.5em;
     font-weight: 100 !important;
     width: 40%;
+    color: #a9a9a9;
   }
 
   .amount-input {
