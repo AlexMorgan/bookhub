@@ -577,6 +577,10 @@ form select {
   font-size: 1.10em;
 }
 
+form select:focus {
+  outline: 2px solid grey;
+}
+
 .amount-input {
   height: 30px;
   width: 90%;
