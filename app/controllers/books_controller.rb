@@ -31,7 +31,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      # UpdateSearch.perform_async(@book.id)
+      UpdateSearch.perform_async(@book.id)
       redirect_to edit_book_path(@book), notice: "Make sure this information is correct!"
     else
       render action: 'new'
