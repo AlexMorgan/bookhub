@@ -226,35 +226,35 @@ footer {
 /*------------------ Jumbotron -------------------*/
 .jumbotron {
   background: white;
-  background-image: url('/images/jmu.jpg');
+  background-image: image-url('jmu.jpg');
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   color: white;
   font-weight: 100;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
-}
 
-.jumbotron a:hover {
-  color: black;
-  text-decoration: none;
-}
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
 
-.jumbotron .login{
-  font-size: 2em;
+  .login {
+    font-size: 2em;
+  }
+
+  .welcome {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 4em;
+    margin-top: 50px;
+    color:white;
+  }
 }
 
 .jumbo-content {
   padding-top: 50px;
   padding-bottom: 120px;
-}
-
-.jumbotron .welcome {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
-  font-size: 4em;
-  margin-top: 50px;
-  color:white;
 }
 
 .login-button a {

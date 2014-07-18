@@ -209,7 +209,7 @@
     </div>
   </div>
   <% end %>
-
+<%= content_for :extra_footer do %>
   <script type="text/javascript">
     $(document).ready(function(){
       $('#details').click(function(){
@@ -227,5 +227,6 @@
       $(function () { $("[data-toggle='tooltip']").tooltip(); });
     });
   </script>
+<% end %>
 
 </body>
