@@ -126,7 +126,7 @@
                 You offered: $<%= offer.amount %><br>
                 Seller: <%= offer.book.user.fullname %><br>
                 <% if offer.book.sold == true %>
-                  <%= link_to "Delete", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
+                  <%= link_to "Delete", offer, method: :delete, class: "red", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
                 <% else %>
                 <%= link_to "Revoke", offer, method: :delete, class: "red", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
                 <% end %>
