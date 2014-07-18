@@ -218,9 +218,6 @@ footer {
   font-weight: 100;
 }
 
-/*********************** books#index **************************/
-
-
 /*********************** Dashboard **************************/
 .details {
   list-style: none;
@@ -229,6 +226,12 @@ footer {
 
 #menu-icon {
   cursor:pointer;
+}
+
+.book-index {
+  height: 100px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .book-image {
@@ -669,6 +672,10 @@ form select:focus {
 
   .author-info {
     width: 60%;
+  }
+
+  .book-index {
+    height: 200px;
   }
 }
 

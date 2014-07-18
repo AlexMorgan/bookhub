@@ -9,10 +9,10 @@
   <% @books.each do |book| %>
     <% if book.sold == false %>
       <% if current_user != book.user %>
-        <div class="col-sm-3 col-xs-12 center">
+        <div class="col-sm-3 col-xs-6 center">
           <a href="<%= book_path(book) %>">
             <% if book.image_url != nil %>
-              <img src="<%= book.image_url %>" class="book-image">
+              <img src="<%= book.image_url %>" class="book-index">
             <% end %><br>
           </a>
           <div class="col-md-12">
