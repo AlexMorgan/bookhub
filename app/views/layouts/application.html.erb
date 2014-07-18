@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>BookHub</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
@@ -19,7 +18,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= root_path %>">BoookHub</a>
+        <a class="navbar-brand" href="<%= root_path %>">BookHub</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
@@ -38,6 +37,7 @@
       </div>
     </div>
   </nav>
+
   <div class="site-content">
     <%= yield :map %>
   </div>
@@ -48,8 +48,6 @@
     </div>
   <% end %>
 
-
-
   <div class="container">
     <div class="site-content">
       <%= yield %>
@@ -58,5 +56,7 @@
 
   <%= yield :footer %>
 
+  <%= javascript_include_tag 'application' %>
+  <%= yield :extra_footer %>
 </body>
 </html>

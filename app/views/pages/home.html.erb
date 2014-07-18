@@ -6,12 +6,22 @@
 <%= content_for :map do %>
   <script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script>
   <!--Video Section-->
-  <div class="beep">
+<!--   <div class="beep">
     <section class="content-section video-section">
       <div class="pattern-overlay">
       <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=iuFV5196dYQ',containment:'.video-section', quality:'large', autoPlay:true, mute:true}">bg</a>
       </div>
     </section>
+  </div> -->
+
+  <div class="jumbotron visible-lg">
+    <div class="container jumbo-content">
+      <div class="col-md-12 center">
+        <h1 class="welcome">Welcome to BookHub</h1>
+        <h1 class="description white"><span class="rotate">Buy, Sell, Trade</span> University Textbooks</h1>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- <div style='width: 100%;'>
@@ -32,10 +42,9 @@
 
 
 <div>
-  <div class="col-md-12 center"><h1 class="large">Welcome to BookHub</h1></div>
   <div class="About center col-md-12">
-    <h1 class="large">About:</h1>
-    <p class="page-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur ore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    <h1 class="large">About Us:</h1>
+    <p class="page-text">Bookhub was inspired by the idea of allowing students to buy and sell textbooks amongst eachother, without the hassle of bookstore lines, expensive prices, and horrible buy-back rates. With our simple to use dashboard, we aim to create a meeting point where students can come to sell textbooks at a reasonable rate and buy them at a better price than the University Bookstore.</p>
   </div>
 </div>
 
@@ -51,14 +60,13 @@
         </div>
         <div class="row">
           <div class="col-md-4 white thin">
-            <h3 class="foot-heading">My Office</h3><hr>
+            <h3 class="foot-heading">The Office</h3><hr>
             <p>(703) 853-3860</p>
             <p>alexmorgan.am@gmail.com</p>
             <div class="address">
-              <p>5th Floor</p>
-              <p>33 Harrison Avenue</p>
-              <p>Boston</p>
-              <p>02111</p>
+              <p>James Madison University</p>
+              <p>Harrisonburg, VA</p>
+              <p>22807</p>
             </div>
           </div>
           <div class="col-md-4">
@@ -84,8 +92,3 @@
     </div>
   </footer>
 <% end %>
-<script type="text/javascript">
-  $(document).ready(function () {
-      $(".player").mb_YTPlayer();
-  });
-</script>

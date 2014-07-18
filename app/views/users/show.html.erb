@@ -72,9 +72,9 @@
 
         <div id="wishlist" hidden>
           <% if current_user.needs == [] %>
-            <p class="foot-heading">No books in wishlist...</p>
+            <p class="thin med-fnt grey-fnt">Add a book now! You will be notified as soon as another user adds that book.</p>
           <% else %>
-            <p class="foot-heading">Click for details...</p>
+            <p class="thin med-fnt grey-fnt">Click for details...</p>
             <div class="row">
               <% current_user.needs.each do |need| %>
               <div class="wish-item col-sm-1 col-xs-2">
@@ -93,7 +93,7 @@
 
       <div class="col-md-8 no-col-pad no-rt-pad center">
         <div class=" main-tab ">
-        <div class="tab-header xs-border salmon"><h3>Books Added</h3></div>
+        <div class="tab-header xs-border salmon"><h3>My Books For Sale</h3></div>
         <p class="data-stat"><%= "You have #{@user.books.where(sold: "false").count} book(s) in your library" %></p>
           <% @user.books.order(title: :asc).each do |book| %>
           <% if book.sold == false %>
@@ -126,7 +126,7 @@
                 You offered: $<%= offer.amount %><br>
                 Seller: <%= offer.book.user.fullname %><br>
                 <% if offer.book.sold == true %>
-                  <%= link_to "Delete", offer, method: :delete, class: "btn-sm btn-danger", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
+                  <%= link_to "Delete", offer, method: :delete, class: "red", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
                 <% else %>
                 <%= link_to "Revoke", offer, method: :delete, class: "red", data: {confirm: "Are you sure you want to remove this offer?"} %><br>
                 <% end %>
@@ -209,7 +209,7 @@
     </div>
   </div>
   <% end %>
-
+<%= content_for :extra_footer do %>
   <script type="text/javascript">
     $(document).ready(function(){
       $('#details').click(function(){
@@ -227,5 +227,6 @@
       $(function () { $("[data-toggle='tooltip']").tooltip(); });
     });
   </script>
+<% end %>
 
 </body>

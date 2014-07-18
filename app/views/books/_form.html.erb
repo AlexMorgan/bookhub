@@ -21,11 +21,18 @@
       <%= f.select :quality, Book.qualities, prompt: "Select Book Quality", class: "quality-input" %>
     </div><br>
 
-    <div><%= f.label :price %></div>
-    <div class="col-xs-12">
-    $ <%= f.text_field :price,autocomplete: "off", placeholder: "20", class: "amount-input" %>.00
+    <div class="row">
+      <div class="book_price_input ">
+        <div><%= f.label :price %></div>
+        <div class="col-sm-2 col-sm-offset-4">
+        $ <%= f.text_field :price,autocomplete: "off", placeholder: "20", class: "amount-input" %>.00
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-xs-12">
+        Open for Bids <input type="checkbox" class="price_toggle">
+      </div>
     </div>
-    <br><br>
 
     <div class="col-xs-12"><%= f.submit "Submit", class: "book-info submit-btn"%></div><br><br>
   <% end %>
@@ -33,48 +40,38 @@
   <%= link_to 'Back', :back %>
 </div>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    var $bookTitle = $('#book_title');
-    var $bookISBN = $('#book_isbn13');
+<%= content_for :extra_footer do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var $bookTitle = $('#book_title');
+      var $bookISBN = $('#book_isbn13');
+      var $priceToggle = $('.price_toggle');
 
-    $bookTitle.keyup(function() {
-      if ($(this).val().length > 0) {
-        $bookISBN.parent().hide('medium');
-      } else {
-        $bookISBN.parent().show('medium');
-      }
+      $bookTitle.keyup(function() {
+        if ($(this).val().length > 0) {
+          $bookISBN.parent().hide('medium');
+        } else {
+          $bookISBN.parent().show('medium');
+        }
+      });
+
+      $bookISBN.keyup(function() {
+        if ($(this).val().length > 0) {
+          $bookTitle.parent().hide('medium');
+        } else {
+          $bookTitle.parent().show('medium');
+        }
+      });
+
+      $priceToggle.click(function(){
+        if ($('.book_price_input').is(':visible')) {
+          $('.book_price_input').hide();
+          $(this).parent().attr('class', 'col-xs-12');
+        } else {
+          $('.book_price_input').show();
+          $(this).parent().attr('class', 'col-sm-2 col-xs-12');
+        }
+      });
     });
-
-    $bookISBN.keyup(function() {
-      if ($(this).val().length > 0) {
-        $bookTitle.parent().hide('medium');
-      } else {
-        $bookTitle.parent().show('medium');
-      }
-    });
-
-    // --------- Validation
-    // $bookISBN.change(function() {
-    //   if ($(this).val().length != 13) {
-    //     alert('The ISBN must be 13 characters long');
-    //   };
-    // });
-
-    // $( "form" ).submit(function( event ) {
-    //   if ($bookISBN.val('')) {
-    //     if ($bookTitle.val('')) {
-    //       event.preventDefault();
-    //       alert("Title can't be blank");
-    //     }
-    //   }
-
-    //   if ($bookTitle.val('')) {
-    //     if ($bookISBN.val('')) {
-    //       event.preventDefault();
-    //       alert("ISBN can't be blank");
-    //     }
-    //   }
-    // });
-  });
-</script>
+  </script>
+<% end %>

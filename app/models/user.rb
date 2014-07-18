@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     medium: "300x300>",
     thumb: "100x100>",
     small: "50x50>", tiny: "25x25>"
-  }, :default_url => ActionController::Base.helpers.image_path('missing.png')
+  }, :default_url => ('/images/missing.png')
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   ## If we wanted to validate that all users had an avatar

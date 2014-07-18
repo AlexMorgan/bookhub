@@ -67,25 +67,27 @@
 
 </div>
 
-<script type="text/javascript">
-  $(document).ready(function(){
+<%= content_for :extra_footer do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
 
-    var updateProgressBar = function() {
-      var fields = 6,
-      filled = fields;
+      var updateProgressBar = function() {
+        var fields = 6,
+        filled = fields;
 
-      $('#edit-book-form :input').each(function() {
-        if ($(this).val() == '') {
-          filled --;
-        };
-      });
+        $('#edit-book-form :input').each(function() {
+          if ($(this).val() == '') {
+            filled --;
+          };
+        });
 
-      var percentComplete = (filled / fields)*100;
-      $('.progress-bar').attr('style', "width:" + percentComplete + '%');
-    };
+        var percentComplete = (filled / fields)*100;
+        $('.progress-bar').attr('style', "width:" + percentComplete + '%');
+      };
 
-    updateProgressBar();
+      updateProgressBar();
 
-    $(":input").keyup(updateProgressBar);
-  });
-</script>
+      $(":input").keyup(updateProgressBar);
+    });
+  </script>
+<% end %>
