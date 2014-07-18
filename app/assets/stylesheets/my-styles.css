@@ -26,6 +26,10 @@ body {
   border-radius: 3px;
 }
 
+.bh-btn:hover {
+  background: #2980b9;
+}
+
 .avatar {
   border-radius: 150px;
 }
@@ -569,6 +573,10 @@ ul, li{
   margin-bottom: 10px;
   margin-top: 15px;
   border-radius: 3px;
+}
+
+.submit-btn:hover {
+  background: #2980b9;
 }
 
 form select {
