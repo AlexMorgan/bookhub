@@ -17,3 +17,4 @@
 //= require gmaps/google
 //= require bootstrap
 //= require turbolinks
+//= require jquery.simple-text-rotator
