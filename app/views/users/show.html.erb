@@ -72,7 +72,7 @@
 
         <div id="wishlist" hidden>
           <% if current_user.needs == [] %>
-            <p class="thin med-fnt grey-fnt">No books in wishlist...</p>
+            <p class="thin med-fnt grey-fnt">Add a book now! You will be notified as soon as another user adds that book.</p>
           <% else %>
             <p class="thin med-fnt grey-fnt">Click for details...</p>
             <div class="row">
@@ -93,7 +93,7 @@
 
       <div class="col-md-8 no-col-pad no-rt-pad center">
         <div class=" main-tab ">
-        <div class="tab-header xs-border salmon"><h3>Books Added</h3></div>
+        <div class="tab-header xs-border salmon"><h3>My Books For Sale</h3></div>
         <p class="data-stat"><%= "You have #{@user.books.where(sold: "false").count} book(s) in your library" %></p>
           <% @user.books.order(title: :asc).each do |book| %>
           <% if book.sold == false %>

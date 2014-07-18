@@ -4,15 +4,19 @@
 
 <ol>
   <% @matches.each do |match| %>
-    <li><%= match.title %> - <%= match.user.fullname %> |
-      <% if match.price == 0 %>
-        Make an offer
-      <% else %>
-        Price: $<%= match.price %>.00
-      <% end %>
-      <ul>
-        <li>Link: http://boookhub.herokuapp.com/books/<%= match.id %></li>
-      </ul>
+    <li>
+      <div>
+        <%= match.title %> - <%= match.user.fullname %> |
+        <% if match.price == 0 %>
+          Make an offer
+        <% else %>
+          Price: $<%= match.price %>.00
+        <% end %>
+      </div>
+
+      <div>
+        <a href="http://boookhub.herokuapp.com/books/<%= match.id %>">Buy Now</a>
+      </div>
     </li>
   <% end %>
 </ol>
