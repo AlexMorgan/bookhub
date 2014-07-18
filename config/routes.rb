@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   default_url_options :host => "localhost:3000"
   root "pages#home"
 
-  mount Sidekiq::Web, at: '/sidekiq'
+  authenticate :user, lambda { |u| u.admin? } do
+     mount Sidekiq::Web, at: '/sidekiq'
+  end
 
   resources :users, only: [:index, :show]
 
