@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_admin, only: [:index]
   def index
     @users = User.all.order(username: :asc)
   end
@@ -13,4 +14,12 @@ class UsersController < ApplicationController
     @offer_count = ActiveRecord::Base.connection.execute(sql)
     @offer_count = @offer_count.first["count"]
   end
+
+  private
+    def authenticate_admin
+      if !current_user.admin?
+        flash[:notice] = "This page does not exist"
+        redirect_to user_path(current_user)
+      end
+    end
 end

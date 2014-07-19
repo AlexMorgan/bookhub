@@ -24,7 +24,7 @@
         <ul class="nav navbar-nav">
           <li id="users"><a href="<%= books_path %>">Books</a></li>
           <li id="add-book"><a href="<%= new_book_path %>">Add Book</a></li>
-          <% if current_user && current_user.admin? %>
+          <% if current_user.try(:admin?) %>
             <li><a href="<%= sidekiq_web_path %>">Sidekiq</a></li>
           <% end %>
         </ul>
