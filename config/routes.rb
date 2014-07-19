@@ -1,17 +1,18 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
   devise_for :users, :controllers => { :registrations => "registrations" }
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
   default_url_options :host => "localhost:3000"
   root "pages#home"
 
   authenticate :user, lambda { |u| u.admin? } do
      mount Sidekiq::Web, at: '/sidekiq'
+  end
+
+  # Administrative control
+  namespace :admin do
+    resources :books, only: [:index, :edit, :destroy]
   end
 
   resources :users, only: [:index, :show]

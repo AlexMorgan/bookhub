@@ -78,7 +78,7 @@ protected
   def correct_user
     @book = current_user.books.find_by(id: params[:id])
     if @book.nil?
-      flash[:notice] = "You are not authorized to commit this crime!"
+      flash[:notice] = "This page does not exist"
       redirect_to books_path
     end
   end

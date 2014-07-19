@@ -18,16 +18,16 @@
           <div class="col-md-12">
             <%= link_to "#{book.short_title(book.title)}", book_path(book) %>
           </div>
-            <div class="col-xs-12">
-              <p>
-                <% if book.price == 0 %>
-                  Make Offer
-                <% else %>
-                  $<%= book.price %>
-                <% end %>
-                | <%= book.quality %>
-              </p>
-            </div>
+          <div class="col-xs-12">
+            <p>
+              <% if book.price == 0 %>
+                Make Offer
+              <% else %>
+                $<%= book.price %>
+              <% end %>
+              | <%= book.quality %>
+            </p>
+          </div>
         </div>
       <% end %>
     <% end %>
