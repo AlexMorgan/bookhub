@@ -92,6 +92,10 @@ body {
   margin-top: 10px;
 }
 
+.description {
+  font-size: 1em;
+}
+
 .search {
   padding-left: 10px;
   height: 20%;
@@ -246,15 +250,15 @@ footer {
   .welcome {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    font-size: 4em;
+    font-size: 2em;
     margin-top: 50px;
     color:white;
   }
 }
 
 .jumbo-content {
-  padding-top: 50px;
-  padding-bottom: 120px;
+  padding-top: 10px;
+  padding-bottom: 50px;
 }
 
 .login-button a {
@@ -757,6 +761,14 @@ form select#user_address {
     font-size: 3em;
     text-align: left;
   }
+
+  .welcome {
+    font-size: 4em !important;
+  }
+
+  .description {
+    font-size: 2em;
+  }
 }
 
 @media (min-width: 992px) {
@@ -767,5 +779,10 @@ form select#user_address {
 
   .book-info {
     font-size: 1.25em;
+  }
+
+  .jumbo-content {
+    padding-top: 50px;
+    padding-bottom: 120px;
   }
 }
