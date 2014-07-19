@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Administrative control
   namespace :admin do
-    resources :books, only: [:index, :edit, :destroy]
+    resources :books, only: [:index, :edit, :update, :destroy]
   end
 
   resources :users, only: [:index, :show]

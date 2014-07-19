@@ -26,6 +26,7 @@
           <li id="add-book"><a href="<%= new_book_path %>">Add Book</a></li>
           <% if current_user.try(:admin?) %>
             <li><a href="<%= sidekiq_web_path %>">Sidekiq</a></li>
+            <li><a href="<%= admin_books_path %>">Admin</a></li>
           <% end %>
         </ul>
         <p class="navbar-text pull-right">
