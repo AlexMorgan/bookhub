@@ -24,8 +24,12 @@ class RegistrationsController < Devise::RegistrationsController
     user_path(resource)
   end
 
-  private
+  protected
+  def after_inactive_sign_up_path_for(resource)
+    user_session_path
+  end
 
+  private
   def needs_password?(user, params)
     user.email != params[:user][:email] ||
       params[:user][:password].present?

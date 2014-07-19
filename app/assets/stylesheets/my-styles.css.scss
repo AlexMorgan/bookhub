@@ -577,7 +577,7 @@ ul, li{
 }
 
 .salmon {
-  background: #eb614e;
+  background: #eb614e !important;
 }
 
 .purple {
@@ -675,6 +675,18 @@ form select:focus {
   margin-top: 15px;
 }
 
+form select#user_address {
+  font-size: 1em !important;
+  font-weight: 300 !important;
+}
+
+.form-title {
+  font-size: 2em;
+  font-weight: 300;
+  color: #1abc9c;
+  text-align: center;
+}
+
 /*********************** media-queries **************************/
 @media (min-width: 768px) {
   .hdr-pad-rt {
@@ -723,8 +735,8 @@ form select:focus {
   }
 
   form select {
-    font-size: 1.5em;
-    font-weight: 100 !important;
+    font-size: 1.25em;
+    font-weight: 300 !important;
     width: 40%;
     color: black
   }
@@ -739,6 +751,11 @@ form select:focus {
 
   .book-index {
     height: 200px;
+  }
+
+  .form-title {
+    font-size: 3em;
+    text-align: left;
   }
 }
 

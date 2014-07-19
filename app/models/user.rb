@@ -23,12 +23,25 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   ## If we wanted to validate that all users had an avatar
   # validates :avatar, :attachment_presence => true
-
   validates :username, presence: true, uniqueness: true
+
   validates_formatting_of :firstname, :using => :alpha
+  validates :firstname, presence: true,
+    if: Proc.new { |user| user.sign_in_count > 0 }
+
   validates_formatting_of :lastname, :using => :alpha
+  validates :lastname, presence: true,
+    if: Proc.new { |user| user.sign_in_count > 0 }
+
   validates_formatting_of :phone, :using => :us_phone,
     if: Proc.new { |user| user.sign_in_count > 0 }
+
+  validates :address, presence: { message: "University must be specified"},
+    if: Proc.new { |user| user.sign_in_count > 0 }
+
+  validates :year, presence: true,
+    if: Proc.new { |user| user.sign_in_count > 0 }
+
   validates :phone, uniqueness: { allow_nil: true }
 
   validates :email, presence: true, format: { with: /(@dukes.jmu.edu)/,
@@ -36,6 +49,10 @@ class User < ActiveRecord::Base
 
   def self.years
     %w(Freshman Sophomore Junior Senior)
+  end
+
+  def self.university
+    ['James Madison University']
   end
 
   def fullname
