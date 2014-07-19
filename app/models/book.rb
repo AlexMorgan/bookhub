@@ -19,7 +19,12 @@ class Book < ActiveRecord::Base
     if: Proc.new { |book| book.title.blank? },
     uniqueness: { scope: :user_id, message: "You have already added this book" }
 
-  before_validation :format_title, :find_book_in_db
+  before_validation :format_title, :find_book_in_db,
+    unless: :admin?
+
+  def admin?
+    user.admin?
+  end
 
   def self.qualities
     %w(New Good Decent )
@@ -125,15 +130,15 @@ class Book < ActiveRecord::Base
     # Test to make sure we get a result form Amazon
     if query != nil
       attributes = query.item_attributes
-      self.title = attributes.title if self.title == ''
+      self.title = attributes.title unless self.title.present?
       # Test for ISBN-10 or ISBN-13
       if attributes.isbn.length == 10
         self.isbn = attributes.isbn
-        if self.isbn13 == ""
+        if self.isbn13.blank?
           convert_to_isbn13
         end
       else
-        if self.isbn13 == ""
+        if self.isbn13.blank?
           self.isbn13 = attributes.isbn
         end
       end
@@ -150,7 +155,7 @@ class Book < ActiveRecord::Base
         }
         self.author = authors
       else
-        self.author = attributes.author
+        self.author = attributes.author unless self.author.present?
       end
 
       self.image_url = query.large_image.url

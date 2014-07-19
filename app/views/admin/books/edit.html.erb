@@ -1,0 +1,39 @@
+<div class="center">
+  <h1 class="page-title">Edit Book</h1>
+  <img src="<%= @book.image_url %>" class="book-index">
+  <div>
+    <p>Seller: <%= @book.user.firstname %> <%= @book.user.lastname %></p>
+  </div>
+  <div>
+    <%= form_for [:admin, @book] do |f| %>
+      <div class="col-xs-12">
+        <%= f.text_field :title, autofocus: true, placeholder: "Book Title", class: "book-info" %><br><br>
+      </div>
+
+      <div class="col-xs-12">
+        <%= f.text_field :image_url, placeholder: "Image URL", class: "book-info" %><br><br>
+      </div>
+
+      <div class="col-xs-12">
+        <%= f.text_field :isbn, autocomplete: "off", placeholder: "ISBN-10", class: "book-info" %><br><br>
+      </div>
+
+      <div class="col-xs-12">
+        <%= f.text_field :isbn13, autocomplete: "off", placeholder: "ISBN-13", class: "book-info" %><br><br>
+      </div>
+
+      <div class="col-xs-12">
+        <%= f.text_field :author, autocomplete: "off", placeholder: "Author", class: "book-info" %><br><br>
+      </div>
+
+      <div class="col-xs-12">
+        <%= f.label :amazon_url, "Path to Amazon" %><br>
+        <%= f.text_field :amazon_url, autocomplete: "off", placeholder: "Amazon URL", class: "book-info" %><br><br>
+      </div>
+
+      <div class="col-xs-12"><%= f.submit "Submit", class: "book-info submit-btn"%></div><br><br>
+    <% end %>
+
+    <%= link_to 'Back', :back %>
+  </div>
+</div>
