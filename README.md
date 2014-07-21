@@ -6,5 +6,3 @@ Bookhub is a Ruby on Rails web application that allows users to buy, sell and tr
 ![ScreenShot](https://cloud.githubusercontent.com/assets/5783423/3639879/8339c668-108c-11e4-9874-8d93ff638fa3.png)
 ![ScreenShot](https://cloud.githubusercontent.com/assets/5783423/3639863/acb0dd5c-108b-11e4-8e41-81e212058fc7.png)
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
