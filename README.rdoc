@@ -1,28 +1,10 @@
-== README
+[Link to the Website](http://boookhub.herokuapp.com)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bookhub is a Ruby on Rails web application that allows users to buy, sell and trade university textbooks with a 3 step process. Using Amazon's Affiliates API students are able to simply supply a simple book title, quality of the book and a price and bookhub will take care of the rest of the information from there. Users can then view all of their activity on a fully-responsive dashboard, where they can handle transactions and create a wishlist as well.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+![screen shot 2014-07-20 at 11 54 16 pm](https://cloud.githubusercontent.com/assets/5783423/3639861/9f5beb10-108b-11e4-8db2-0cee5e5c30ec.png)
+![screen shot 2014-07-20 at 11 54 52 pm](https://cloud.githubusercontent.com/assets/5783423/3639862/a82630de-108b-11e4-822b-8acbba7c90ad.png)
+![screen shot 2014-07-20 at 11 55 33 pm](https://cloud.githubusercontent.com/assets/5783423/3639863/acb0dd5c-108b-11e4-8e41-81e212058fc7.png)
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
