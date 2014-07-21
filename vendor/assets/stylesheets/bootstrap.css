@@ -4386,7 +4386,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   /*border-top: 1px solid transparent;*/
   /*box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);*/
   -webkit-overflow-scrolling: touch;
-  background: rgba(26, 188, 156,0.76);
+  background: rgba(26, 188, 156,0.75);
 
 }
 
