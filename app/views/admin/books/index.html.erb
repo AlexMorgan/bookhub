@@ -5,7 +5,7 @@
       <div class="col-md-3 col-xs-6">
         <div class='well'>
           <img src="<%= book.image_url %>" class="book-index">
-          <div><%= book.short_title(book.title) %></div>
+          <div><%= book.short_title %></div>
           <div><p><%= book.user.fullname %> | <%= link_to "Edit", edit_admin_book_path(book) %> | <%= link_to "Delete", admin_book_path(book), method: :delete, data: {confirm: "Are you sure you want to delete this book"}, class: "red" %></p></div>
         </div>
       </div>

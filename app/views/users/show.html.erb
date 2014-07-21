@@ -36,9 +36,9 @@
               <div class="col-xs-2"><img src="<%= act.image_url %>" class="activity-img"></div>
               <div class="col-xs-8 user-info">
                 <% if act.sold %>
-                  <p><%= act.short_title(act.title) %><br><span class="user-name thin"><%= act.user.fullname %></span></p>
+                  <p><%= act.short_title %><br><span class="user-name thin"><%= act.user.fullname %></span></p>
                 <% else %>
-                  <p><%=link_to act.short_title(act.title), book_path(act) %><br>
+                  <p><%=link_to act.short_title, book_path(act) %><br>
                     <span class="user-name thin"><%= act.user.fullname %></span></p>
                 <% end %>
               </div>
@@ -144,7 +144,7 @@
               <% if book.sold == true %>
                 <div class="details">
                   <div class="btn btn-sm btn-default book-details">
-                    <%= book.short_title(book.title) %> <span class="caret"></span>
+                    <%= book.short_title %> <span class="caret"></span>
                     <div class='buyer-info' hidden>
                       <%= book.buyer.email %><br> <%= book.buyer.phone %> | Offer: $<%= book.price %>.00
                     </div>

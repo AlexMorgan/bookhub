@@ -59,8 +59,8 @@ class Book < ActiveRecord::Base
   end
 
 
-  def short_title(title)
-    if title.length > 20
+  def short_title
+    if self.title.length > 20
       "#{title[0..20]}.."
     else
       title
