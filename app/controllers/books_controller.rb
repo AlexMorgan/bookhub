@@ -31,8 +31,14 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      UpdateSearch.perform_async(@book.id)
-      redirect_to edit_book_path(@book), notice: "Make sure this information is correct!"
+      if @book.amazon_url.present?
+        UpdateSearch.perform_async(@book.id)
+        redirect_to edit_book_path(@book), notice: "Make sure this information is correct!"
+      else
+        @book.destroy
+        redirect_to new_book_path
+        flash[:notice] = 'Book could not be found. Please try the ISBN'
+      end
     else
       render action: 'new'
     end
