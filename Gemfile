@@ -59,6 +59,7 @@ end
 group :production do
   gem 'redis'
   gem 'rails_12factor'
+  gem 'informant-rails'
 end
 
 # Use ActiveModel has_secure_password
