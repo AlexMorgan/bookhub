@@ -70,7 +70,11 @@
           </div>
         </div>
 
+        <% if @user.needs.length == 0 %>
+        <div id="wishlist">
+        <% else %>
         <div id="wishlist" hidden>
+        <% end %>
           <% if current_user.needs == [] %>
             <p class="thin med-fnt grey-fnt">Add a book now! You will be notified as soon as another user adds that book.</p>
           <% else %>
