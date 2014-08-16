@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "boookhub@gmail.com"
+  default from: "thenobrainr@gmail.com"
 
   def purchase_email(buyer, seller, book)
     @seller = seller
@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
     @message = message
 
 
-    mail(to: 'morga3ar@dukes.jmu.edu', subject: "#{@name} has contacted you")
+    mail(to: 'thenobrainr@gmail.com', subject: "#{@name} has contacted you")
   end
 
   def offer_email(seller, bidder, book, offer)
