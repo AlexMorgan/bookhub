@@ -216,10 +216,6 @@
 <%= content_for :extra_footer do %>
   <script type="text/javascript">
     $(document).ready(function(){
-      $('#details').click(function(){
-        $('#wishlist').toggle("medium");
-      });
-
       $('#menu-icon').click(function(){
         $('#wishlist').toggle("medium");
       });
@@ -227,6 +223,21 @@
       $('.book-details').click(function(){
         $(this).children('div').toggle('medium');
       })
+
+      var updateWishlistButton = function() {
+        if ($('#wishlist').is(':visible')) {
+          $('#details').html('Hide');
+        } else {
+          $('#details').html('Explore');
+        }
+      };
+
+      updateWishlistButton();
+
+      $('#details').click(function(){
+        $('#wishlist').toggle("medium");
+        updateWishlistButton();
+      });
 
       $(function () { $("[data-toggle='tooltip']").tooltip(); });
     });
