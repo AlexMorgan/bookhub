@@ -13,6 +13,7 @@
 
     <% if devise_mapping.rememberable? -%>
       <div><%= f.check_box :remember_me %> <%= f.label :remember_me, class: "thin" %></div>
+      <div><input type="checkbox" id="guestLogin"> <label>Guest</label></div>
     <% end -%>
 
     <div class="col-xs-12"><%= f.submit "Sign in", class: "book-info submit-btn" %></div>
@@ -20,3 +21,23 @@
 </div>
 
 <%= render "devise/shared/links" %>
+
+<%= content_for :extra_footer do %>
+  <script type="text/javascript">
+    $(function(){
+      $guestBox = $('#guestLogin');
+      $password = $('#user_password');
+      $userEmail = $('#user_email');
+      $guestBox.change(function(e){
+        if ($guestBox.prop('checked')) {
+          $userEmail.val('guest@dukes.jmu.edu');
+          $password.val('guest1865');
+        } else {
+          $userEmail.val('');
+          $password.val('');
+        }
+      });
+
+    });
+  </script>
+<% end %>
